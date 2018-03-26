@@ -20,8 +20,14 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "./assets/sass/styles.scss"
       ],
+      "stylePreprocessorOptions": {
+        "includePaths": [
+          "../node_modules/bootstrap/scss"
+        ]
+      },
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/bootstrap/dist/js/bootstrap.min.js"
@@ -58,7 +64,8 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
-    "component": {}
+    "styleExt": "scss",
+    "component": {
+    }
   }
 }
