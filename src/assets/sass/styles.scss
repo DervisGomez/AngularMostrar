@@ -1,9 +1,21 @@
 @import './variables';
 
-.main-menu {
-    background: $eWaveColor !important;
+.dropdown-html{
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
 }
-.main-menu .navbar-nav .nav-link {
-    color: white !important;
-
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+.carousel-img-home {
+    max-height: 2003px;
 }
