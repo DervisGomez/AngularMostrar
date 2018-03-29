@@ -41,26 +41,22 @@ export class MenuComponent implements OnInit {
     this.user = {};
   }
   registerUser(){
+    this.loading=true;
     this.errorsRegister = [];
     this.userService.user = this.user;
     this.userService.createUser().subscribe(data => {
       var token, uid, client;
-      if ('headers' in data && "success" in data){
-        data['headers']['_header'].forEach(element => {
-          if (element.key=='access-token')
-            token =element.value;
-          if (element.key=='client')
-            client =element.value;
-          if (element.key=='uid')
-            uid =element.value;
-        });
-        window.localStorage.setItem('access-token', token);
-        window.localStorage.setItem('client', client);
-        window.localStorage.setItem('uid', uid);
-        console.log("data: ", data);
-        this.refresh();
-        // do something
-      }
+      token = data['headers'].get('access-token');
+      client = data['headers'].get('client');
+      uid = data['headers'].get('uid');
+      data = JSON.parse(data['_body']);
+      this.user = data['data'];
+      window.localStorage.setItem('user', JSON.stringify(this.user));
+      window.localStorage.setItem('access-token', token);
+      window.localStorage.setItem('client', client);
+      window.localStorage.setItem('uid', uid);
+      console.log("data: ", data);
+      this.refresh();
       this.loading=false;
     },
     error => {
@@ -77,6 +73,7 @@ export class MenuComponent implements OnInit {
 
   loginUser(){
     this.errors=[];
+    this.loading=true;
     this.userService.user = this.user;
     var r = this.userService.logIn().subscribe((data) => {
       this.loading=false;
@@ -93,6 +90,7 @@ export class MenuComponent implements OnInit {
       this.refresh();
     },
     error => {
+      this.loading=false;
       this.errorHttp = true; this.loading=false; console.log(error._body);
       if (error && '_body' in error){
         error = JSON.parse(error._body);
