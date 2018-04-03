@@ -10,13 +10,17 @@ import { Error404Component } from './error-404/error-404.component';
 import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http'; 
 import {HttpModule} from '@angular/http';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     HomeComponent,
-    Error404Component
+    Error404Component,
+    ForgotPasswordComponent,
+    ProfileComponent
   ],
   imports: [
     RouterModule.forRoot(

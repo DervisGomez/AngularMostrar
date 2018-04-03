@@ -34,4 +34,8 @@ export class UserService  {
     let url = API_ROUTES.login(this.user.email, this.user.password);
     return this.http.post(url, this.user, { headers: this.headers })
   }
+  forgotPasswordStepOne(user){
+    let url = API_ROUTES.forgotPasswordStepOne();
+    return this.http.post(url, this.user, { headers: this.headers })
+  }
 }

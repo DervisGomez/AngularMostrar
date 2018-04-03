@@ -28,6 +28,9 @@
                   <a class="dropdown-item" (click)="logout()">
                     Salir <span class="	glyphicon glyphicon-log-out" aria-hidden="true"></span>
                   </a>  
+                  <a class="dropdown-item" src="/profile">
+                    Perfil <span class="	glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                  </a>  
                 </div>
               </li>
               <!-- DESLOGUEADO:  -->
@@ -56,6 +59,8 @@
                             <label class="form-check-label" for="exampleCheck1">Check me out</label>
                           </div>
                           <button type="submit" (click)='loginUser()' class="btn btn-primary">Submit</button>
+                          <br />
+                          <a href="/forgot-password">Olvide mi contraseña</a>
                         </form>
                       </div>
                 </div>
