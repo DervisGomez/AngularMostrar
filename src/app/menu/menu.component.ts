@@ -22,9 +22,8 @@ export class MenuComponent implements OnInit {
 
   constructor(private userService: UserService, private router: Router) { 
     this.errors = this.userService.errors;
-    if(window.localStorage['user']){
-      this.user=JSON.parse(window.localStorage['user']);
-      
+    if(window.localStorage.getItem('user')){
+      this.user=JSON.parse(window.localStorage.getItem('user'));
     }
   }
 
@@ -76,6 +75,7 @@ export class MenuComponent implements OnInit {
     this.loading=true;
     this.userService.user = this.user;
     var r = this.userService.logIn().subscribe((data) => {
+      console.log(data);
       this.loading=false;
       var token, uid, client;
       token = data['headers'].get('access-token');

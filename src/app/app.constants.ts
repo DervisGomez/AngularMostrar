@@ -1,6 +1,6 @@
 export const CONSTANTS = {
-    // BACK_URL: 'http://localhost:3000'
-    BACK_URL: 'https://bigwave.herokuapp.com'
+    // BACK_URL: 'http://localhost:3000/v1'
+    BACK_URL: 'https://bigwave.herokuapp.com/v1'
 }
 
 export const API_ROUTES = {
@@ -12,5 +12,11 @@ export const API_ROUTES = {
     },
     forgotPasswordStepOne(){
         return `${CONSTANTS.BACK_URL}/forgot-password-step-one`;
+    },
+    updateUser(){
+        return `${CONSTANTS.BACK_URL}/auth`;
+    },
+    currentUser(){
+        return `${CONSTANTS.BACK_URL}/current`;
     }
 }
