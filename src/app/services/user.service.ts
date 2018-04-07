@@ -12,7 +12,7 @@ export class UserService  {
   public loading: boolean = false
   // private http: any = Http;
   private headers: any;
-  constructor(private http: Http, private httpClient: HttpClient) { 
+  constructor(private http: Http, private httpClient: HttpClient) {
     this.user;
     this.headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
   }
