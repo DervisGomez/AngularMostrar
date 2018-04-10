@@ -1,0 +1,129 @@
+<h3>Pymes</h3>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crear Pyme</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div *ngFor="let error of errors">
+              - {{error}}
+            </div>
+            
+            <div *ngIf="loading">
+              <img src="assets/imgs/dribbble.gif" width="100%" />
+            </div>
+            <form class="form container-fluid" *ngIf="!loading" >
+              <div class="form-group">
+                <label for="pyme_title">Nombre</label>
+                <input type="text" class="form-control" id="pyme_title"
+                  placeholder="Ingrese el titulo" [ngModelOptions]="{standalone: true}"
+                  required [(ngModel)]="user.title" >
+              </div>
+              <div class="form-group">
+                <label for="pyme_description">Descripción</label>
+                <input type="text" class="form-control" id="pyme_description"
+                  placeholder="Ingrese la descripción" [ngModelOptions]="{standalone: true}"
+                  required [(ngModel)]="user.description" >
+              </div>
+              <div class="form-group">
+                  <label for="pyme_nombre">Nombre de usuario</label>
+                  <input type="text" class="form-control" id="pyme_nombre"
+                    placeholder="Ingrese nombre de usuario" [ngModelOptions]="{standalone: true}"
+                    required [(ngModel)]="user.name">
+                </div>
+              <div class="form-group">
+                  <label for="pyme_email">Email/Correo</label>
+                  <input type="email" class="form-control" id="pyme_email"
+                    placeholder="Ingrese el correo/email" [ngModelOptions]="{standalone: true}"
+                    required [(ngModel)]="user.email">
+              </div>
+              <div class="form-group">
+                  <label for="pyme_banner">Su Banner URL</label>
+                  <input type="url" class="form-control" id="pyme_banner"
+                    placeholder="Ingrese su banner" [ngModelOptions]="{standalone: true}"
+                    required [(ngModel)]="user.banner">
+              </div>
+              
+            </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" #modalCreateClose>Cerrar</button>
+          <button type="submit" class="btn btn-success" *ngIf="currentModal=='createPyme'" (click)="createPyme()" >
+            Crear nueva Pyme
+          </button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+<div *ngIf="generalLoading">
+  Cargando...
+</div>
+<div *ngIf="!generalLoading">
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"  (click)="openCreatePyme()">
+    Crear nueva Pyme
+  </button>
+  <br/>
+
+
+  
+  
+
+
+  
+  <br/>
+
+  <div class="list-group">
+    <a *ngFor="let pyme of myPymes" class="list-group-item list-group-item-action flex-column align-items-start"><!-- active -->
+      <div class="row">
+        <div class="col-md-3">
+          <img src="assets/imgs/dribbble.gif" width="100px" />
+        </div>
+        <div class="col-md-8">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{pyme.title}}</h5>
+            <small>
+              <button type="button"  (click)="selectPyme(pyme)" class="btn btn-primary" data-toggle="modal" data-target="#modalEliminarPyme">Editar</button>
+              <button type="button" (click)="selectPyme(pyme)" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminarPyme">Eliminar</button>
+            </small>
+          </div>
+          <p class="mb-1">{{pyme.email}}</p>
+          <p class="mb-1">{{pyme.description}}</p>
+        </div>
+      </div>
+    </a>
+    
+  </div>
+
+</div>
+
+
+
+<!-- MODAL ELIMINAR PYME -->
+<div class="modal fade" id="modalEliminarPyme" tabindex="-1" role="dialog" aria-labelledby="eliminarModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="eliminarModalLabel">Eliminar Pyme</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ¿Seguro que desea eliminar el Pyme <b>{{pymeSelected.title}}</b>?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" (click)="deletePyme()" data-dismiss="modal">Si, Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>

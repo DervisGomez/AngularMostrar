@@ -15,6 +15,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { Angular2TokenService, A2tUiModule } from 'angular2-token';
+import { PymesComponent } from './pymes/pymes.component';
 //import "../assets/ngx-toastr/toastr.css";
 //import "../assets/ngx-toastr/toastr-bs4-alert";
 
@@ -25,7 +26,8 @@ import { Angular2TokenService, A2tUiModule } from 'angular2-token';
     HomeComponent,
     Error404Component,
     ForgotPasswordComponent,
-    ProfileComponent
+    ProfileComponent,
+    PymesComponent
   ],
   imports: [
     RouterModule.forRoot(

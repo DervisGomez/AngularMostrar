@@ -2,59 +2,71 @@
 
 <div class="container">
 
-  <div *ngIf="loading">
-    <img src="assets/imgs/dribbble.gif" />
-  </div>
-  <div *ngIf="!loading">
-    <div *ngFor="let error of errors">
-      - {{error}}
-    </div>
+  
+  <div >
+    
     <br/>
 
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Perfil</a>
+        <a class="nav-link " [ngClass]="{'active': tabActive=='profile'}" (click)="selectTab('profile')">Perfil</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Perfil Independiente</a>
+        <a class="nav-link" [ngClass]="{'active': tabActive=='independent'}" (click)="selectTab('independent')" >Perfil Independiente</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="#">Perfil Pymes</a>
+          <a class="nav-link" [ngClass]="{'active': tabActive=='pymes'}" (click)="selectTab('pymes')" >Perfil Pymes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Perfil Seller</a>
+        <a class="nav-link" [ngClass]="{'active': tabActive=='seller'}" (click)="selectTab('seller')" >Perfil Seller</a>
       </li>
     </ul>
 
-    <form class="form container-fluid" >
-      <div class="form-group">
-        <label for="p_fullname">Nombre</label>
-        <input type="text" class="form-control" id="p_fullname"
-          placeholder="Ingrese el nombre" [ngModelOptions]="{standalone: true}"
-          required [(ngModel)]="user.name" >
+    <div *ngIf="tabActive=='profile'">
+      <br/>
+      <h3>Perfil</h3>
+      <div *ngFor="let error of errors">
+        - {{error}}
       </div>
-      <div class="form-group">
-          <label for="p_nickname">Nombre de usuario</label>
-          <input type="text" class="form-control" id="p_nickname"
-            placeholder="Ingrese nombre de usuario" [ngModelOptions]="{standalone: true}"
-            required [(ngModel)]="user.nickname">
+      <div *ngIf="loading">
+        <img src="assets/imgs/dribbble.gif" />
+      </div>
+      <form class="form container-fluid" *ngIf="!loading" >
+        <div class="form-group">
+          <label for="p_fullname">Nombre</label>
+          <input type="text" class="form-control" id="p_fullname"
+            placeholder="Ingrese el nombre" [ngModelOptions]="{standalone: true}"
+            required [(ngModel)]="user.name" >
         </div>
-      <div class="form-group">
-          <label for="p_email">Email/Correo</label>
-          <input type="email" class="form-control" id="p_email"
-            placeholder="Enter email" [ngModelOptions]="{standalone: true}"
-            required [(ngModel)]="user.email">
-      </div>
-      <div class="form-group">
-          <label for="p_email">Su Password</label>
-          <input type="password" class="form-control" id="p_password"
-            placeholder="Enter your password" [ngModelOptions]="{standalone: true}"
-            required [(ngModel)]="user.current_password">
-      </div>
-      <div class="form-group">
-        <button (click)="changePass()" type="button" class="btn btn-primary">Cambiar Contraseña</button>
-      </div>
-      <button (click)="updateUser()" type="submit" class="btn btn-success">Actualizar</button>
-    </form>
+        <div class="form-group">
+            <label for="p_nickname">Nombre de usuario</label>
+            <input type="text" class="form-control" id="p_nickname"
+              placeholder="Ingrese nombre de usuario" [ngModelOptions]="{standalone: true}"
+              required [(ngModel)]="user.nickname">
+          </div>
+        <div class="form-group">
+            <label for="p_email">Email/Correo</label>
+            <input type="email" class="form-control" id="p_email"
+              placeholder="Enter email" [ngModelOptions]="{standalone: true}"
+              required [(ngModel)]="user.email">
+        </div>
+        <div class="form-group">
+            <label for="p_password">Su Password</label>
+            <input type="password" class="form-control" id="p_password"
+              placeholder="Enter your password" [ngModelOptions]="{standalone: true}"
+              required [(ngModel)]="user.current_password">
+        </div>
+        <div class="form-group">
+          <button (click)="changePass()" type="button" class="btn btn-primary">Cambiar Contraseña (NOT WORKING)</button>
+        </div>
+        <button (click)="updateUser()" type="submit" class="btn btn-success">Actualizar</button>
+      </form>
+    </div>
+    <div *ngIf="tabActive=='pymes'">
+      <app-pymes></app-pymes>
+    </div>
+
+
+
   </div>
 </div>

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { API_ROUTES } from '../app.constants';
 import { Angular2TokenService } from 'angular2-token';
+import { CONSTANTS } from '../app.constants';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -24,12 +25,16 @@ export class ProfileComponent implements OnInit {
   public errorsRegister: any;
   public errorHttp: boolean = false;
   public loading: boolean = false;
+  public tabActive: string = 'profile';
 
   constructor(private userService: UserService, private router: Router,
     private toastr: ToastrService, private _tokenService: Angular2TokenService) {
-    // this.user = {}
+      this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
    }
 
+  selectTab(val){
+    this.tabActive=val;
+  }
   ngOnInit() {
     var object = this;
     this.loading=true;
@@ -39,7 +44,8 @@ export class ProfileComponent implements OnInit {
     this.user.uid=window.localStorage.getItem('uid');
 
     let url = API_ROUTES.currentUser();
-    this._tokenService.get(url, this.user).subscribe(
+    console.log(url)
+    this._tokenService.get(url).subscribe(
       data =>      {
         data = JSON.parse(data['_body']);
         if (!data){
@@ -56,9 +62,11 @@ export class ProfileComponent implements OnInit {
         if("_body" in error){
           error = error._body;
           console.log("error: ",error);
-          error.errors.full_messages.forEach(element => {
-            object.errors.push(element);
-          });
+          if (error.errors && error.errors.full_messages){
+            error.errors.full_messages.forEach(element => {
+              object.errors.push(element);
+            });
+          }
         }
         this.router.navigate(['/']);
       }
@@ -102,7 +110,7 @@ export class ProfileComponent implements OnInit {
         data = JSON.parse(data['_body']);
         console.log("data:: ", data);
         this.user = Object.assign({}, this.user, data['data']);
-        this.toastr.success('Perfil Actualizado!', 'Toastr fun!');
+        this.toastr.success('Perfil Actualizado!', 'Perfil!');
         this.loading=false;
       },
       error => {

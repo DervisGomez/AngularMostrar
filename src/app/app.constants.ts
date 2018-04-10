@@ -1,6 +1,6 @@
 export const CONSTANTS = {
-    BACK_URL: 'http://localhost:3000/v1'
-    // BACK_URL: 'https://bigwave.herokuapp.com/v1'
+    // BACK_URL: 'http://localhost:3000/v1'
+    BACK_URL: 'https://bigwave.herokuapp.com/v1'
 }
 
 export const API_ROUTES = {
@@ -20,5 +20,14 @@ export const API_ROUTES = {
     currentUser(){
         // return `${CONSTANTS.BACK_URL}/current`;
         return `users/current`;
+    },
+    createPyme(){
+        return `pymes/create`;
+    },
+    getMyPymes(){
+        return `own_pymes`;
+    },
+    deletePyme(){
+        return `pymes/:pyme_id/destroy`;
     }
 }
