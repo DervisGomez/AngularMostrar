@@ -5,7 +5,7 @@ import { appRoutes } from './app.routes';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { Error404Component } from './error-404/error-404.component';
 import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,6 +18,12 @@ import { Angular2TokenService, A2tUiModule } from 'angular2-token';
 import { PymesComponent } from './pymes/pymes.component';
 //import "../assets/ngx-toastr/toastr.css";
 //import "../assets/ngx-toastr/toastr-bs4-alert";
+
+// imports material angular
+import { MaterialModule } from './material.module';
+import { MaterializeModule } from 'angular2-materialize';
+
+import 'hammerjs';
 
 @NgModule({
   declarations: [
@@ -39,7 +45,8 @@ import { PymesComponent } from './pymes/pymes.component';
     HttpModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    A2tUiModule
+    BrowserAnimationsModule,
+    MaterialModule,
   ],
   providers: [
     UserService,
