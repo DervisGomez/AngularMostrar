@@ -10,10 +10,6 @@ i {
   padding: 0 14px;
 }
 
-.spacer {
-  flex: 1 1 auto;
-}
-
 .mat-icon-button {
   outline: none;
 }
@@ -25,10 +21,20 @@ i {
 }
 
 .toolbar-icon {
-  margin-right: 15px !important;
+  margin-right: 15px;
 }
 
 .button-transparent {
   background: transparent !important;
   box-shadow: none !important;
+}
+
+@media (min-width: 0px) and (max-width: 767px) {
+  .mat-toolbar-row {
+    padding: 0 10px;
+  }
+
+  .toolbar-icon {
+    margin-right: 0;
+  }
 }

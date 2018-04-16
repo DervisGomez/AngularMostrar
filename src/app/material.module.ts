@@ -9,7 +9,9 @@ import {
   MatMenuModule,
   MatIconModule,
   MatGridListModule,
-  MatSelectModule
+  MatSelectModule,
+  MatExpansionModule,
+  MatDividerModule
 } from '@angular/material';
 
 const modules = [
@@ -17,10 +19,13 @@ const modules = [
   MatCheckboxModule,
   MatToolbarModule,
   MatCardModule,
+  MatSidenavModule,
   MatMenuModule,
   MatIconModule,
   MatGridListModule,
-  MatSelectModule
+  MatSelectModule,
+  MatExpansionModule,
+  MatDividerModule
 ];
 
 @NgModule({

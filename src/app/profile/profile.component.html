@@ -1,10 +1,246 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened"></mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="user-profile">
+            <div>
+              <img class="user-profile-avatar" src="assets/imgs/profile.jpg" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="following">
+            <div class="section">
+              <div class="section-title">
+                My Profiles
+              </div>
+              <mat-divider style="margin-top: 5px; margin-bottom: 12px"></mat-divider>
+              <div id="carousel-following" data-slick='{"slidesToShow": 4, "slidesToScroll": 1, "infinite": "false"}'>
+                <div class="col-lg-4">
+                  <div class="card">
+                    <div class="icon-like-content">
+                      <button mat-mini-fab class="toolbar-icon" >
+                        <mat-icon aria-label="">thumb_up</mat-icon>
+                      </button>
+                    </div>
+
+                    <mat-accordion style="position: absolute; bottom: 0; width: 100%">
+                      <mat-expansion-panel (opened)="panelOpenState = true"
+                                  (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                         <mat-panel-title>
+                          Nombre
+                         </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl</p>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="card">
+                    <div class="icon-like-content">
+                      <button mat-mini-fab class="toolbar-icon">
+                        <mat-icon aria-label="">thumb_up</mat-icon>
+                      </button>
+                    </div>
+
+                    <mat-accordion style="position: absolute; bottom: 0; width: 100%">
+                      <mat-expansion-panel (opened)="panelOpenState = true"
+                                  (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                         <mat-panel-title>
+                            Nombre
+                         </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl</p>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="card">
+                    <div class="icon-like-content">
+                      <button mat-mini-fab class="toolbar-icon">
+                        <mat-icon aria-label="">thumb_up</mat-icon>
+                      </button>
+                    </div>
+
+                    <mat-accordion style="position: absolute; bottom: 0; width: 100%">
+                      <mat-expansion-panel (opened)="panelOpenState = true"
+                                  (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                         <mat-panel-title>
+                            Nombre
+                         </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl</p>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="card">
+                    <div class="icon-like-content">
+                      <button mat-mini-fab class="toolbar-icon">
+                        <mat-icon aria-label="">thumb_up</mat-icon>
+                      </button>
+                    </div>
+
+                    <mat-accordion style="position: absolute; bottom: 0; width: 100%">
+                      <mat-expansion-panel (opened)="panelOpenState = true"
+                                  (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                         <mat-panel-title>
+                            Nombre
+                         </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl</p>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="card">
+                    <div class="icon-like-content">
+                      <button mat-mini-fab class="toolbar-icon">
+                        <mat-icon aria-label="">thumb_up</mat-icon>
+                      </button>
+                    </div>
+
+                    <mat-accordion style="position: absolute; bottom: 0; width: 100%">
+                      <mat-expansion-panel (opened)="panelOpenState = true"
+                                  (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                         <mat-panel-title>
+                            Nombre
+                         </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl</p>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="card">
+                    <div class="icon-like-content">
+                      <button mat-mini-fab class="toolbar-icon">
+                        <mat-icon aria-label="">thumb_up</mat-icon>
+                      </button>
+                    </div>
+
+                    <mat-accordion style="position: absolute; bottom: 0; width: 100%">
+                      <mat-expansion-panel (opened)="panelOpenState = true"
+                                  (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                         <mat-panel-title>
+                            Nombre
+                         </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl</p>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="card">
+                    <div class="icon-like-content">
+                      <button mat-mini-fab class="toolbar-icon">
+                        <mat-icon aria-label="">thumb_up</mat-icon>
+                      </button>
+                    </div>
+
+                    <mat-accordion style="position: absolute; bottom: 0; width: 100%">
+                      <mat-expansion-panel (opened)="panelOpenState = true"
+                                  (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                         <mat-panel-title>
+                            Nombre
+                         </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl</p>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="card">
+                    <div class="icon-like-content">
+                      <button mat-mini-fab class="toolbar-icon">
+                        <mat-icon aria-label="">thumb_up</mat-icon>
+                      </button>
+                    </div>
+
+                    <mat-accordion style="position: absolute; bottom: 0; width: 100%">
+                      <mat-expansion-panel (opened)="panelOpenState = true"
+                                  (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                         <mat-panel-title>
+                            Nombre
+                         </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl</p>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="card">
+                    <div class="icon-like-content">
+                      <button mat-mini-fab class="toolbar-icon">
+                        <mat-icon aria-label="">thumb_up</mat-icon>
+                      </button>
+                    </div>
+
+                    <mat-accordion style="position: absolute; bottom: 0; width: 100%">
+                      <mat-expansion-panel (opened)="panelOpenState = true"
+                                  (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                         <mat-panel-title>
+                            Nombre
+                         </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <p>Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl Descripción del perfíl</p>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 20px">
+        <div class="col-lg-12">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic officia in obcaecati optio consectetur, rem aut a accusantium non. Architecto esse ea deserunt, officia, provident sed quibusdam error numquam excepturi.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic officia in obcaecati optio consectetur, rem aut a accusantium non. Architecto esse ea deserunt, officia, provident sed quibusdam error numquam excepturi.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic officia in obcaecati optio consectetur, rem aut a accusantium non. Architecto esse ea deserunt, officia, provident sed quibusdam error numquam excepturi.
+        </div>
+      </div>
+      <button mat-fab class="action-button" (click)="sidenav.toggle()">
+        <mat-icon aria-label="">edit</mat-icon>
+      </button>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
 
-<div class="container">
 
-  
+<!--<div class="container">
   <div >
-    
+
     <br/>
 
     <ul class="nav nav-tabs">
@@ -69,4 +305,4 @@
 
 
   </div>
-</div>
+</div> -->
