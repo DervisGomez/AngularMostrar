@@ -11,44 +11,40 @@
           </button>
         </div>
         <div class="modal-body">
-            <div *ngFor="let error of errors">
+            <div *ngFor="let error of errors" class="alert alert-danger" role="alert">
               - {{error}}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
             
-            <div *ngIf="loading">
-              <img src="assets/imgs/dribbble.gif" width="100%" />
-            </div>
-            <form class="form container-fluid" *ngIf="!loading" >
-              <div class="form-group">
-                <label for="pyme_title">Nombre</label>
-                <input type="text" class="form-control" id="pyme_title"
+            <mat-spinner *ngIf="loading" style="margin:0 auto;" mode="indeterminate"></mat-spinner>
+            <form class="form container-fluid form-container" *ngIf="!loading" >
+              <mat-form-field>
+                <input matInput type="text"  id="pyme_title"
                   placeholder="Ingrese el titulo" [ngModelOptions]="{standalone: true}"
-                  required [(ngModel)]="user.title" >
-              </div>
-              <div class="form-group">
-                <label for="pyme_description">Descripción</label>
-                <input type="text" class="form-control" id="pyme_description"
+                  required [(ngModel)]="user.title"  />
+              </mat-form-field>
+              <mat-form-field>
+                <input matInput type="text"  id="pyme_description"
                   placeholder="Ingrese la descripción" [ngModelOptions]="{standalone: true}"
-                  required [(ngModel)]="user.description" >
-              </div>
-              <div class="form-group">
-                  <label for="pyme_nombre">Nombre de usuario</label>
-                  <input type="text" class="form-control" id="pyme_nombre"
+                  required [(ngModel)]="user.description"  />
+              </mat-form-field>
+              <mat-form-field>
+                  <input type="text" matInput id="pyme_nombre"
                     placeholder="Ingrese nombre de usuario" [ngModelOptions]="{standalone: true}"
-                    required [(ngModel)]="user.name">
-                </div>
-              <div class="form-group">
-                  <label for="pyme_email">Email/Correo</label>
-                  <input type="email" class="form-control" id="pyme_email"
+                    required [(ngModel)]="user.name" />
+              </mat-form-field>
+              <mat-form-field>
+                  <input matInput type="email"  id="pyme_email"
                     placeholder="Ingrese el correo/email" [ngModelOptions]="{standalone: true}"
-                    required [(ngModel)]="user.email">
-              </div>
-              <div class="form-group">
-                  <label for="pyme_banner">Su Banner URL</label>
-                  <input type="url" class="form-control" id="pyme_banner"
+                    required [(ngModel)]="user.email"  />
+              </mat-form-field>
+              <mat-form-field>
+                  <input matInput type="url"  id="pyme_banner"
                     placeholder="Ingrese su banner" [ngModelOptions]="{standalone: true}"
-                    required [(ngModel)]="user.banner">
-              </div>
+                    required [(ngModel)]="user.banner"  />
+              </mat-form-field>
               
             </form>
 
@@ -72,11 +68,6 @@
     Crear nueva Pyme
   </button>
   <br/>
-
-
-  
-  
-
 
   
   <br/>

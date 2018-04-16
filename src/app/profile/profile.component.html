@@ -1,12 +1,8 @@
 
-
 <div class="container">
-
   
-  <div >
-    
     <br/>
-
+    
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <a class="nav-link " [ngClass]="{'active': tabActive=='profile'}" (click)="selectTab('profile')">Perfil</a>
@@ -15,50 +11,43 @@
         <a class="nav-link" [ngClass]="{'active': tabActive=='independent'}" (click)="selectTab('independent')" >Perfil Independiente</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" [ngClass]="{'active': tabActive=='pymes'}" (click)="selectTab('pymes')" >Perfil Pymes</a>
+        <a class="nav-link" [ngClass]="{'active': tabActive=='pymes'}" (click)="selectTab('pymes')" >Perfil Pymes</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" [ngClass]="{'active': tabActive=='seller'}" (click)="selectTab('seller')" >Perfil Seller</a>
       </li>
     </ul>
-
+    
     <div *ngIf="tabActive=='profile'">
       <br/>
       <h3>Perfil</h3>
       <div *ngFor="let error of errors">
         - {{error}}
       </div>
-      <div *ngIf="loading">
-        <img src="assets/imgs/dribbble.gif" />
-      </div>
-      <form class="form container-fluid" *ngIf="!loading" >
-        <div class="form-group">
-          <label for="p_fullname">Nombre</label>
-          <input type="text" class="form-control" id="p_fullname"
+      <mat-spinner *ngIf="loading" style="margin:0 auto;" mode="indeterminate"></mat-spinner>
+      
+      <form class="form container-fluid form-container" *ngIf="!loading" >
+        <mat-form-field>
+          <input type="text" matInput id="p_fullname"
             placeholder="Ingrese el nombre" [ngModelOptions]="{standalone: true}"
-            required [(ngModel)]="user.name" >
-        </div>
-        <div class="form-group">
-            <label for="p_nickname">Nombre de usuario</label>
-            <input type="text" class="form-control" id="p_nickname"
-              placeholder="Ingrese nombre de usuario" [ngModelOptions]="{standalone: true}"
-              required [(ngModel)]="user.nickname">
-          </div>
-        <div class="form-group">
-            <label for="p_email">Email/Correo</label>
-            <input type="email" class="form-control" id="p_email"
-              placeholder="Enter email" [ngModelOptions]="{standalone: true}"
-              required [(ngModel)]="user.email">
-        </div>
-        <div class="form-group">
-            <label for="p_password">Su Password</label>
-            <input type="password" class="form-control" id="p_password"
-              placeholder="Enter your password" [ngModelOptions]="{standalone: true}"
-              required [(ngModel)]="user.current_password">
-        </div>
-        <div class="form-group">
-          <button (click)="changePass()" type="button" class="btn btn-primary">Cambiar Contraseña (NOT WORKING)</button>
-        </div>
+            required [(ngModel)]="user.name" />
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput id="p_nickname"
+            placeholder="Ingrese nombre de usuario" [ngModelOptions]="{standalone: true}"
+            required [(ngModel)]="user.nickname" />
+        </mat-form-field>
+        <mat-form-field>
+          <input type="email" matInput id="p_email"
+            placeholder="Enter email" [ngModelOptions]="{standalone: true}"
+            required [(ngModel)]="user.email" />
+        </mat-form-field>
+        <mat-form-field>
+          <input type="password" matInput id="p_password"
+            placeholder="Enter your password" [ngModelOptions]="{standalone: true}"
+            required [(ngModel)]="user.current_password">
+        </mat-form-field>
+        <button (click)="changePass()" type="button" class="btn btn-primary">Cambiar Contraseña (NOT WORKING)</button><br/>
         <button (click)="updateUser()" type="submit" class="btn btn-success">Actualizar</button>
       </form>
     </div>
@@ -68,5 +57,4 @@
 
 
 
-  </div>
 </div>

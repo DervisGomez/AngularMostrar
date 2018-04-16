@@ -16,13 +16,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { Angular2TokenService, A2tUiModule } from 'angular2-token';
 import { PymesComponent } from './pymes/pymes.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 //import "../assets/ngx-toastr/toastr.css";
 //import "../assets/ngx-toastr/toastr-bs4-alert";
 
 // imports material angular
 import { MaterialModule } from './material.module';
 import { MaterializeModule } from 'angular2-materialize';
-
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {MatInputModule, MatFormFieldModule} from '@angular/material';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import 'hammerjs';
 
 @NgModule({
@@ -33,7 +37,9 @@ import 'hammerjs';
     Error404Component,
     ForgotPasswordComponent,
     ProfileComponent,
-    PymesComponent
+    PymesComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -47,10 +53,12 @@ import 'hammerjs';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     MaterialModule,
+    MatInputModule, MatProgressSpinnerModule, MatFormFieldModule
   ],
   providers: [
+    FormBuilder,
     UserService,
-    Angular2TokenService
+    Angular2TokenService,
   ],
   bootstrap: [AppComponent]
 })

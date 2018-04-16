@@ -29,6 +29,7 @@ export class MenuComponent implements OnInit {
     this.errors = this.userService.errors;
     if(window.localStorage.getItem('user')){
       this.user=JSON.parse(window.localStorage.getItem('user'));
+      console.log(this.user);
     }
   }
 

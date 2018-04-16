@@ -54,8 +54,8 @@
 
     <div *ngIf="!this.user.id">
       <div class="button-row">
-        <button mat-raised-button color="accent">INICIA SESIÓN</button>
-        <button mat-raised-button color="primary">REGISTRATE</button>
+        <button mat-raised-button color="accent" [routerLink]="['/login']" >INICIA SESIÓN</button>
+        <button mat-raised-button color="primary" [routerLink]="['/register']">REGISTRATE</button>
       </div>
     </div>
 
@@ -78,11 +78,11 @@
       </button>
 
       <mat-menu #menu="matMenu">
-        <button mat-menu-item *ngIf="!this.user.id">
+        <button mat-menu-item *ngIf="this.user.id" [routerLink]="['/profile']">
           <mat-icon>account_circle</mat-icon>
           <span>Perfil</span>
         </button>
-        <button mat-menu-item disabled>
+        <button mat-menu-item (click)="logout()">
           <mat-icon>voicemail</mat-icon>
           <span>Salir</span>
         </button>
@@ -91,42 +91,7 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-
-
-  <!-- Modal Trigger -->
-<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
-
-<!-- Modal Structure -->
-<div id="modal1" class="modal">
-  <div class="modal-content">
-      <div *ngFor="let error of errors">
-        - {{error}}
-      </div>
-      <form class="form container-fluid">
-        <div class="form-group">
-          <label for="emaillogin">Email/Correo</label>
-          <input type="email" class="form-control" id="emaillogin" aria-describedby="emailHelp" placeholder="Enter email"
-          [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" >
-        </div>
-        <div class="form-group">
-          <label for="passlogin">Contraseña</label>
-          <input type="password" class="form-control" id="passlogin" placeholder="Password"
-            [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}">
-        </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" (click)='loginUser()' class="btn btn-primary">Submit</button>
-        <br />
-        <a href="/forgot-password">Olvide mi contraseña</a>
-      </form>
-
-    </div>
-  <div class="modal-footer">
-    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-  </div>
-</div>
+<br />
           
 <!--
 <nav class="navbar navbar-expand-lg navbar-light bg-light">

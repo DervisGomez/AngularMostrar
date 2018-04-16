@@ -116,6 +116,7 @@ export class PymesComponent implements OnInit {
     this.generalLoading=true;
     let object = this;
     let url = API_ROUTES.getMyPymes();
+    console.log(url);
     this._tokenService.get(url).subscribe(
       data =>      {
         data = JSON.parse(data['_body']);
