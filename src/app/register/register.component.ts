@@ -50,6 +50,7 @@ export class RegisterComponent implements OnInit {
     this.errorsRegister = [];
     this.userService.user = this.user;
     this._tokenService.registerAccount({
+      nickname:                this.user.nickname,
       email:                this.user.email,
       password:             this.user.password,
       passwordConfirmation: this.user.password_confirmation
@@ -59,6 +60,7 @@ export class RegisterComponent implements OnInit {
         data = JSON.parse(data['_body']);
         this.user = data['data'];
         window.localStorage.setItem('user', JSON.stringify(this.user));
+        this.router.navigate(['/']);
         this.loading=false;
       },
       error => {
