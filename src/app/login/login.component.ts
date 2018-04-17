@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
 
 
   loginUser(){
+    let object = this;
     this.errors=[];
     this.loading=true;
     this.userService.user = this.user;
@@ -55,11 +56,12 @@ export class LoginComponent implements OnInit {
       },
       error =>    {
         this.loading=false;
-        this.errorHttp = true; this.loading=false; console.log(error._body);
+        this.errorHttp = true; this.loading=false; 
+        console.log(error._body);
         if (error && '_body' in error){
           error = JSON.parse(error._body);
           error.errors.forEach(element => {
-            this.errors.push(element);
+            object.errors.push(element);
           });
         }
       }

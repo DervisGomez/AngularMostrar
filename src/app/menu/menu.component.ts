@@ -44,6 +44,7 @@ export class MenuComponent implements OnInit {
         error =>    console.log(error)
     );
     window.localStorage.removeItem('user');
+    this.router.navigate(['/']);
     // window.localStorage.removeItem('access-token');
     // window.localStorage.removeItem('client');
     // window.localStorage.removeItem('uid');
