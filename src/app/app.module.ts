@@ -43,7 +43,7 @@ import 'hammerjs';
   ],
   imports: [
     RouterModule.forRoot(
-      appRoutes, { enableTracing: false }
+      appRoutes, {onSameUrlNavigation: 'reload'}
     ),
     BrowserModule,
     FormsModule,
@@ -55,6 +55,7 @@ import 'hammerjs';
     MaterialModule,
     MatInputModule, MatProgressSpinnerModule, MatFormFieldModule
   ],
+  exports: [RouterModule],
   providers: [
     FormBuilder,
     UserService,

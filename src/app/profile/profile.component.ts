@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { API_ROUTES } from '../app.constants';
 import { Angular2TokenService } from 'angular2-token';
 import { CONSTANTS } from '../app.constants';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -27,9 +28,13 @@ export class ProfileComponent implements OnInit {
   public loading: boolean = false;
   public tabActive: string = 'profile';
 
-  constructor(private userService: UserService, private router: Router,
+  constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private router: Router,
     private toastr: ToastrService, private _tokenService: Angular2TokenService) {
       this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
+      this.activatedRoute.queryParams.subscribe(params => {
+        this.tabActive = params['tab'];
+        console.log(params)
+      });
    }
 
   selectTab(val){

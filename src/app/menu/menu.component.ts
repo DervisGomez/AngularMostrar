@@ -27,13 +27,14 @@ export class MenuComponent implements OnInit {
     
     this._tokenService.currentUserType;
     this.errors = this.userService.errors;
+    
+  }
+
+  ngOnInit() {
     if(window.localStorage.getItem('user')){
       this.user=JSON.parse(window.localStorage.getItem('user'));
       console.log(this.user);
     }
-  }
-
-  ngOnInit() {
   }
   refresh(){
     this.router.navigate(['/']);//this.router.url]);
@@ -44,7 +45,8 @@ export class MenuComponent implements OnInit {
         error =>    console.log(error)
     );
     window.localStorage.removeItem('user');
-    this.router.navigate(['/']);
+    window.location.reload(true);
+    // this.router.navigate(['/']);
     // window.localStorage.removeItem('access-token');
     // window.localStorage.removeItem('client');
     // window.localStorage.removeItem('uid');

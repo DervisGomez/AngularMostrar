@@ -25,7 +25,9 @@ export class LoginComponent implements OnInit {
   constructor(private userService: UserService, private router: Router,
     private _tokenService: Angular2TokenService) { 
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
-    
+    this.router.routeReuseStrategy.shouldReuseRoute = function() {
+        return false;
+    };
     this._tokenService.currentUserType;
     this.errors = this.userService.errors;
     if(window.localStorage.getItem('user')){
@@ -52,6 +54,7 @@ export class LoginComponent implements OnInit {
         data = JSON.parse(data['_body']);
         this.user = data['data'];
         window.localStorage.setItem('user', JSON.stringify(this.user));
+        this.router.navigated = false;
         this.router.navigate(['/']);
       },
       error =>    {
