@@ -14,10 +14,22 @@
           <h4 mat-line>Mi información</h4>
         </button>
       </mat-list-item>
-      <mat-list-item (click)="option = 'profiles'">
+      <mat-list-item (click)="option = 'pymes'">
         <button mat-button>
           <mat-icon mat-list-icon>view_carousel</mat-icon>
-          <h4 mat-line>Perfiles</h4>
+          <h4 mat-line>Pymes</h4>
+        </button>
+      </mat-list-item>
+      <mat-list-item (click)="option = 'independents'">
+        <button mat-button>
+          <mat-icon mat-list-icon>perm_identity</mat-icon>
+          <h4 mat-line>Independents</h4>
+        </button>
+      </mat-list-item>
+      <mat-list-item (click)="option = 'sellers'">
+        <button mat-button>
+          <mat-icon mat-list-icon>record_voice_over</mat-icon>
+          <h4 mat-line>Sellers</h4>
         </button>
       </mat-list-item>
       <mat-list-item (click)="option = 'favorites'">
@@ -30,10 +42,10 @@
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <div *ngIf="option=='dashboard'">
+    <div *ngIf="option == 'dashboard'">
       <h1>dashboard</h1>
     </div>
-    <div *ngIf="option=='information'">
+    <div *ngIf="option == 'information'">
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-4">
@@ -89,8 +101,86 @@
         </div>
       </div>
     </div>
-    <div *ngIf="option=='profiles'">
-      
+    <div *ngIf="option=='pymes'">
+      <mat-list>
+        <h1 mat-subheader>Pymes</h1>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+      <button mat-fab color="primary" class="action-button">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div *ngIf="option == 'independents'">
+      <mat-list>
+        <h1 mat-subheader>Independents</h1>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+      <button mat-fab color="primary" class="action-button">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div *ngIf="option=='sellers'">
+      <mat-list>
+        <h1 mat-subheader>Sellers</h1>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
       <button mat-fab color="primary" class="action-button">
         <mat-icon>add</mat-icon>
       </button>

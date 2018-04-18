@@ -24,14 +24,25 @@ body {
   background: #3f51b5;
   padding: 30px 10px;
   color: #fafafa !important;
-
-
   .mat-button {
     width: 100%;
     text-align: left;
     margin: 0 !important;
     padding: 0;
   }
+
+  .mat-icon {
+    color: #fafafa !important;
+    display: inline-block !important;
+  }
+
+  .mat-subheader, .mat-line {
+    color: #fafafa !important;
+    display: inline-block !important;
+    padding-left: 10px;
+    padding-top: 10px;
+  }
+
 }
 
 .mat-sidenav-content {
@@ -63,19 +74,6 @@ body {
   margin-top: 0;
 }
 
-//
-.mat-icon {
-  color: #fafafa !important;
-  display: inline-block !important;
-}
-
-.mat-subheader, .mat-line {
-  color: #fafafa !important;
-  display: inline-block !important;
-  padding-left: 10px;
-  padding-top: 10px;
-}
-
 .button-row {
   display: flex;
   align-items: center;
@@ -84,4 +82,8 @@ body {
 
 .mat-input-container {
   width: 100% !important;
+}
+
+.mat-list-icon {
+  color: rgba(0, 0, 0, 0.54) !important;
 }

@@ -22,9 +22,9 @@ export class MenuComponent implements OnInit {
   public loading: boolean = false
 
   constructor(private userService: UserService, private router: Router,
-    private _tokenService: Angular2TokenService) { 
+    private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
-    
+
     this._tokenService.currentUserType;
     this.errors = this.userService.errors;
     if(window.localStorage.getItem('user')){
@@ -33,6 +33,18 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  openDialog(): void {
+    let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: { name: this.name, animal: this.animal }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
   refresh(){
     this.router.navigate(['/']);//this.router.url]);
