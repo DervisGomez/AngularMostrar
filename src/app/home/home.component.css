@@ -57,5 +57,12 @@
 
 footer {
   background: #3f51b5;
-  padding: 20px;
+  padding: 10px;
+  color: #fff;
+  font-size: 16px;
+}
+
+footer i {
+  padding-top: 5px;
+  font-size: 16px;
 }

@@ -5,7 +5,7 @@
     </a>
 
     <!-- Categorías -->
-    <button mat-icon-button [matMenuTriggerFor]="menu" class="hidden-xs">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon aria-label="">view_module</mat-icon>
       CATEGORÍAS
     </button>
@@ -43,9 +43,9 @@
     <!-- Categorías -->
 
     <span class="spacer"></span>
-    <button mat-button class="hidden-xs">CREA TU NEGOCIO ONLINE</button>
+    <button mat-button *ngIf="!this.user.id">CREA TU NEGOCIO ONLINE</button>
 
-    <button mat-icon-button class="toolbar-icon" *ngIf="this.user.id" class="hidden-xs">
+    <button mat-icon-button class="toolbar-icon" *ngIf="this.user.id">
       <mat-icon aria-label="">favorite</mat-icon>
     </button>
 
@@ -53,23 +53,19 @@
       <mat-icon aria-label="">shopping_cart</mat-icon>
     </button>
 
-    <button mat-icon-button class="toolbar-icon only-xs">
-      <mat-icon aria-label="">menu</mat-icon>
-    </button>
-
-    <div *ngIf="!this.user.id" class="hidden-xs">
+    <div *ngIf="!this.user.id">
       <div class="button-row">
-        <button mat-raised-button color="accent">INICIA SESIÓN</button>
-        <button mat-raised-button color="primary">REGISTRATE</button>
+        <button mat-raised-button color="accent" [routerLink]="['/login']" >INICIA SESIÓN</button>
+        <button mat-raised-button color="primary" [routerLink]="['/register']">REGISTRATE</button>
       </div>
     </div>
 
-    <div *ngIf="this.user.id" class="hidden-xs">
-      <!-- Lista de notificaciones-->
+    <div *ngIf="this.user.id">
       <button mat-icon-button [matMenuTriggerFor]="notifications">
         <mat-icon>notifications</mat-icon>
       </button>
 
+      <!-- Lista de notificaciones-->
       <mat-menu #notifications="matMenu">
         <button mat-menu-item>
           <mat-icon>account_circle</mat-icon>
@@ -83,11 +79,11 @@
       </button>
 
       <mat-menu #menu="matMenu">
-        <button mat-menu-item *ngIf="!this.user.id">
+        <button mat-menu-item *ngIf="this.user.id" [routerLink]="['/profile']">
           <mat-icon>account_circle</mat-icon>
           <span>Perfil</span>
         </button>
-        <button mat-menu-item disabled>
+        <button mat-menu-item (click)="logout()">
           <mat-icon>voicemail</mat-icon>
           <span>Salir</span>
         </button>

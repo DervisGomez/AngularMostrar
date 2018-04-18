@@ -3,8 +3,9 @@ import { HomeComponent } from './home/home.component';
 import { Error404Component } from './error-404/error-404.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProfileComponent } from './profile/profile.component';
-
-export const appRoutes: Routes = [                
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+export const appRoutes: Routes = [
   {
     path: '',
     component: HomeComponent,
@@ -15,6 +16,14 @@ export const appRoutes: Routes = [
     component: ForgotPasswordComponent,
   },
   {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+  {
     path: 'profile',
     component: ProfileComponent,
   },
@@ -23,7 +32,7 @@ export const appRoutes: Routes = [
     component: Error404Component,
   },
   {
-      path: '**',
-      redirectTo: '404'
+    path: '**',
+    redirectTo: '404'
   }
 ];

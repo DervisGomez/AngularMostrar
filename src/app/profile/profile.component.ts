@@ -14,6 +14,8 @@ declare var $: any;
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  public option: string = 'dashboard';
+
   ngOnInit() {
     $('#carousel-following').slick({
       responsive: [
@@ -40,6 +42,7 @@ export class ProfileComponent implements OnInit {
       ]
     });
   }
+
   // public user: any = {
   //   id: '',
   //   nickname: '',
