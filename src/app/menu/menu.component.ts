@@ -27,12 +27,12 @@ export class MenuComponent implements OnInit {
   constructor(
     private userService: UserService, private router: Router,
     public dialog: MatDialog,@Inject(MAT_DIALOG_DATA) private data: any,
-    private _tokenService: Angular2TokenService) { 
+    private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
     this._tokenService.currentUserType;
     this.errors = this.userService.errors;
     this.getUser();
-    
+
   }
   openLoginDialog() {
     const dialogRef = this.dialog.open(LoginComponent, {

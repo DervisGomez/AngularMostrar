@@ -19,7 +19,6 @@ import { PymesComponent } from './pymes/pymes.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CreatePymeComponent } from './pymes/create.component';
-
 //import "../assets/ngx-toastr/toastr.css";
 //import "../assets/ngx-toastr/toastr-bs4-alert";
 

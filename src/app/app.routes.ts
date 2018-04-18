@@ -6,7 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {CreatePymeComponent} from './pymes/create.component';
-export const appRoutes: Routes = [                
+export const appRoutes: Routes = [
   {
     path: '',
     component: HomeComponent,

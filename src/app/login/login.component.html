@@ -10,8 +10,8 @@
   <form *ngIf="!loading" class="form container-fluid">
     <div class="form-container">
       <mat-form-field>
-          
-          <input type="email" id="emailLogin" aria-describedby="emailHelp" 
+
+          <input type="email" id="emailLogin" aria-describedby="emailHelp"
             placeholder="Enter email" matInput
               [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" />
       </mat-form-field>
@@ -23,7 +23,7 @@
           <!-- <input type="checkbox" class="form-check-input" id="checkMeOut"> -->
           <!-- <label class="form-check-label" for="checkMeOut">Check me out</label> -->
       <!-- </mat-form-field> -->
-      
+
       <!-- <button type="submit" (click)='loginUser()' class="btn btn-primary">Loguear</button> -->
       <br />
       <a href="/forgot-password">Olvide mi contraseña</a>
@@ -36,4 +36,3 @@
   <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
   <button mat-button  (click)='loginUser()'>Loguear</button>
 </mat-dialog-actions>
-

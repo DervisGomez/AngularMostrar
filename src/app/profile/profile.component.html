@@ -1,60 +1,190 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" opened="true" class="mat-sidenav">
+    <mat-list>
+      <mat-list-item (click)="option = 'dashboard'">
+        <div class="button-row"></div>
+        <button mat-button>
+          <mat-icon mat-list-icon style="display: inline-block">dashboard</mat-icon>
+          <h4 mat-line style="display: inline-block">Panel</h4>
+        </button>
+      </mat-list-item>
+      <mat-list-item (click)="option = 'information'">
+        <button mat-button>
+          <mat-icon mat-list-icon>assignment</mat-icon>
+          <h4 mat-line>Mi información</h4>
+        </button>
+      </mat-list-item>
+      <mat-list-item (click)="option = 'pymes'">
+        <button mat-button>
+          <mat-icon mat-list-icon>view_carousel</mat-icon>
+          <h4 mat-line>Pymes</h4>
+        </button>
+      </mat-list-item>
+      <mat-list-item (click)="option = 'independents'">
+        <button mat-button>
+          <mat-icon mat-list-icon>perm_identity</mat-icon>
+          <h4 mat-line>Independents</h4>
+        </button>
+      </mat-list-item>
+      <mat-list-item (click)="option = 'sellers'">
+        <button mat-button>
+          <mat-icon mat-list-icon>record_voice_over</mat-icon>
+          <h4 mat-line>Sellers</h4>
+        </button>
+      </mat-list-item>
+      <mat-list-item (click)="option = 'favorites'">
+        <button mat-button>
+          <mat-icon mat-list-icon>favorite</mat-icon>
+          <h4 mat-line>Favoritos</h4>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
 
-<div class="container">
-  
-    <br/>
-    
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link " [ngClass]="{'active': tabActive=='profile'}" (click)="selectTab('profile')">Perfil</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [ngClass]="{'active': tabActive=='independent'}" (click)="selectTab('independent')" >Perfil Independiente</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [ngClass]="{'active': tabActive=='pymes'}" (click)="selectTab('pymes')" >Perfil Pymes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [ngClass]="{'active': tabActive=='seller'}" (click)="selectTab('seller')" >Perfil Seller</a>
-      </li>
-    </ul>
-    
-    <div *ngIf="tabActive=='profile'">
-      <br/>
-      <h3>Perfil</h3>
-      <div *ngFor="let error of errors">
-        - {{error}}
+  <mat-sidenav-content>
+    <div *ngIf="option == 'dashboard'">
+      <h1>dashboard</h1>
+    </div>
+    <div *ngIf="option == 'information'">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="user-profile text-center">
+              <img class="user-profile-avatar" src="assets/imgs/profile.jpg" alt="">
+              <div class="button-row">
+                <button mat-raised-button color="primary" style="margin-top: 40px">
+                  CAMBIAR FOTO
+                  <mat-icon aria-label="" color="primary" style="font-size: 18px;">edit</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="user-profile">
+              <div class="section-title">Datos personales</div>
+              <mat-divider style="margin: 10px 0"></mat-divider>
+              <div class="row">
+                <div class="col-lg-6">
+                  <mat-form-field>
+                    <input type="text" matInput id="fullname"
+                      placeholder="Nombre">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-6">
+                  <mat-form-field>
+                    <input type="text" matInput id="fullname"
+                      placeholder="Apellido">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-6">
+                  <mat-form-field>
+                    <input type="text" matInput id="fullname"
+                      placeholder="Nombre de usuario">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-6">
+                  <mat-form-field>
+                    <input type="text" matInput id="fullname"
+                      placeholder="Email">
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="text-right">
+                <button mat-raised-button color="primary">
+                  ACTUALIZAR
+                  <mat-icon aria-label="" color="primary" style="font-size: 18px;">edit</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <mat-spinner *ngIf="loading" style="margin:0 auto;" mode="indeterminate"></mat-spinner>
-      
-      <form class="form container-fluid form-container" *ngIf="!loading" >
-        <mat-form-field>
-          <input type="text" matInput id="p_fullname"
-            placeholder="Ingrese el nombre" [ngModelOptions]="{standalone: true}"
-            required [(ngModel)]="user.name" />
-        </mat-form-field>
-        <mat-form-field>
-          <input type="text" matInput id="p_nickname"
-            placeholder="Ingrese nombre de usuario" [ngModelOptions]="{standalone: true}"
-            required [(ngModel)]="user.nickname" />
-        </mat-form-field>
-        <mat-form-field>
-          <input type="email" matInput id="p_email"
-            placeholder="Enter email" [ngModelOptions]="{standalone: true}"
-            required [(ngModel)]="user.email" />
-        </mat-form-field>
-        <mat-form-field>
-          <input type="password" matInput id="p_password"
-            placeholder="Enter your password" [ngModelOptions]="{standalone: true}"
-            required [(ngModel)]="user.current_password">
-        </mat-form-field>
-        <button (click)="changePass()" mat-raised-button color="accent">Cambiar Contraseña (NOT WORKING)</button><br/>
-        <button (click)="updateUser()" mat-raised-button color="primary">Actualizar</button>
-      </form>
     </div>
-    <div *ngIf="tabActive=='pymes'">
-      <app-pymes></app-pymes>
+    <div *ngIf="option=='pymes'">
+      <mat-list>
+        <h1 mat-subheader>Pymes</h1>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+      <button mat-fab color="primary" class="action-button">
+        <mat-icon>add</mat-icon>
+      </button>
     </div>
-
-
-
-</div>
+    <div *ngIf="option == 'independents'">
+      <mat-list>
+        <h1 mat-subheader>Independents</h1>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+      <button mat-fab color="primary" class="action-button">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div *ngIf="option=='sellers'">
+      <mat-list>
+        <h1 mat-subheader>Sellers</h1>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-icon mat-list-icon>folder</mat-icon>
+          <h4 mat-line>Name</h4>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+      <button mat-fab color="primary" class="action-button">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div *ngIf="option=='favorites'"></div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

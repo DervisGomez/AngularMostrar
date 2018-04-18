@@ -28,9 +28,9 @@ export class RegisterComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<RegisterComponent>,
     fb: FormBuilder, private userService: UserService, private router: Router,
-    private _tokenService: Angular2TokenService) { 
+    private _tokenService: Angular2TokenService) {
       this.router = router;
-    this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
+      this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
     if (this._tokenService.userSignedIn()){
       this.router.navigate(['/']);
     }

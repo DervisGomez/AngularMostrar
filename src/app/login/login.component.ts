@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   constructor(private userService: UserService, private router: Router,
     public dialogRef: MatDialogRef<LoginComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private _tokenService: Angular2TokenService) { 
+    private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
     this.router.routeReuseStrategy.shouldReuseRoute = function() {
         return false;
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
       error =>    {
         console.log("b")
         this.loading=false;
-        this.errorHttp = true; this.loading=false; 
+        this.errorHttp = true; this.loading=false;
         console.log(error);
         if (error && '_body' in error){
           try{
