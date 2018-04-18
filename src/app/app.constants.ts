@@ -1,6 +1,6 @@
 export const CONSTANTS = {
-    // BACK_URL: 'http://localhost:3000/v1'
-    BACK_URL: 'https://bigwave.herokuapp.com/v1'
+    BACK_URL: 'http://localhost:3000/v1'
+    // BACK_URL: 'https://bigwave.herokuapp.com/v1'
 }
 
 export const API_ROUTES = {

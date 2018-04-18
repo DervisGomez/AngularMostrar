@@ -9,27 +9,33 @@ export const appRoutes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    data: { preload: false }
   },
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent,
+    data: { preload: false }
   },
   {
     path: 'login',
     component: LoginComponent,
+    data: { preload: false }
   },
   {
     path: 'register',
     component: RegisterComponent,
+    data: { preload: false }
   },
   {
     path: 'profile',
     component: ProfileComponent,
+    data: { preload: false }
   },
   {
     path: '404',
     component: Error404Component,
+    data: { preload: false }
   },
   {
       path: '**',

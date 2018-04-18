@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { appRoutes } from './app.routes';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
+import { appRoutes, } from './app.routes';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
@@ -27,6 +27,8 @@ import { MaterializeModule } from 'angular2-materialize';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {MatInputModule, MatFormFieldModule} from '@angular/material';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatDialog, MatDialogModule, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+
 import 'hammerjs';
 
 @NgModule({
@@ -42,8 +44,9 @@ import 'hammerjs';
     RegisterComponent
   ],
   imports: [
+    MatDialogModule,
     RouterModule.forRoot(
-      appRoutes, {onSameUrlNavigation: 'reload'}
+      appRoutes, {onSameUrlNavigation: 'reload', preloadingStrategy: PreloadAllModules}
     ),
     BrowserModule,
     FormsModule,
@@ -60,6 +63,9 @@ import 'hammerjs';
     FormBuilder,
     UserService,
     Angular2TokenService,
+    MatDialog,
+    { provide: MAT_DIALOG_DATA, useValue: [] },
+    {provide: MatDialogRef, useValue: {}},
   ],
   bootstrap: [AppComponent]
 })
