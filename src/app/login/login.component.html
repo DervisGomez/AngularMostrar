@@ -1,30 +1,38 @@
+<h2 mat-dialog-title>LogIn</h2>
+<mat-dialog-content>
+  <div *ngFor="let error of errors" class="alert alert-danger" role="alert">
+    - {{error}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <mat-spinner *ngIf="loading" style="margin:0 auto;" mode="indeterminate"></mat-spinner>
+  <form *ngIf="!loading" class="form container-fluid">
+    <div class="form-container">
+      <mat-form-field>
 
-<mat-spinner *ngIf="loading" style="margin:0 auto;" mode="indeterminate"></mat-spinner>
-<form *ngIf="!loading" class="form container-fluid">
-  <div class="form-container">
-    <div *ngFor="let error of errorsRegister" class="alert alert-danger" role="alert">
-      - {{error}}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <mat-form-field>
-        
-        <input type="email" id="emailLogin" aria-describedby="emailHelp" 
-          placeholder="Enter email" matInput
-            [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" />
-    </mat-form-field>
-    <mat-form-field>
-        <input type="password" id="passLogin" placeholder="Password" matInput
-            [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" />
-    </mat-form-field>
-    <!-- <mat-form-field> -->
-        <!-- <input type="checkbox" class="form-check-input" id="checkMeOut"> -->
-        <!-- <label class="form-check-label" for="checkMeOut">Check me out</label> -->
-    <!-- </mat-form-field> -->
-    
-    <button type="submit" (click)='loginUser()' class="btn btn-primary">Submit</button>
-    <br />
-    <a href="/forgot-password">Olvide mi contraseña</a>
-    </div>
-</form>
+          <input type="email" id="emailLogin" aria-describedby="emailHelp"
+            placeholder="Enter email" matInput
+              [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" />
+      </mat-form-field>
+      <mat-form-field>
+          <input type="password" id="passLogin" placeholder="Password" matInput
+              [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" />
+      </mat-form-field>
+      <!-- <mat-form-field> -->
+          <!-- <input type="checkbox" class="form-check-input" id="checkMeOut"> -->
+          <!-- <label class="form-check-label" for="checkMeOut">Check me out</label> -->
+      <!-- </mat-form-field> -->
+
+      <!-- <button type="submit" (click)='loginUser()' class="btn btn-primary">Loguear</button> -->
+      <br />
+      <a href="/forgot-password">Olvide mi contraseña</a>
+      </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close [mat-dialog-close]="true">Cerrar</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button  (click)='loginUser()'>Loguear</button>
+</mat-dialog-actions>

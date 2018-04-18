@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Angular2TokenService } from 'angular2-token';
 import { CONSTANTS } from '../app.constants';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-register',
@@ -24,7 +25,9 @@ export class RegisterComponent implements OnInit {
   public errorHttp: boolean = false;
   public loading: boolean = false
 
-  constructor(fb: FormBuilder, private userService: UserService, private router: Router,
+  constructor(
+    public dialogRef: MatDialogRef<RegisterComponent>,
+    fb: FormBuilder, private userService: UserService, private router: Router,
     private _tokenService: Angular2TokenService) {
       this.router = router;
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
@@ -44,7 +47,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  onDialogClose(): void {
+    this.dialogRef.close();
+  }
   registerUser(){
     this.loading=true;
     this.errorsRegister = [];
@@ -60,8 +65,9 @@ export class RegisterComponent implements OnInit {
         data = JSON.parse(data['_body']);
         this.user = data['data'];
         window.localStorage.setItem('user', JSON.stringify(this.user));
-        this.router.navigate(['/']);
+        this.onDialogClose();
         this.loading=false;
+
       },
       error => {
         this.errorHttp = true; this.loading=false;

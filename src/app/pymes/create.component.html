@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>Crear nueva Pyme</h2>
+    <mat-dialog-content>
+                <div *ngFor="let error of errors" class="alert alert-danger" role="alert">
+                  - {{error}}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <mat-spinner *ngIf="loading" style="margin:0 auto;" mode="indeterminate"></mat-spinner>
+                <form class="form container-fluid form-container" *ngIf="!loading" >
+                  <mat-form-field>
+                    <input matInput type="text"  id="pyme_title"
+                      placeholder="Ingrese el titulo" [ngModelOptions]="{standalone: true}"
+                      required [(ngModel)]="user.title"  />
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput type="text"  id="pyme_description"
+                      placeholder="Ingrese la descripción" [ngModelOptions]="{standalone: true}"
+                      required [(ngModel)]="user.description"  />
+                  </mat-form-field>
+                  <mat-form-field>
+                      <input type="text" matInput id="pyme_nombre"
+                        placeholder="Ingrese nombre de usuario" [ngModelOptions]="{standalone: true}"
+                        required [(ngModel)]="user.name" />
+                  </mat-form-field>
+                  <mat-form-field>
+                      <input matInput type="email"  id="pyme_email"
+                        placeholder="Ingrese el correo/email" [ngModelOptions]="{standalone: true}"
+                        required [(ngModel)]="user.email"  />
+                  </mat-form-field>
+                  <mat-form-field>
+                      <input matInput type="url"  id="pyme_banner"
+                        placeholder="Ingrese su banner" [ngModelOptions]="{standalone: true}"
+                        required [(ngModel)]="user.banner"  />
+                  </mat-form-field>
+
+                </form>
+
+
+            </mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close [mat-dialog-close]="true">Cerrar</button>
+    <button mat-button  (click)="createPyme()" >
+        Crear Pyme
+    </button>
+</mat-dialog-actions>

@@ -5,34 +5,46 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import {CreatePymeComponent} from './pymes/create.component';
 export const appRoutes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    pathMatch: 'full'
+    pathMatch: 'full',
+    data: { preload: false }
   },
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent,
+    data: { preload: false }
   },
   {
     path: 'login',
     component: LoginComponent,
+    data: { preload: false }
   },
   {
     path: 'register',
     component: RegisterComponent,
+    data: { preload: false }
   },
   {
     path: 'profile',
     component: ProfileComponent,
+    data: { preload: false }
+  },
+  {
+    path: 'profile',
+    component: CreatePymeComponent,
+    data: { preload: false }
   },
   {
     path: '404',
     component: Error404Component,
+    data: { preload: false }
   },
   {
-    path: '**',
-    redirectTo: '404'
+      path: '**',
+      redirectTo: '404'
   }
 ];

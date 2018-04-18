@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { Angular2TokenService } from 'angular2-token';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 import { CONSTANTS } from '../app.constants';
+import {LoginComponent} from '../login/login.component';
+import {RegisterComponent} from '../register/register.component';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -21,30 +24,60 @@ export class MenuComponent implements OnInit {
   public errorHttp: boolean = false;
   public loading: boolean = false
 
-  constructor(private userService: UserService, private router: Router,
+  constructor(
+    private userService: UserService, private router: Router,
+    public dialog: MatDialog,@Inject(MAT_DIALOG_DATA) private data: any,
     private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
-
     this._tokenService.currentUserType;
     this.errors = this.userService.errors;
-    if(window.localStorage.getItem('user')){
-      this.user=JSON.parse(window.localStorage.getItem('user'));
-    }
-  }
+    this.getUser();
 
-  ngOnInit() {
   }
-
-  openDialog(): void {
-    let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: { name: this.name, animal: this.animal }
+  openLoginDialog() {
+    const dialogRef = this.dialog.open(LoginComponent, {
+      // height: '60%',
+      width: '50%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
+      console.log(`Dialog result: ${result}`);
+      this.getUser();
     });
+  }
+  openCreateBusisness(){
+    if (this.user.id)
+      this.router.navigate(['/profile']);//this.router.url]);
+    else
+      this.openLoginDialog()
+  }
+  openRegisterDialog() {
+    const dialogRef = this.dialog.open(RegisterComponent, {
+      // height: '60%',
+      width: '50%'
+    });
+    var object =this;
+    dialogRef.afterClosed().subscribe(result => {
+        this.getUser();
+      console.log(`Dialog result: ${JSON.stringify(result)}`);
+    });
+  }
+  getUser(){
+    console.log("resutl")
+    // this._tokenService.currentUserData();
+    // this._tokenService.validateToken().subscribe(
+    //   res =>      console.log(res),
+    //   error =>    console.log(error)
+    // );
+    console.log("s:",window.localStorage)
+    if(window.localStorage.user){
+      this.user=JSON.parse(window.localStorage.user);
+    }
+    console.log("USER::::::::",this.user);
+
+  }
+  ngOnInit() {
+    this.getUser();
   }
   refresh(){
     this.router.navigate(['/']);//this.router.url]);
@@ -55,6 +88,8 @@ export class MenuComponent implements OnInit {
         error =>    console.log(error)
     );
     window.localStorage.removeItem('user');
+    window.location.reload(true);
+    // this.router.navigate(['/']);
     // window.localStorage.removeItem('access-token');
     // window.localStorage.removeItem('client');
     // window.localStorage.removeItem('uid');
