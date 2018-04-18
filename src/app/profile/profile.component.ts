@@ -32,7 +32,11 @@ export class ProfileComponent implements OnInit {
     private toastr: ToastrService, private _tokenService: Angular2TokenService) {
       this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
       this.activatedRoute.queryParams.subscribe(params => {
-        this.tabActive = params['tab'];
+        if ('tab' in params)
+          this.tabActive = params['tab'];
+        else
+          this.tabActive = 'profile';
+        
         console.log(params)
       });
    }

@@ -5,6 +5,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import {CreatePymeComponent} from './pymes/create.component';
 export const appRoutes: Routes = [                
   {
     path: '',
@@ -30,6 +31,11 @@ export const appRoutes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
+    data: { preload: false }
+  },
+  {
+    path: 'profile',
+    component: CreatePymeComponent,
     data: { preload: false }
   },
   {

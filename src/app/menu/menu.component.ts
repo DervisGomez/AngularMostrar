@@ -29,9 +29,9 @@ export class MenuComponent implements OnInit {
     public dialog: MatDialog,@Inject(MAT_DIALOG_DATA) private data: any,
     private _tokenService: Angular2TokenService) { 
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
-    
     this._tokenService.currentUserType;
     this.errors = this.userService.errors;
+    this.getUser();
     
   }
   openLoginDialog() {
@@ -65,15 +65,15 @@ export class MenuComponent implements OnInit {
   getUser(){
     console.log("resutl")
     // this._tokenService.currentUserData();
-    this._tokenService.validateToken().subscribe(
-      res =>      console.log(res),
-      error =>    console.log(error)
-    );
+    // this._tokenService.validateToken().subscribe(
+    //   res =>      console.log(res),
+    //   error =>    console.log(error)
+    // );
     console.log("s:",window.localStorage)
-    if(window.localStorage.getItem('user')){
-      this.user=JSON.parse(window.localStorage.getItem('user'));
-      console.log(this.user);
+    if(window.localStorage.user){
+      this.user=JSON.parse(window.localStorage.user);
     }
+    console.log("USER::::::::",this.user);
 
   }
   ngOnInit() {

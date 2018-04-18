@@ -47,8 +47,8 @@
             placeholder="Enter your password" [ngModelOptions]="{standalone: true}"
             required [(ngModel)]="user.current_password">
         </mat-form-field>
-        <button (click)="changePass()" type="button" class="btn btn-primary">Cambiar Contraseña (NOT WORKING)</button><br/>
-        <button (click)="updateUser()" type="submit" class="btn btn-success">Actualizar</button>
+        <button (click)="changePass()" mat-raised-button color="accent">Cambiar Contraseña (NOT WORKING)</button><br/>
+        <button (click)="updateUser()" mat-raised-button color="primary">Actualizar</button>
       </form>
     </div>
     <div *ngIf="tabActive=='pymes'">

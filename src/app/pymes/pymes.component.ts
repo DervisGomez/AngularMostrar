@@ -1,8 +1,12 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
 import { Angular2TokenService } from 'angular2-token';
 import { ToastrService } from 'ngx-toastr';
 import { API_ROUTES } from '../app.constants';
 import { CONSTANTS } from '../app.constants';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
+import {CreatePymeComponent} from './create.component';
+import {LoginComponent} from '../login/login.component'
+
 @Component({
   selector: 'app-pymes',
   templateUrl: './pymes.component.html',
@@ -35,7 +39,9 @@ export class PymesComponent implements OnInit {
   public currentModal: string;
   public pymeSelected: any={};
   @ViewChild('modalCreateClose') modalCreateClose: ElementRef;
-  constructor(private toastr: ToastrService, private _tokenService: Angular2TokenService) {
+  constructor(
+    public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) private data: any,
+    private toastr: ToastrService, private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
     this.myPymes=[]
   }
@@ -43,11 +49,15 @@ export class PymesComponent implements OnInit {
   ngOnInit() {
     this.getMyPymes();
   }
-  openCreatePyme(){
-    this.currentModal = 'createPyme';
-  }
-  openEditPyme(){
-    this.currentModal = 'editPyme';
+  openCreatePyme() {
+    const dialogRef = this.dialog.open(CreatePymeComponent, {
+      // height: '60%',
+      width: '50%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
   createPyme(){
     this.loading=true;
@@ -122,8 +132,6 @@ export class PymesComponent implements OnInit {
         data = JSON.parse(data['_body']);
         this.myPymes = data['data'][0].user.pymes;
         // console.log(this.myPymes)
-        
-        window.localStorage.setItem('user', JSON.stringify(this.user));
         this.generalLoading=false;
       },
       error =>   {
