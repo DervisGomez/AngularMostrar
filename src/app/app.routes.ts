@@ -32,6 +32,9 @@ export const appRoutes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     data: { preload: false }
+    // children: [
+    //   { path: '/profile', redirectTo: 'tracks' },
+    // ]
   },
   {
     path: 'profile',

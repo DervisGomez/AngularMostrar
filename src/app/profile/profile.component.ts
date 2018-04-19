@@ -31,40 +31,40 @@ export class ProfileComponent implements OnInit {
   // selectTab(val){
   //   this.tabActive=val;
   // }
-//   ngOnInit() {
-//     var object = this;
-//     this.loading=true;
-//     this.user = JSON.parse(window.localStorage.getItem('user'));
-//
-//     let url = API_ROUTES.currentUser();
-//     this._tokenService.get(url).subscribe(
-//       data =>      {
-//         data = JSON.parse(data['_body']);
-//         if (!data){
-//           this.router.navigate(['/']);
-//         }
-//         let id = data['data'].id;
-//         this.user = Object.assign({}, this.user, data['data'].attributes);
-//         this.user.id = id;
-//         window.localStorage.setItem('user', JSON.stringify(this.user));
-//         this.loading=false;
-//       },
-//       error =>   {
-//         this.errorHttp = true; this.loading=false;
-//         if("_body" in error){
-//           error = error._body;
-//           console.log("error: ",error);
-//           if (error.errors && error.errors.full_messages){
-//             error.errors.full_messages.forEach(element => {
-//               object.errors.push(element);
-//             });
-//           }
-//         }
-//         this.router.navigate(['/']);
-//       }
-//     );
-//
-//   }
+  ngOnInit(){
+    // var object = this;
+    // this.loading=true;
+    // this.user = JSON.parse(window.localStorage.getItem('user'));
+    //
+    // let url = API_ROUTES.currentUser();
+    // this._tokenService.get(url).subscribe(
+    //   data =>      {
+    //     data = JSON.parse(data['_body']);
+    //     if (!data){
+    //       this.router.navigate(['/']);
+    //     }
+    //     let id = data['data'].id;
+    //     this.user = Object.assign({}, this.user, data['data'].attributes);
+    //     this.user.id = id;
+    //     window.localStorage.setItem('user', JSON.stringify(this.user));
+    //     this.loading=false;
+    //   },
+    //   error =>   {
+    //     this.errorHttp = true; this.loading=false;
+    //     if("_body" in error){
+    //       error = error._body;
+    //       console.log("error: ",error);
+    //       if (error.errors && error.errors.full_messages){
+    //         error.errors.full_messages.forEach(element => {
+    //           object.errors.push(element);
+    //         });
+    //       }
+    //     }
+    //     this.router.navigate(['/']);
+    //   }
+    // );
+
+  }
 //   changePass(){
 //
 //   }
@@ -101,6 +101,6 @@ export class ProfileComponent implements OnInit {
 //         }
 //         this.toastr.error('Perfil No Actualizado!', 'Major Error');
 //       });
-//   }
+  // }
 //
-// }
+}
