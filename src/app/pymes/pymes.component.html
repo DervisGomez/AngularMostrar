@@ -14,9 +14,23 @@
 
   
   <br/>
+  <mat-nav-list>
+      <h1 mat-subheader>Pymes</h1>
+      <mat-divider></mat-divider>
+<div *ngFor="let pyme of myPymes">
+  <mat-list-item>
+    <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
+    <a matLine href="...">{{pyme.title}}</a>
+    <button mat-icon-button (click)="deletePyme(pyme)">
+       <mat-icon mat-list-icon>delete</mat-icon>
+    </button>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</div>
+    </mat-nav-list>
 
-  <div class="list-group">
-    <a *ngFor="let pyme of myPymes" class="list-group-item list-group-item-action flex-column align-items-start"><!-- active -->
+  <!-- <div class="list-group">
+    <a *ngFor="let pyme of myPymes" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="row">
         <div class="col-md-3">
           <img src="assets/imgs/dribbble.gif" width="100px" />
@@ -35,8 +49,8 @@
       </div>
     </a>
     
-  </div>
-
+  </div> -->
+  
 </div>
 
 
@@ -61,3 +75,4 @@
       </div>
     </div>
   </div>
+  

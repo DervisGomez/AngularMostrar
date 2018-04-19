@@ -67,31 +67,35 @@
                 <div class="col-lg-6">
                   <mat-form-field>
                     <input type="text" matInput id="fullname"
-                      placeholder="Nombre">
+                      placeholder="Nombre" [ngModelOptions]="{standalone: true}"
+                      required [(ngModel)]="user.name">
                   </mat-form-field>
                 </div>
                 <div class="col-lg-6">
                   <mat-form-field>
-                    <input type="text" matInput id="fullname"
-                      placeholder="Apellido">
+                    <input type="text" matInput id="nickname"
+                      placeholder="Nombre de usuario" [ngModelOptions]="{standalone: true}"
+                      required [(ngModel)]="user.nickname">
                   </mat-form-field>
                 </div>
                 <div class="col-lg-6">
                   <mat-form-field>
-                    <input type="text" matInput id="fullname"
-                      placeholder="Nombre de usuario">
+                    <input type="text" matInput id="email"
+                      placeholder="Correo/Email" [ngModelOptions]="{standalone: true}"
+                      required [(ngModel)]="user.email">
                   </mat-form-field>
                 </div>
                 <div class="col-lg-6">
                   <mat-form-field>
-                    <input type="text" matInput id="fullname"
-                      placeholder="Email">
+                    <input type="text" matInput id="password"
+                      placeholder="Password" [ngModelOptions]="{standalone: true}"
+                      required [(ngModel)]="user.current_password">
                   </mat-form-field>
                 </div>
               </div>
 
               <div class="text-right">
-                <button mat-raised-button color="primary">
+                <button mat-raised-button color="primary" (click)="updateUser()">
                   ACTUALIZAR
                   <mat-icon aria-label="" color="primary" style="font-size: 18px;">edit</mat-icon>
                 </button>
@@ -102,34 +106,8 @@
       </div>
     </div>
     <div *ngIf="option=='pymes'">
-      <mat-nav-list>
-        <h1 mat-subheader>Pymes</h1>
-        <mat-divider></mat-divider>
-        <mat-list-item>
-          <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
-          <a matLine href="...">Nombre</a>
-          <button mat-icon-button (click)="showInfo('asd')">
-             <mat-icon mat-list-icon>delete</mat-icon>
-          </button>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>
-          <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
-          <a matLine href="...">Nombre</a>
-          <button mat-icon-button (click)="showInfo('asd')">
-             <mat-icon mat-list-icon>delete</mat-icon>
-          </button>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>
-          <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
-          <a matLine href="...">Nombre</a>
-          <button mat-icon-button (click)="showInfo('asd')">
-             <mat-icon mat-list-icon>delete</mat-icon>
-          </button>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-      </mat-nav-list>
+        <app-pymes></app-pymes>
+      
       <button mat-fab color="primary" class="action-button">
         <mat-icon>add</mat-icon>
       </button>

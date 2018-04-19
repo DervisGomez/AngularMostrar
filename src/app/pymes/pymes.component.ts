@@ -6,6 +6,7 @@ import { CONSTANTS } from '../app.constants';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 import {CreatePymeComponent} from './create.component';
 import {LoginComponent} from '../login/login.component'
+import {AreYouSureComponent} from '../utils/are-you-sure.component';
 
 @Component({
   selector: 'app-pymes',
@@ -43,7 +44,11 @@ export class PymesComponent implements OnInit {
     public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) private data: any,
     private toastr: ToastrService, private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
-    this.myPymes=[]
+    this.myPymes=[
+      {title: "My pyme", email: "example@example.com", description: "my pyme description"},
+      {title: "My pyme", email: "example@example.com", description: "my pyme description"},
+      {title: "My pyme", email: "example@example.com", description: "my pyme description"},
+    ]
   }
 
   ngOnInit() {
@@ -92,35 +97,46 @@ export class PymesComponent implements OnInit {
     this.pymeSelected = pyme;
     console.log(this.pymeSelected)
   }
-  deletePyme(){
-    this.generalLoading=true;
-    let url = API_ROUTES.deletePyme().replace(":pyme_id", this.pymeSelected.id);
-    let object = this;
-    this._tokenService.delete(url).subscribe(
-      data =>      {
-        console.log(data)
-        this.generalLoading=false;
-        this.toastr.warning('La pyme ha sido eliminada!', 'Pyme!');
-        this.getMyPymes()
-      },
-      error =>   {
-        this.generalLoading=false;
-        console.log("error: ",error);
-        if("_body" in error){
-          error = JSON.parse(error._body);
-          if(error.data && error.data.id){
-            this.toastr.warning('La pyme ha sido eliminada!', 'Pyme!');
+  deletePyme(pyme){
+    let dialogRef = this.dialog.open(AreYouSureComponent, {
+      width: '250px',
+      data: { title: `Eliminar ${pyme.title}`}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', result);
+      if (!result) return;
+
+      this.generalLoading=true;
+      let url = API_ROUTES.deletePyme().replace(":pyme_id", this.pymeSelected.id);
+      let object = this;
+      this._tokenService.delete(url).subscribe(
+        data =>      {
+          console.log(data)
+          this.generalLoading=false;
+          this.toastr.warning('La pyme ha sido eliminada!', 'Pyme!');
+          this.getMyPymes()
+        },
+        error =>   {
+          this.generalLoading=false;
+          console.log("error: ",error);
+          if("_body" in error){
+            error = JSON.parse(error._body);
+            if(error.data && error.data.id){
+              this.toastr.warning('La pyme ha sido eliminada!', 'Pyme!');
+            }
+            if (error.errors && error.errors.full_messages){
+              error.errors.full_messages.forEach(element => {
+                object.errors.push(element);
+              });
+            }
+            // this.toastr.error("Error al eliminar la Pyme", 'Pyme Error');
           }
-          if (error.errors && error.errors.full_messages){
-            error.errors.full_messages.forEach(element => {
-              object.errors.push(element);
-            });
-          }
-          // this.toastr.error("Error al eliminar la Pyme", 'Pyme Error');
+          this.getMyPymes();
         }
-        this.getMyPymes();
-      }
-    );
+      );
+    });
+    
   }
   getMyPymes(){
     this.generalLoading=true;
