@@ -24,7 +24,6 @@ import { CreatePymeComponent } from './pymes/create.component';
 
 // imports material angular
 import { MaterialModule } from './material.module';
-import { MaterializeModule } from 'angular2-materialize';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {MatInputModule, MatFormFieldModule} from '@angular/material';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
