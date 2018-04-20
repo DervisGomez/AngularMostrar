@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -6,8 +6,12 @@ import { API_ROUTES } from '../app.constants';
 import { Angular2TokenService } from 'angular2-token';
 import { CONSTANTS } from '../app.constants';
 import { ActivatedRoute } from '@angular/router';
+import {CreatePymeComponent} from '../pymes/create.component';
+import {PymesComponent} from '../pymes/pymes.component';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
+  providers:[PymesComponent],
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
@@ -28,8 +32,11 @@ export class ProfileComponent implements OnInit {
   public errors: any=[];
   public errorsRegister: any;
   public errorHttp: boolean = false;
-
-  constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private router: Router,
+  @ViewChild('modalCreateClose') modalCreateClose: ElementRef;
+  constructor(
+    private compPyme: PymesComponent,
+    public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) private data: any,
+    private activatedRoute: ActivatedRoute, private userService: UserService, private router: Router,
     private toastr: ToastrService, private _tokenService: Angular2TokenService) {
       this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
       this.activatedRoute.queryParams.subscribe(params => {
@@ -79,9 +86,19 @@ export class ProfileComponent implements OnInit {
     );
 
   }
-//   changePass(){
-//
-//   }
+  openCreatePyme() {
+    const object = this;
+    const dialogRef = this.dialog.open(CreatePymeComponent, {
+      // height: '60%',
+      width: '50%'
+    });
+    
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      object.compPyme.ngOnInit();
+    });
+  }
+  
   updateUser(){
     var object = this;
     object.errors=[];
@@ -105,7 +122,7 @@ export class ProfileComponent implements OnInit {
           if (error.errors.full_messages){
             error.errors.full_messages.forEach(element => {
               object.errors.push(element);
-              this.toastr.error(element, 'Major Error');
+              this.toastr.error(element, 'Error en Perfil');
             });
           }else {
             error.errors.forEach(element => {
@@ -113,7 +130,7 @@ export class ProfileComponent implements OnInit {
             });
           }
         }
-        this.toastr.error('Perfil No Actualizado!', 'Major Error');
+        this.toastr.error('Perfil No Actualizado!', 'Error en Perfil');
       });
   }
 //

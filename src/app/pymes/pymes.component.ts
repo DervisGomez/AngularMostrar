@@ -7,7 +7,8 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 import {CreatePymeComponent} from './create.component';
 import {LoginComponent} from '../login/login.component'
 import {AreYouSureComponent} from '../utils/are-you-sure.component';
-
+import { ChangeDetectionStrategy } from '@angular/core';
+import { CanActivate } from "@angular/router";
 @Component({
   selector: 'app-pymes',
   templateUrl: './pymes.component.html',
@@ -40,15 +41,12 @@ export class PymesComponent implements OnInit {
   public currentModal: string;
   public pymeSelected: any={};
   @ViewChild('modalCreateClose') modalCreateClose: ElementRef;
+  
   constructor(
     public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) private data: any,
     private toastr: ToastrService, private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
-    this.myPymes=[
-      {title: "My pyme", email: "example@example.com", description: "my pyme description"},
-      {title: "My pyme", email: "example@example.com", description: "my pyme description"},
-      {title: "My pyme", email: "example@example.com", description: "my pyme description"},
-    ]
+    this.myPymes=[];
   }
 
   ngOnInit() {
@@ -108,9 +106,10 @@ export class PymesComponent implements OnInit {
       if (!result) return;
 
       this.generalLoading=true;
-      let url = API_ROUTES.deletePyme().replace(":pyme_id", this.pymeSelected.id);
+      
+      let url = API_ROUTES.deletePyme().replace(":pyme_id", pyme.attributes.id);
       let object = this;
-      this._tokenService.delete(url).subscribe(
+      this._tokenService.post(url, {password: '12345678'}).subscribe(
         data =>      {
           console.log(data)
           this.generalLoading=false;
@@ -146,8 +145,9 @@ export class PymesComponent implements OnInit {
     this._tokenService.get(url).subscribe(
       data =>      {
         data = JSON.parse(data['_body']);
-        this.myPymes = data['data'][0].user.pymes;
-        // console.log(this.myPymes)
+        console.log(data);
+        if (data['data'].length)
+          this.myPymes = data['data'];
         this.generalLoading=false;
       },
       error =>  {

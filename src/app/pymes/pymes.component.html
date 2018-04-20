@@ -1,16 +1,24 @@
-<h3>Pymes</h3>
-<div *ngIf="generalLoading">
-  Cargando...
-</div>
-<div *ngIf="!generalLoading">
-  <!-- <button mat-raised-button color="primary" (click)="openCreatePyme()">
-    Crear nueva Pyme
-  </button> -->
-  <br/>
-
-
-  <br/>
 <mat-nav-list>
+  <h1 mat-subheader>Pymes</h1>
+  <mat-divider></mat-divider>
+  <mat-spinner *ngIf="generalLoading" style="margin:0 auto;" mode="indeterminate"></mat-spinner>
+  <div *ngIf="!generalLoading">
+    <div *ngFor="let pyme of myPymes">
+      <mat-list-item>
+
+        <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
+        <a matLine href="...">{{pyme.attributes.title}}</a>
+        <button mat-icon-button (click)="deletePyme(pyme)">
+          <mat-icon mat-list-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </div>
+  </div>
+
+</mat-nav-list>
+
+<!-- <mat-nav-list>
     <h1 mat-subheader>Pymes</h1>
     <mat-divider></mat-divider>
   <div *ngFor="let pyme of myPymes">
@@ -23,30 +31,30 @@
     </mat-list-item>
     <mat-divider></mat-divider>
   </div>
-</mat-nav-list>
-</div>
+</mat-nav-list> -->
+<!-- </div> -->
 <button mat-fab color="primary" class="action-button" (click)="openCreatePyme()">
   <mat-icon>add</mat-icon>
 </button>
 
 
-<!-- MODAL ELIMINAR PYME -->
+
 <div class="modal fade" id="modalEliminarPyme" tabindex="-1" role="dialog" aria-labelledby="eliminarModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="eliminarModalLabel">Eliminar Pyme</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          ¿Seguro que desea eliminar el Pyme <b>{{pymeSelected.title}}</b>?
-        </div>
-        <div class="modal-footer">
-          <button mat-raised-button  data-dismiss="modal">Close</button>
-          <button mat-raised-button color="warn" (click)="deletePyme()" data-dismiss="modal">Si, Eliminar</button>
-        </div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eliminarModalLabel">Eliminar Pyme</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ¿Seguro que desea eliminar el Pyme <b>{{pymeSelected.title}}</b>?
+      </div>
+      <div class="modal-footer">
+        <button mat-raised-button  data-dismiss="modal">Close</button>
+        <button mat-raised-button color="warn" (click)="deletePyme()" data-dismiss="modal">Si, Eliminar</button>
       </div>
     </div>
   </div>
+</div>

@@ -60,7 +60,8 @@
             </div>
           </div>
           <div class="col-lg-8">
-            <div class="user-profile">
+            <mat-spinner *ngIf="loading" style="margin:0 auto;" mode="indeterminate"></mat-spinner>
+            <div class="user-profile" *ngIf="!loading">
               <div class="section-title">Datos personales</div>
               <mat-divider style="margin: 10px 0"></mat-divider>
               <div class="row">
@@ -101,12 +102,17 @@
                 </button>
               </div>
             </div>
+
           </div>
         </div>
       </div>
     </div>
     <div *ngIf="option=='pymes'">
       <app-pymes></app-pymes>
+
+      <button mat-fab color="primary" class="action-button" (click)="openCreatePyme()">
+        <mat-icon>add</mat-icon>
+      </button>
     </div>
     <div *ngIf="option == 'independents'">
       <mat-nav-list>
