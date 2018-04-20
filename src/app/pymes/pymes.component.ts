@@ -7,7 +7,8 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 import {CreatePymeComponent} from './create.component';
 import {LoginComponent} from '../login/login.component'
 import {AreYouSureComponent} from '../utils/are-you-sure.component';
-
+import { ChangeDetectionStrategy } from '@angular/core';
+import { CanActivate } from "@angular/router";
 @Component({
   selector: 'app-pymes',
   templateUrl: './pymes.component.html',
@@ -40,15 +41,12 @@ export class PymesComponent implements OnInit {
   public currentModal: string;
   public pymeSelected: any={};
   @ViewChild('modalCreateClose') modalCreateClose: ElementRef;
+  
   constructor(
     public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) private data: any,
     private toastr: ToastrService, private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
-    this.myPymes=[
-      {title: "My pyme", email: "example@example.com", description: "my pyme description"},
-      {title: "My pyme", email: "example@example.com", description: "my pyme description"},
-      {title: "My pyme", email: "example@example.com", description: "my pyme description"},
-    ]
+    this.myPymes=[];
   }
 
   ngOnInit() {
@@ -111,7 +109,7 @@ export class PymesComponent implements OnInit {
       
       let url = API_ROUTES.deletePyme().replace(":pyme_id", pyme.attributes.id);
       let object = this;
-      this._tokenService.get(url+'?password=12345678').subscribe(
+      this._tokenService.post(url, {password: '12345678'}).subscribe(
         data =>      {
           console.log(data)
           this.generalLoading=false;

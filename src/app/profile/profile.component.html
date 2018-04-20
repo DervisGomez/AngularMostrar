@@ -110,7 +110,7 @@
     <div *ngIf="option=='pymes'">
         <app-pymes></app-pymes>
       
-      <button mat-fab color="primary" class="action-button">
+      <button mat-fab color="primary" class="action-button" (click)="openCreatePyme()">
         <mat-icon>add</mat-icon>
       </button>
     </div>
