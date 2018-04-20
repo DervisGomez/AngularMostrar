@@ -108,9 +108,10 @@ export class PymesComponent implements OnInit {
       if (!result) return;
 
       this.generalLoading=true;
-      let url = API_ROUTES.deletePyme().replace(":pyme_id", this.pymeSelected.id);
+      
+      let url = API_ROUTES.deletePyme().replace(":pyme_id", pyme.attributes.id);
       let object = this;
-      this._tokenService.delete(url).subscribe(
+      this._tokenService.get(url+'?password=12345678').subscribe(
         data =>      {
           console.log(data)
           this.generalLoading=false;
@@ -146,8 +147,9 @@ export class PymesComponent implements OnInit {
     this._tokenService.get(url).subscribe(
       data =>      {
         data = JSON.parse(data['_body']);
-        this.myPymes = data['data'][0].user.pymes;
-        // console.log(this.myPymes)
+        console.log(data);
+        if (data['data'].length)
+          this.myPymes = data['data'];
         this.generalLoading=false;
       },
       error =>   {

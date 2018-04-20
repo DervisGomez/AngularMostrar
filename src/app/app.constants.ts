@@ -25,7 +25,7 @@ export const API_ROUTES = {
         return `pymes/create`;
     },
     getMyPymes(){
-        return `own_pymes`;
+        return `pymes/own`;
     },
     deletePyme(){
         return `pymes/:pyme_id/destroy`;

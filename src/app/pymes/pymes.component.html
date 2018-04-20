@@ -1,10 +1,6 @@
 <h3>Pymes</h3>
 
-
-
-<div *ngIf="generalLoading">
-  Cargando...
-</div>
+<mat-spinner *ngIf="generalLoading" style="margin:0 auto;" mode="indeterminate"></mat-spinner>
 <div *ngIf="!generalLoading">
   <!-- Button trigger modal -->
   <button mat-raised-button color="primary" (click)="openCreatePyme()">
@@ -20,7 +16,7 @@
 <div *ngFor="let pyme of myPymes">
   <mat-list-item>
     <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
-    <a matLine href="...">{{pyme.title}}</a>
+    <a matLine href="...">{{pyme.attributes.title}}</a>
     <button mat-icon-button (click)="deletePyme(pyme)">
        <mat-icon mat-list-icon>delete</mat-icon>
     </button>

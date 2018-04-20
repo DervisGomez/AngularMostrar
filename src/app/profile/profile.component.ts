@@ -105,7 +105,7 @@ export class ProfileComponent implements OnInit {
           if (error.errors.full_messages){
             error.errors.full_messages.forEach(element => {
               object.errors.push(element);
-              this.toastr.error(element, 'Major Error');
+              this.toastr.error(element, 'Error en Perfil');
             });
           }else {
             error.errors.forEach(element => {
@@ -113,7 +113,7 @@ export class ProfileComponent implements OnInit {
             });
           }
         }
-        this.toastr.error('Perfil No Actualizado!', 'Major Error');
+        this.toastr.error('Perfil No Actualizado!', 'Error en Perfil');
       });
   }
 //
