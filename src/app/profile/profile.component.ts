@@ -14,29 +14,38 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   public option: string = 'dashboard';
-  public tabActive: string = 'profile';
   public loading: boolean = false;
-  public errorHttp: boolean =false;
-  public user: any = {};
-  public errors: any = {};
+  public user: any = {
+    id: '',
+    nickname: '',
+    email: '',
+    name: '',
+    current_password: '',
+    token: '',
+    client: '',
+    uid: ''
+  };
+  public errors: any=[];
+  public errorsRegister: any;
+  public errorHttp: boolean = false;
+
   constructor(private activatedRoute: ActivatedRoute, private userService: UserService, private router: Router,
     private toastr: ToastrService, private _tokenService: Angular2TokenService) {
-      // this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
-      // this.activatedRoute.queryParams.subscribe(params => {
-      //   if ('tab' in params)
-      //     this.tabActive = params['tab'];
-      //   else
-      //     this.tabActive = 'profile';
+      this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
+      this.activatedRoute.queryParams.subscribe(params => {
+        if ('tab' in params)
+          this.option=params['tab'];
+        else
+          this.option='dashboard';
 
-      //   console.log(params)
-      // });
+        console.log(params)
+      });
    }
 
-
-  selectTab(val){
-    this.tabActive=val;
-  }
-  ngOnInit() {
+  // selectTab(val){
+  //   this.tabActive=val;
+  // }
+  ngOnInit(){
     var object = this;
     this.loading=true;
     this.user = JSON.parse(window.localStorage.getItem('user'));
@@ -70,9 +79,9 @@ export class ProfileComponent implements OnInit {
     );
 
   }
-  changePass(){
-
-  }
+//   changePass(){
+//
+//   }
   updateUser(){
     var object = this;
     object.errors=[];
@@ -107,5 +116,5 @@ export class ProfileComponent implements OnInit {
         this.toastr.error('Perfil No Actualizado!', 'Major Error');
       });
   }
-
+//
 }

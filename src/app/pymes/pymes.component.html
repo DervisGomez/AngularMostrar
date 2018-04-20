@@ -1,44 +1,33 @@
 <h3>Pymes</h3>
-
-
-
 <div *ngIf="generalLoading">
   Cargando...
 </div>
 <div *ngIf="!generalLoading">
-  <!-- Button trigger modal -->
-  <button mat-raised-button color="primary" (click)="openCreatePyme()">
+  <!-- <button mat-raised-button color="primary" (click)="openCreatePyme()">
     Crear nueva Pyme
-  </button>
+  </button> -->
   <br/>
 
-  
-  <br/>
 
-  <div class="list-group">
-    <a *ngFor="let pyme of myPymes" class="list-group-item list-group-item-action flex-column align-items-start"><!-- active -->
-      <div class="row">
-        <div class="col-md-3">
-          <img src="assets/imgs/dribbble.gif" width="100px" />
-        </div>
-        <div class="col-md-8">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{pyme.title}}</h5>
-            <small>
-              <button mat-raised-button color="primary" (click)="selectPyme(pyme)" data-toggle="modal" data-target="#modalEliminarPyme">Editar</button>
-              <button mat-raised-button color="warn" (click)="selectPyme(pyme)"  data-toggle="modal" data-target="#modalEliminarPyme">Eliminar</button>
-            </small>
-          </div>
-          <p class="mb-1">{{pyme.email}}</p>
-          <p class="mb-1">{{pyme.description}}</p>
-        </div>
-      </div>
-    </a>
-    
+  <br/>
+<mat-nav-list>
+    <h1 mat-subheader>Pymes</h1>
+    <mat-divider></mat-divider>
+  <div *ngFor="let pyme of myPymes">
+    <mat-list-item>
+      <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
+      <a matLine href="...">{{pyme.title}}</a>
+      <button mat-icon-button (click)="deletePyme(pyme)">
+         <mat-icon mat-list-icon>delete</mat-icon>
+      </button>
+    </mat-list-item>
+    <mat-divider></mat-divider>
   </div>
-
+</mat-nav-list>
 </div>
-
+<button mat-fab color="primary" class="action-button" (click)="openCreatePyme()">
+  <mat-icon>add</mat-icon>
+</button>
 
 
 <!-- MODAL ELIMINAR PYME -->

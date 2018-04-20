@@ -68,3 +68,10 @@ button {
   align-items: center;
   justify-content: space-around;
 }
+
+.action-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 30px;
+}
