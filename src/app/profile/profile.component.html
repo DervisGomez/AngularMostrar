@@ -88,9 +88,13 @@
                 </div>
                 <div class="col-lg-6">
                   <mat-form-field>
-                    <input type="text" matInput id="password"
-                      placeholder="Password" [ngModelOptions]="{standalone: true}"
-                      required [(ngModel)]="user.current_password">
+                    <input matInput placeholder="Enter your password"
+                          [type]="hide ? 'text' : 'password'"
+                          id="password"
+                          placeholder="Password"
+                          [ngModelOptions]="{standalone: true}"
+                          required [(ngModel)]="user.current_password">
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
                   </mat-form-field>
                 </div>
               </div>
