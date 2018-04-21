@@ -1,4 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
+  <!-- Sidebar options -->
   <mat-sidenav #sidenav mode="side" opened="true" class="mat-sidenav hidden-xs">
     <mat-list>
       <mat-list-item (click)="option = 'dashboard'">
@@ -40,6 +41,7 @@
       </mat-list-item>
     </mat-list>
   </mat-sidenav>
+  <!-- Sidebar options -->
 
   <mat-sidenav-content>
     <div *ngIf="option == 'dashboard'">
@@ -94,7 +96,7 @@
                           placeholder="Password"
                           [ngModelOptions]="{standalone: true}"
                           required [(ngModel)]="user.current_password">
-                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                    <mat-icon matSuffix (click)="hide = !hide" style="cursor: pointer">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
                   </mat-form-field>
                 </div>
               </div>
