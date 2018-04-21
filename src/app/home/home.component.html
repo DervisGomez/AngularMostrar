@@ -11,7 +11,7 @@
       <div class="carousel-caption d-none d-md-block carousel-description">
         <h2>First slide label</h2>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        <button mat-raised-button color="accent">CREAR TIENDA</button>
+        <button mat-raised-button color="accent" [routerLink]="['/profile']" [queryParams]="{tab:'pymes'}">CREAR TIENDA</button>
       </div>
     </div>
     <div class="carousel-item">
@@ -20,7 +20,7 @@
       <div class="carousel-caption w-100 d-none d-md-block carousel-description">
         <h2>Second slide label</h2>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        <button mat-raised-button color="accent">CREAR PROFESIONAL</button>
+        <button mat-raised-button color="accent" [routerLink]="['/profile']" [queryParams]="{tab:'sellers'}">CREAR PROFESIONAL</button>
       </div>
     </div>
     <div class="carousel-item">
@@ -29,7 +29,7 @@
       <div class="carousel-caption d-none d-md-block carousel-description">
         <h2>Third slide label</h2>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        <button mat-raised-button color="accent">DESEO VENDER</button>
+        <button mat-raised-button color="accent" [routerLink]="['/profile']" [queryParams]="{tab:'independents'}">DESEO VENDER</button>
       </div>
     </div>
   </div>
