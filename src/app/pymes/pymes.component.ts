@@ -1,14 +1,15 @@
 import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
 import { Angular2TokenService } from 'angular2-token';
-import { ToastrService } from 'ngx-toastr';
 import { API_ROUTES } from '../app.constants';
 import { CONSTANTS } from '../app.constants';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 import {CreatePymeComponent} from './create.component';
 import {LoginComponent} from '../login/login.component'
-import {AreYouSureComponent} from '../utils/are-you-sure.component';
+import {AreYouSureComponent} from './are-you-sure.component';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { CanActivate } from "@angular/router";
+declare var Snackbar: any;
+
 @Component({
   selector: 'app-pymes',
   templateUrl: './pymes.component.html',
@@ -44,7 +45,7 @@ export class PymesComponent implements OnInit {
   
   constructor(
     public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) private data: any,
-    private toastr: ToastrService, private _tokenService: Angular2TokenService) {
+   private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
     this.myPymes=[];
   }
@@ -100,7 +101,13 @@ export class PymesComponent implements OnInit {
               object.errors.push(element);
             });
           }
-          this.toastr.error("Error al obtener las Pymes", 'Pyme Error');
+          Snackbar.show({
+            text: "Error al obtener las Pymes",
+            showAction: true,
+            actionText: '<i class="material-icons">close</i>',
+            pos: "bottom-center",
+            actionTextColor: '#fff'
+          });
         }
       }
     );

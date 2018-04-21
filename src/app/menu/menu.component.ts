@@ -46,7 +46,6 @@ export class MenuComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
       this.getUser();
     });
   }
@@ -64,22 +63,17 @@ export class MenuComponent implements OnInit {
     var object =this;
     dialogRef.afterClosed().subscribe(result => {
         this.getUser();
-      console.log(`Dialog result: ${JSON.stringify(result)}`);
     });
   }
   getUser(){
-    console.log("resutl")
     // this._tokenService.currentUserData();
     // this._tokenService.validateToken().subscribe(
     //   res =>      console.log(res),
     //   error =>    console.log(error)
     // );
-    console.log("s:",window.localStorage)
     if(window.localStorage.user){
       this.user=JSON.parse(window.localStorage.user);
     }
-    console.log("USER::::::::",this.user);
-
   }
   ngOnInit() {
     this.getUser();
@@ -121,7 +115,6 @@ export class MenuComponent implements OnInit {
       passwordConfirmation: this.user.password_confirmation
   }).subscribe(
       data => {
-        console.log("data:", data)
         data = JSON.parse(data['_body']);
         this.user = data['data'];
         window.localStorage.setItem('user', JSON.stringify(this.user));
@@ -132,7 +125,6 @@ export class MenuComponent implements OnInit {
         this.errorHttp = true; this.loading=false;
         if("_body" in error){
           error=JSON.parse(error._body);
-          console.log(error);
           error.errors.full_messages.forEach(element => {
             this.errorsRegister.push(element);
           });

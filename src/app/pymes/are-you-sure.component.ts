@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { API_ROUTES } from '../app.constants';
 import { CONSTANTS } from '../app.constants';
 import {LoginComponent} from '../login/login.component'
+declare var Snackbar: any;
 
 @Component({
   selector: 'app-are-you-sure',
@@ -19,7 +20,6 @@ export class AreYouSureComponent {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _tokenService: Angular2TokenService) {
       this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
-      console.log(this.data)
   }
 
   onNoClick(): void {
@@ -40,13 +40,26 @@ export class AreYouSureComponent {
           if("_body" in error){
             error = JSON.parse(error._body);
             if(error.data && error.data.id){
-              console.log("eliminada")
+              Snackbar.show({
+                text: "Pyme Eliminada Exitosamente",
+                showAction: true,
+                actionText: '<i class="material-icons">close</i>',
+                pos: "bottom-center",
+                actionTextColor: '#fff'
+              });
             }
             if (error.errors && error.errors.full_messages){
               error.errors.full_messages.forEach(element => {
                 object.errors.push(element);
               });
             }
+            Snackbar.show({
+              text: "Problema al eliminar el Pyme",
+              showAction: true,
+              actionText: '<i class="material-icons">close</i>',
+              pos: "bottom-center",
+              actionTextColor: '#fff'
+            });
             // this.toastr.error("Error al eliminar la Pyme", 'Pyme Error');
           }
           this.dialogRef.close();

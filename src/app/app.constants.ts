@@ -24,6 +24,9 @@ export const API_ROUTES = {
     createPyme(){
         return `/pymes/create`;
     },
+    getPymes(){
+        return `/pymes`;
+    },
     getMyPymes(){
         return `/pymes/own`;
     },
