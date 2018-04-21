@@ -2,10 +2,14 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { Angular2TokenService } from 'angular2-token';
+import { ToastrService } from 'ngx-toastr';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 import { CONSTANTS } from '../app.constants';
 import {LoginComponent} from '../login/login.component';
 import {RegisterComponent} from '../register/register.component';
+
+declare var Snackbar: any;
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -27,7 +31,8 @@ export class MenuComponent implements OnInit {
   constructor(
     private userService: UserService, private router: Router,
     public dialog: MatDialog,@Inject(MAT_DIALOG_DATA) private data: any,
-    private _tokenService: Angular2TokenService) {
+    private _tokenService: Angular2TokenService,
+    private toastr: ToastrService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
     this._tokenService.currentUserType;
     this.errors = this.userService.errors;
@@ -83,12 +88,23 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['/']);//this.router.url]);
   }
   logout(){
+    // this.toastr.error("Has cerrado sesión", 'Logout');
     this._tokenService.signOut().subscribe(
         res =>      console.log(res),
         error =>    console.log(error)
     );
+
     window.localStorage.removeItem('user');
+
+    Snackbar.show({
+      text: "Has cerrado sesión",
+      showAction: true,
+      actionText: '<i class="material-icons">close</i>',
+      pos: "bottom-center",
+      actionTextColor: '#fff'
+    });
     window.location.reload(true);
+
     // this.router.navigate(['/']);
     // window.localStorage.removeItem('access-token');
     // window.localStorage.removeItem('client');

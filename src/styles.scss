@@ -1,0 +1,173 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~material-design-icons/iconfont/material-icons.css";
+
+body {
+  font-family: 'Roboto';
+  background: #eee !important;
+}
+
+button {
+  outline: none !important;
+}
+
+.only-xs {
+  display: none !important;
+}
+
+@media (min-width: 0px) and (max-width: 767px) {
+  .hidden-xs {
+    display: none !important;
+  }
+
+  .only-xs {
+    display: block !important;
+  }
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.slick-slide {
+  outline: none;
+}
+.icon-like-content {
+  padding: 5px 10px;
+}
+
+.section {
+  width: 100%;
+  min-height: 300px;
+  height: auto;
+  padding: 20px 20px 40px 20px;
+  background: #fafafa;
+  margin-top: 20px;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+  border-radius: 5px;;
+}
+
+.section-title {
+  color: #666;
+  font-weight: 100;
+}
+
+.mat-expansion-panel {
+  box-shadow: none !important;
+}
+
+.card {
+  background: #fafafa;
+  min-height: 300px;
+  width: 100%;
+  /* background: linear-gradient(to right, #3f51b5, #0074c1); */
+}
+
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.action-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 30px;
+}
+
+.mat-list-icon {
+  color: rgba(0, 0, 0, 0.54) !important;
+}
+
+// snackbar
+
+.snackbar-container {
+  transition: all 500ms ease;
+  transition-property: top, right, bottom, left, opacity;
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  min-height: 14px;
+  background-color: darken(#223140, 15%);
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  line-height: 22px;
+  padding: 18px 24px;
+  bottom: 0;
+  top: 0;
+  opacity: 0;
+  z-index: 9999;
+
+  .action {
+    background: inherit;
+    display: inline-block;
+    border: none;
+    font-size: inherit;
+    text-transform: uppercase;
+    color: #4caf50;
+    margin: 0 0 0 24px;
+    padding: 0;
+    min-width: min-content;
+    cursor: pointer;
+  }
+}
+@media (min-width: 640px) {
+  .snackbar-container {
+    min-width: 288px;
+    max-width: 568px;
+    display: inline-flex;
+    border-radius: 2px;
+    margin: 24px;
+    bottom: -100px;
+  }
+}
+
+@media (max-width: 640px) {
+  .snackbar-container {
+    left: 0;
+    right: 0;
+  }  
+}
+
+.snackbar-pos {
+  &.bottom-center {
+    top: auto !important;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &.bottom-left {
+    top: auto !important;
+    bottom: 0;
+    left: 0;
+  }
+
+  &.bottom-right {
+    top: auto !important;
+    bottom: 0;
+    right: 0;
+  }
+
+  &.top-left {
+    bottom: auto !important;
+    top: 0;
+    left: 0;
+  }
+
+  &.top-center {
+    bottom: auto !important;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &.top-right {
+    bottom: auto !important;
+    top: 0;
+    right: 0;
+  }
+}

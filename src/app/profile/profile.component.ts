@@ -10,6 +10,8 @@ import {CreatePymeComponent} from '../pymes/create.component';
 import {PymesComponent} from '../pymes/pymes.component';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
 
+declare var Snackbar: any;
+
 @Component({
   providers:[PymesComponent],
   selector: 'app-profile',
@@ -92,13 +94,13 @@ export class ProfileComponent implements OnInit {
       // height: '60%',
       width: '50%'
     });
-    
+
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       object.compPyme.ngOnInit();
     });
   }
-  
+
   updateUser(){
     var object = this;
     object.errors=[];
@@ -110,7 +112,13 @@ export class ProfileComponent implements OnInit {
         data = JSON.parse(data['_body']);
         console.log("data:: ", data);
         this.user = Object.assign({}, this.user, data['data']);
-        this.toastr.success('Perfil Actualizado!', 'Perfil!');
+        Snackbar.show({
+          text: "Perfil Actualizado Exitosamente",
+          showAction: true,
+          actionText: '<i class="material-icons">close</i>',
+          pos: "bottom-center",
+          actionTextColor: '#fff'
+        });
         this.loading=false;
       },
       error => {
