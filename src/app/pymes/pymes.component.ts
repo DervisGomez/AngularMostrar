@@ -57,83 +57,26 @@ export class PymesComponent implements OnInit {
       // height: '60%',
       width: '50%'
     });
-
+    var object = this;
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      object.getMyPymes();
     });
   }
-  createPyme(){
-    this.loading=true;
-    let object = this;
-    let url = API_ROUTES.createPyme();
-    let params= {"profile": this.user} //JSON.stringify(
-    this._tokenService.post(url, params).subscribe(
-      data =>      {
-        data = JSON.parse(data['_body']);
-        // window.localStorage.setItem('user', JSON.stringify(this.user));
-        this.toastr.success('Pyme creado!', 'Pyme!');
-        this.loading=false;
-        this.modalCreateClose.nativeElement.click()
-        object.getMyPymes();
-      },
-      error =>   {
-        this.loading=false;
-        if("_body" in error){
-          error = error._body;
-          console.log("error: ",error);
-          if (error.errors && error.errors.full_messages){
-            error.errors.full_messages.forEach(element => {
-              object.errors.push(element);
-            });
-          }
-          this.toastr.error("Error al crear el Pyme", 'Pyme Error');
-        }
-      }
-    );
-  }
+
   selectPyme(pyme){
     this.pymeSelected = pyme;
-    console.log(this.pymeSelected)
   }
   deletePyme(pyme){
     let dialogRef = this.dialog.open(AreYouSureComponent, {
       width: '250px',
-      data: { title: `Eliminar ${pyme.title}`}
+      data: { 
+        pyme: pyme, 
+        passRequired: true,
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', result);
-      if (!result) return;
-
-      this.generalLoading=true;
-      
-      let url = API_ROUTES.deletePyme().replace(":pyme_id", pyme.attributes.id);
-      let object = this;
-      this._tokenService.post(url, {password: '12345678'}).subscribe(
-        data =>      {
-          console.log(data)
-          this.generalLoading=false;
-          this.toastr.warning('La pyme ha sido eliminada!', 'Pyme!');
-          this.getMyPymes()
-        },
-        error =>   {
-          this.generalLoading=false;
-          console.log("error: ",error);
-          if("_body" in error){
-            error = JSON.parse(error._body);
-            if(error.data && error.data.id){
-              this.toastr.warning('La pyme ha sido eliminada!', 'Pyme!');
-            }
-            if (error.errors && error.errors.full_messages){
-              error.errors.full_messages.forEach(element => {
-                object.errors.push(element);
-              });
-            }
-            // this.toastr.error("Error al eliminar la Pyme", 'Pyme Error');
-          }
-          this.getMyPymes();
-        }
-      );
+      this.getMyPymes()
     });
 
   }
@@ -141,11 +84,9 @@ export class PymesComponent implements OnInit {
     this.generalLoading=true;
     let object = this;
     let url = API_ROUTES.getMyPymes();
-    console.log(url);
     this._tokenService.get(url).subscribe(
       data =>      {
         data = JSON.parse(data['_body']);
-        console.log(data);
         if (data['data'].length)
           this.myPymes = data['data'];
         this.generalLoading=false;
@@ -154,7 +95,6 @@ export class PymesComponent implements OnInit {
         this.generalLoading=false;
         if("_body" in error){
           error = error._body;
-          console.log("error: ",error);
           if (error.errors && error.errors.full_messages){
             error.errors.full_messages.forEach(element => {
               object.errors.push(element);

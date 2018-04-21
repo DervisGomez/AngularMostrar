@@ -28,6 +28,6 @@ export const API_ROUTES = {
         return `/pymes/own`;
     },
     deletePyme(){
-        return `/pymes/:pyme_id/destroy`;
+        return `pymes/:pyme_id/destroy`;
     }
 }
