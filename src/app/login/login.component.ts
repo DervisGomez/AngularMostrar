@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Angular2TokenService } from 'angular2-token';
 import { CONSTANTS } from '../app.constants';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {FormControl, Validators} from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',
@@ -37,13 +39,20 @@ export class LoginComponent implements OnInit {
       this.user=JSON.parse(window.localStorage.getItem('user'));
     }
   }
+  //
+  // email = new FormControl('', [Validators.required, Validators.email]);
+  //
+  // getErrorMessage() {
+  //   return this.email.hasError('required') ? 'You must enter a value' :
+  //   this.email.hasError('email') ? 'Not a valid email' : '';
+  // }
+  //
   onNoClick(): void {
     this.data = this.user;
     this.dialogRef.close();
   }
   ngOnInit() {
   }
-
 
   loginUser(){
     let object = this;
@@ -63,7 +72,17 @@ export class LoginComponent implements OnInit {
         window.localStorage.setItem('user', JSON.stringify(this.user));
         this.router.navigated = false;
         this.onNoClick();
-        // this.router.navigate(['/']);
+        this.router.navigate(['/']);
+
+        setTimeout(function() {
+          Snackbar.show({
+            text: "Has iniciado sesión",
+            showAction: true,
+            actionText: '<i class="material-icons">close</i>',
+            pos: "top-center",
+            actionTextColor: '#fff'
+          });
+        }, 1000)
       },
       error =>    {
         console.log("b")

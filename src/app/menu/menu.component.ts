@@ -100,16 +100,18 @@ export class MenuComponent implements OnInit {
       text: "Has cerrado sesión",
       showAction: true,
       actionText: '<i class="material-icons">close</i>',
-      pos: "bottom-center",
+      pos: "top-center",
       actionTextColor: '#fff'
     });
-    window.location.reload(true);
 
     // this.router.navigate(['/']);
     // window.localStorage.removeItem('access-token');
     // window.localStorage.removeItem('client');
     // window.localStorage.removeItem('uid');
-    this.user = {};
+    setTimeout(function() {
+      window.location.reload(true);
+      this.user = {};
+    },1000)
   }
   registerUser(){
     this.loading=true;

@@ -116,7 +116,7 @@ export class ProfileComponent implements OnInit {
           text: "Perfil Actualizado Exitosamente",
           showAction: true,
           actionText: '<i class="material-icons">close</i>',
-          pos: "bottom-center",
+          pos: "top-center",
           actionTextColor: '#fff'
         });
         this.loading=false;

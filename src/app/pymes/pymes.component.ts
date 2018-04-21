@@ -41,7 +41,7 @@ export class PymesComponent implements OnInit {
   public currentModal: string;
   public pymeSelected: any={};
   @ViewChild('modalCreateClose') modalCreateClose: ElementRef;
-  
+
   constructor(
     public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) private data: any,
     private toastr: ToastrService, private _tokenService: Angular2TokenService) {
@@ -70,11 +70,19 @@ export class PymesComponent implements OnInit {
     this._tokenService.post(url, params).subscribe(
       data =>      {
         data = JSON.parse(data['_body']);
-        // window.localStorage.setItem('user', JSON.stringify(this.user));
-        this.toastr.success('Pyme creado!', 'Pyme!');
+        Snackbar.show({
+          text: "Pyme Creado Exitosamente",
+          showAction: true,
+          actionText: '<i class="material-icons">close</i>',
+          pos: "top-center",
+          actionTextColor: '#fff'
+        });
+
+        this.getMyPymes();
         this.loading=false;
         this.modalCreateClose.nativeElement.click()
-        object.getMyPymes();
+
+        // this.router.navigate(['/profile']);
       },
       error =>   {
         this.loading=false;
@@ -106,7 +114,7 @@ export class PymesComponent implements OnInit {
       if (!result) return;
 
       this.generalLoading=true;
-      
+
       let url = API_ROUTES.deletePyme().replace(":pyme_id", pyme.attributes.id);
       let object = this;
       this._tokenService.post(url, {password: '12345678'}).subscribe(
@@ -147,7 +155,7 @@ export class PymesComponent implements OnInit {
         data = JSON.parse(data['_body']);
         console.log(data);
         if (data['data'].length)
-          this.myPymes = data['data'];
+        this.myPymes = data['data'];
         this.generalLoading=false;
       },
       error =>  {

@@ -42,7 +42,7 @@
     <!-- Categorías -->
 
     <span class="spacer"></span>
-    <button mat-button [routerLink]="['/profile']" [queryParams]="{tab:'dashboard'}" *ngIf="this.user.id">CREA TU NEGOCIO ONLINE</button>
+    <button mat-button [routerLink]="['/profile']" [queryParams]="{tab:'pymes'}" *ngIf="this.user.id">CREA TU NEGOCIO ONLINE</button>
     <button mat-button *ngIf="!this.user.id" (click)="openLoginDialog()">CREA TU NEGOCIO ONLINE</button>
 
     <button mat-icon-button class="toolbar-icon" *ngIf="this.user.id">

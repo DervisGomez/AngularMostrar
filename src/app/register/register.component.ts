@@ -55,7 +55,8 @@ export class RegisterComponent implements OnInit {
     this.errorsRegister = [];
     this.userService.user = this.user;
     this._tokenService.registerAccount({
-      nickname:                this.user.nickname,
+      name:                 this.user.name,
+      nickname:             this.user.nickname,
       email:                this.user.email,
       password:             this.user.password,
       passwordConfirmation: this.user.password_confirmation
