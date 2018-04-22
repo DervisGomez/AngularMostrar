@@ -30,36 +30,42 @@ export class AreYouSureComponent {
     this.loading=true;
       let url = API_ROUTES.deletePyme().replace(":pyme_id", this.data.pyme.id);
       let object = this;
-      this._tokenService.post(url, {password: this.password}).subscribe(
+      this._tokenService.put(url, {current_password: this.password}).subscribe(
         data =>      {
           this.loading=false;
+          Snackbar.show({
+            text: "Pyme Eliminada Exitosamente",
+            showAction: true,
+            actionText: '<i class="material-icons">close</i>',
+            pos: "bottom-center",
+            actionTextColor: '#fff'
+          });
           this.dialogRef.close();
         },
         error =>   {
           this.loading=false;
           if("_body" in error){
             error = JSON.parse(error._body);
-            if(error.data && error.data.id){
+            if (error.lenght){
+              error.error.forEach(element => {
+                object.errors.push(element);
+                Snackbar.show({
+                  text: element,
+                  showAction: true,
+                  actionText: '<i class="material-icons">close</i>',
+                  pos: "bottom-center",
+                  actionTextColor: '#fff'
+                });
+              });
+            }else{
               Snackbar.show({
-                text: "Pyme Eliminada Exitosamente",
+                text: "Error al eliminar el Pyme",
                 showAction: true,
                 actionText: '<i class="material-icons">close</i>',
                 pos: "bottom-center",
                 actionTextColor: '#fff'
               });
             }
-            if (error.errors && error.errors.full_messages){
-              error.errors.full_messages.forEach(element => {
-                object.errors.push(element);
-              });
-            }
-            Snackbar.show({
-              text: "Problema al eliminar el Pyme",
-              showAction: true,
-              actionText: '<i class="material-icons">close</i>',
-              pos: "bottom-center",
-              actionTextColor: '#fff'
-            });
             // this.toastr.error("Error al eliminar la Pyme", 'Pyme Error');
           }
           this.dialogRef.close();

@@ -15,22 +15,28 @@ export const API_ROUTES = {
     },
     updateUser(){
         // return `${CONSTANTS.BACK_URL}/auth`;
-        return `/auth`;
+        return `auth`;
     },
     currentUser(){
         // return `${CONSTANTS.BACK_URL}/current`;
-        return `/users/current`;
+        return `users/current`;
     },
     createPyme(){
-        return `/pymes/create`;
+        return `pymes/create`;
     },
     getPymes(){
-        return `/pymes`;
+        return `pymes`;
     },
     getMyPymes(){
-        return `/pymes/own`;
+        return `pymes/own`;
     },
     deletePyme(){
         return `pymes/:pyme_id/destroy`;
+    },
+    getSellers(){
+        return `sellers`;
+    },
+    getIndependents(){
+        return `independents`;
     }
 }
