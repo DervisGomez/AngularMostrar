@@ -7,13 +7,18 @@ declare var Snackbar: any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  loading: boolean = false;
+  loadingPymes: boolean = false;
+  loadingPymesSlick: boolean = false;
+  loadingSellers: boolean = false;
+  loadingSellersSlick: boolean = false;
+  loadingIndependents: boolean = false;
+  loadingIndependentsSlick: boolean = false;
   pymes: any = [];
-  independents: any = [];
   sellers: any = [];
+  independents: any = [];
   errors: any = [];
   constructor(private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
@@ -24,108 +29,67 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getPymes();
-    this.getIndependents();
     this.getSellers();
+    this.getIndependents();
     var object = this;
+  }
+  ngDoCheck(){
+    if (!this.loadingIndependents && !this.loadingIndependentsSlick){
+      this.loadingIndependentsSlick=true;
+      this.renderCarousel('carousel-independents');
+    }
+    if (!this.loadingPymes && !this.loadingPymesSlick){
+      this.loadingPymesSlick=true;
+      this.renderCarousel('carousel-pymes');
+    }
+    if (!this.loadingSellers && !this.loadingSellersSlick){
+      this.loadingSellersSlick = true;
+      this.renderCarousel('carousel-sellers');
+    }
+
+  }
+  renderCarousel(id){
     setTimeout(()=>{
-
-    }, 400);
-  }
-  renderCarouselPyme(){
-    $('#carousel-pymes').slick({
-      responsive: [
-        {
-          breakpoint: 1025,
-          settings: {
-            centerMode: true,
-            centerPadding: '200px',
-            slidesToShow: 1
+      $('#'+id).slick({
+        responsive: [
+          {
+            breakpoint: 1025,
+            settings: {
+              centerMode: true,
+              centerPadding: '200px',
+              slidesToShow: 1
+            }
+          },
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 2,
+            }
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+            }
           }
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 2,
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-          }
-        }
-      ]
-    });
-  }
-
-  renderCarouselIndependent(){
-    $('#carousel-independents').slick({
-      responsive: [
-        {
-          breakpoint: 1025,
-          settings: {
-            centerMode: true,
-            centerPadding: '200px',
-            slidesToShow: 1
-          }
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 2,
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-          }
-        }
-      ]
-    });
-  }
-
-  renderCarouselSeller(){
-    $('#carousel-sellers').slick({
-      responsive: [
-        {
-          breakpoint: 1025,
-          settings: {
-            centerMode: true,
-            centerPadding: '200px',
-            slidesToShow: 1
-          }
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 2,
-          }
-        },
-        {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1,
-          }
-        }
-      ]
-    });
+        ]
+      });
+    },400);
   }
 
   getPymes(){
-    this.loading=true;
+    this.loadingPymes=true;
     let object = this;
     let url = API_ROUTES.getPymes();
     this._tokenService.get(url).subscribe(
       data =>      {
         data = JSON.parse(data['_body']);
-        console.log(data)
         if (data['data'].length)
           this.pymes = data['data'];
-        this.loading=false;
+        this.loadingPymes=false;
       },
       error =>  {
-        this.loading=false;
+        this.loadingPymes=false;
         if("_body" in error){
           error = error._body;
           if (error.errors && error.errors.full_messages){
@@ -144,21 +108,20 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-
   getIndependents(){
-    this.loading=true;
+    this.loadingIndependents=true;
     let object = this;
     let url = API_ROUTES.getIndependents();
     this._tokenService.get(url).subscribe(
       data =>      {
         data = JSON.parse(data['_body']);
-        console.log('independents',data);
+        console.log(data)
         if (data['data'].length)
           this.independents = data['data'];
-        this.loading=false;
+        this.loadingIndependents=false;
       },
       error =>  {
-        this.loading=false;
+        this.loadingIndependents=false;
         if("_body" in error){
           error = error._body;
           if (error.errors && error.errors.full_messages){
@@ -167,7 +130,7 @@ export class HomeComponent implements OnInit {
             });
           }
           Snackbar.show({
-            text: "Revisa tu conexión a internet",
+            text: "Error al obtener Independents",
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
             pos: "bottom-center",
@@ -177,21 +140,19 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-
   getSellers(){
-    this.loading=true;
+    this.loadingSellers=true;
     let object = this;
     let url = API_ROUTES.getSellers();
     this._tokenService.get(url).subscribe(
       data =>      {
         data = JSON.parse(data['_body']);
-        console.log('seller',data);
         if (data['data'].length)
           this.sellers = data['data'];
-        this.loading=false;
+        this.loadingSellers=false;
       },
       error =>  {
-        this.loading=false;
+        this.loadingSellers=false;
         if("_body" in error){
           error = error._body;
           if (error.errors && error.errors.full_messages){
@@ -200,7 +161,7 @@ export class HomeComponent implements OnInit {
             });
           }
           Snackbar.show({
-            text: "Revisa tu conexión a internet",
+            text: "Error al obtener Sellers",
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
             pos: "bottom-center",

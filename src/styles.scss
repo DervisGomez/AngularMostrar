@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~material-design-icons/iconfont/material-icons.css";
+$flag-icon-css-path: '~flag-icon-css/flags' !default;
+@import "~flag-icon-css/sass/flag-icon";
 
 body {
   font-family: 'Roboto';
@@ -129,7 +131,7 @@ button {
   .snackbar-container {
     left: 0;
     right: 0;
-  }  
+  }
 }
 
 .snackbar-pos {

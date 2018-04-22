@@ -15,7 +15,9 @@ export class AreYouSureComponent {
   passRequired: boolean = false;
   password: string = "";
   errors: any = [];
-  loading: boolean = false;
+  public myPymes: any;
+  public loading: boolean = false;
+  public generalLoading: boolean = false;
   constructor(public dialogRef: MatDialogRef<AreYouSureComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _tokenService: Angular2TokenService) {
@@ -24,46 +26,86 @@ export class AreYouSureComponent {
 
   onNoClick(): void {
     this.dialogRef.close();
-    
+
   }
   onDelete(){
     this.loading=true;
       let url = API_ROUTES.deletePyme().replace(":pyme_id", this.data.pyme.id);
       let object = this;
-      this._tokenService.post(url, {password: this.password}).subscribe(
+      this._tokenService.put(url, {current_password: this.password}).subscribe(
         data =>      {
           this.loading=false;
+          Snackbar.show({
+            text: "Pyme Eliminada Exitosamente",
+            showAction: true,
+            actionText: '<i class="material-icons">close</i>',
+            pos: "bottom-center",
+            actionTextColor: '#fff'
+          });
           this.dialogRef.close();
+          this.getMyPymes();
         },
         error =>   {
           this.loading=false;
           if("_body" in error){
             error = JSON.parse(error._body);
-            if(error.data && error.data.id){
+            if (error.lenght){
+              error.error.forEach(element => {
+                object.errors.push(element);
+                Snackbar.show({
+                  text: element,
+                  showAction: true,
+                  actionText: '<i class="material-icons">close</i>',
+                  pos: "bottom-center",
+                  actionTextColor: '#fff'
+                });
+              });
+            }else{
               Snackbar.show({
-                text: "Pyme Eliminada Exitosamente",
+                text: "Error al eliminar el Pyme, verifique su contraseña",
                 showAction: true,
                 actionText: '<i class="material-icons">close</i>',
                 pos: "bottom-center",
                 actionTextColor: '#fff'
               });
             }
-            if (error.errors && error.errors.full_messages){
-              error.errors.full_messages.forEach(element => {
-                object.errors.push(element);
-              });
-            }
-            Snackbar.show({
-              text: "Problema al eliminar el Pyme",
-              showAction: true,
-              actionText: '<i class="material-icons">close</i>',
-              pos: "bottom-center",
-              actionTextColor: '#fff'
-            });
             // this.toastr.error("Error al eliminar la Pyme", 'Pyme Error');
           }
           this.dialogRef.close();
         }
       );
+  }
+
+  getMyPymes(){
+    this.myPymes=[]
+    this.generalLoading=true;
+    let object = this;
+    let url = API_ROUTES.getMyPymes();
+    this._tokenService.get(url).subscribe(
+      data =>      {
+        data = JSON.parse(data['_body']);
+        if (data['data'].length)
+        this.myPymes = data['data'];
+        this.generalLoading=false;
+      },
+      error =>  {
+        this.generalLoading=false;
+        if("_body" in error){
+          error = error._body;
+          if (error.errors && error.errors.full_messages){
+            error.errors.full_messages.forEach(element => {
+              object.errors.push(element);
+            });
+          }
+          Snackbar.show({
+            text: "Error al obtener las Pymes",
+            showAction: true,
+            actionText: '<i class="material-icons">close</i>',
+            pos: "bottom-center",
+            actionTextColor: '#fff'
+          });
+        }
+      }
+    );
   }
 }

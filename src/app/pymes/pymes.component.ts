@@ -22,8 +22,8 @@ export class PymesComponent implements OnInit {
   public user: any = {
     "user_id": JSON.parse(window.localStorage.getItem('user')).id,
     "type_profile": "pyme",
-    "title": "Titulo del pyme",
-    "name": "Nombre del pyme",
+    "title": "",
+    "name": "",
     "email": "",
     "banner": "",
     "photo": null,
@@ -47,10 +47,10 @@ export class PymesComponent implements OnInit {
     public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) private data: any,
    private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
-    this.myPymes=[];
   }
 
   ngOnInit() {
+    this.myPymes=[];
     this.getMyPymes();
   }
   openCreatePyme() {
@@ -113,42 +113,12 @@ export class PymesComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed', result);
-      // if (!result) return;
-      //
-      // this.generalLoading=true;
-      //
-      // let url = API_ROUTES.deletePyme().replace(":pyme_id", pyme.attributes.id);
-      // let object = this;
-      // this._tokenService.post(url, {password: '12345678'}).subscribe(
-      //   data =>      {
-      //     console.log(data)
-      //     this.generalLoading=false;
-      //     this.toastr.warning('La pyme ha sido eliminada!', 'Pyme!');
-      //     this.getMyPymes()
-      //   },
-      //   error =>   {
-      //     this.generalLoading=false;
-      //     console.log("error: ",error);
-      //     if("_body" in error){
-      //       error = JSON.parse(error._body);
-      //       if(error.data && error.data.id){
-      //         this.toastr.warning('La pyme ha sido eliminada!', 'Pyme!');
-      //       }
-      //       if (error.errors && error.errors.full_messages){
-      //         error.errors.full_messages.forEach(element => {
-      //           object.errors.push(element);
-      //         });
-      //       }
-      //       // this.toastr.error("Error al eliminar la Pyme", 'Pyme Error');
-      //     }
-      //     this.getMyPymes();
-      //   }
-      // );
+      this.getMyPymes();
     });
 
   }
   getMyPymes(){
+    this.myPymes=[]
     this.generalLoading=true;
     let object = this;
     let url = API_ROUTES.getMyPymes();

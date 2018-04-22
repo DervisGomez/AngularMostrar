@@ -6,7 +6,7 @@
     <div *ngFor="let pyme of myPymes">
       <mat-list-item>
         <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
-        <a matLine href="...">{{pyme.attributes.title}}</a>
+        <a matLine href="...">{{pyme.attributes.name}}</a>
         <button mat-icon-button (click)="deletePyme(pyme)">
           <mat-icon mat-list-icon>delete</mat-icon>
         </button>

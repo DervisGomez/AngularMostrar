@@ -86,15 +86,19 @@
       Pymes
     </div>
     <mat-divider style="margin-top: 10px"></mat-divider>
-    <div id="carousel-pymes" data-slick='{"slidesToShow": 5, "slidesToScroll": 1, "infinite": "false"}'>
+    <mat-spinner *ngIf="loadingIndependents" style="margin:50px auto;" mode="indeterminate"></mat-spinner>
+    <div *ngIf="!loadingPymes" id="carousel-pymes" data-slick='{"slidesToShow": 5, "slidesToScroll": 1, "infinite": "false"}'>
       <div class="col-lg-4" *ngFor="let pyme of pymes;let last = last;" >
-        <span *ngIf="last">{{renderCarouselPyme()}}</span>
         <div class="card">
-          <img src="{{pyme.attributes.photo}}" style="width: 100%; height: 100%; object-fit: contain; position: absolute;"/> 
+          <span class="flag-icon flag-icon-ve"></span>
+          <img src="{{pyme.attributes.photo}}" style="width: 100%;"/>
           <div class="icon-like-content text-right">
             <button mat-mini-fab class="toolbar-icon" >
               <mat-icon aria-label="">thumb_up</mat-icon>
             </button>
+          </div>
+          <div class="card-name">
+            <span>{{pyme.attributes.name}}</span>
           </div>
         </div>
       </div>
@@ -107,15 +111,19 @@
       Independents
     </div>
     <mat-divider style="margin-top: 10px"></mat-divider>
-    <div id="carousel-independents" data-slick='{"slidesToShow": 5, "slidesToScroll": 1, "infinite": "false"}'>
-      <div class="col-lg-4" *ngFor="let independent of independents;let last = last;" >
-        <span *ngIf="last">{{renderCarouselIndependent()}}</span>
+    <mat-spinner *ngIf="loadingIndependents" style="margin:50px auto;" mode="indeterminate"></mat-spinner>
+    <div *ngIf="!loadingIndependents" id="carousel-independents" data-slick='{"slidesToShow": 5, "slidesToScroll": 1, "infinite": "false"}'>
+      <div class="col-lg-4" *ngFor="let independent of independents;let last = last;">
         <div class="card">
-          <img src="{{independent.attributes.photo}}" style="width: 100%; height: 100%; object-fit: contain; position: absolute;"/>
+          <span class="flag-icon flag-icon-ve"></span>
+          <img src="{{independent.attributes.photo}}" style="width: 100%;"/>
           <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon" >
+            <button mat-mini-fab class="toolbar-icon">
               <mat-icon aria-label="">thumb_up</mat-icon>
             </button>
+          </div>
+          <div class="card-name">
+            <span>{{independent.attributes.name}}</span>
           </div>
         </div>
       </div>
@@ -127,24 +135,29 @@
       Sellers
     </div>
     <mat-divider style="margin-top: 10px"></mat-divider>
-    <div id="carousel-sellers" data-slick='{"slidesToShow": 5, "slidesToScroll": 1, "infinite": "false"}'>
-      <div class="col-lg-4" *ngFor="let seller of sellers;let last = last;" >
-        <span *ngIf="last">{{renderCarouselSeller()}}</span>
+    <mat-spinner *ngIf="loadingIndependents" style="margin:50px auto;" mode="indeterminate"></mat-spinner>
+    <div *ngIf="!loadingSellers" id="carousel-sellers" data-slick='{"slidesToShow": 5, "slidesToScroll": 1, "infinite": "false"}'>
+      <div class="col-lg-4" *ngFor="let seller of sellers;let last = last;">
         <div class="card">
-          <img src="{{seller.attributes.photo}}" style="width: 100%; height: 100%; object-fit: contain; position: absolute;"/>
+          <span class="flag-icon flag-icon-ve"></span>
+          <img src="{{seller.attributes.photo}}" style="width: 100%;"/>
           <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon" >
+            <button mat-mini-fab class="toolbar-icon">
               <mat-icon aria-label="">thumb_up</mat-icon>
             </button>
           </div>
+          <div class="card-name">
+            <span>{{seller.attributes.name}}</span>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </div>
 
 <footer>
   <div class="container text-left">
-    2018 <i class="material-icons">copyright</i>
+    2018 <i class="material-icons">copyright</i> Bigwave
   </div>
 </footer>

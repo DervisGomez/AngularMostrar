@@ -11,29 +11,32 @@
                 <form class="form container-fluid form-container" *ngIf="!loading" >
                   <mat-form-field>
                     <input matInput type="text"  id="pyme_title"
-                      placeholder="Ingrese el titulo" [ngModelOptions]="{standalone: true}"
-                      required [(ngModel)]="user.title"  />
+                      placeholder="Nombre de la tienda"
+                      [ngModelOptions]="{standalone: true}"
+                      required [(ngModel)]="user.name"  />
                   </mat-form-field>
                   <mat-form-field>
-                    <input matInput type="text"  id="pyme_description"
-                      placeholder="Ingrese la descripción" [ngModelOptions]="{standalone: true}"
-                      required [(ngModel)]="user.description"  />
+                    <input matInput type="text" id="pyme_description"
+                      placeholder="Descripción"
+                      [ngModelOptions]="{standalone: true}"
+                      [(ngModel)]="user.description"  />
                   </mat-form-field>
-                  <mat-form-field>
+                  <!-- <mat-form-field>
                       <input type="text" matInput id="pyme_nombre"
                         placeholder="Ingrese nombre de usuario" [ngModelOptions]="{standalone: true}"
                         required [(ngModel)]="user.name" />
-                  </mat-form-field>
+                  </mat-form-field> -->
                   <mat-form-field>
                       <input matInput type="email"  id="pyme_email"
-                        placeholder="Ingrese el correo/email" [ngModelOptions]="{standalone: true}"
+                        placeholder="Contacto"
+                        [ngModelOptions]="{standalone: true}"
                         required [(ngModel)]="user.email"  />
                   </mat-form-field>
-                  <mat-form-field>
+                  <!-- <mat-form-field>
                       <input matInput type="url"  id="pyme_banner"
                         placeholder="Ingrese su banner" [ngModelOptions]="{standalone: true}"
                         required [(ngModel)]="user.banner"  />
-                  </mat-form-field>
+                  </mat-form-field> -->
 
                 </form>
 
