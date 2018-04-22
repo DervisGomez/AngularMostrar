@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
 import { Angular2TokenService } from 'angular2-token';
-import { ToastrService } from 'ngx-toastr';
 import { API_ROUTES } from '../app.constants';
 import { CONSTANTS } from '../app.constants';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-
+declare var Snackbar: any;
 @Component({
   selector: 'app-create-pyme',
   templateUrl: './create.component.html',
@@ -40,7 +39,7 @@ export class CreatePymeComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<CreatePymeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private toastr: ToastrService, private _tokenService: Angular2TokenService) {
+    private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
     this.myPymes=[]
   }
@@ -57,7 +56,13 @@ export class CreatePymeComponent implements OnInit {
       data =>      {
         data = JSON.parse(data['_body']);
         // window.localStorage.setItem('user', JSON.stringify(this.user));
-        this.toastr.success('Pyme creado!', 'Pyme!');
+        Snackbar.show({
+          text: "Pyme creada exitosamente!",
+          showAction: true,
+          actionText: '<i class="material-icons">close</i>',
+          pos: "bottom-center",
+          actionTextColor: '#fff'
+        });
         this.loading=false;
         // this.modalCreateClose.nativeElement.click()
         this.dialogRef.close();
@@ -72,7 +77,13 @@ export class CreatePymeComponent implements OnInit {
               object.errors.push(element);
             });
           }
-          this.toastr.error("Error al crear el Pyme", 'Pyme Error');
+          Snackbar.show({
+            text: "Error al crear la Pyme",
+            showAction: true,
+            actionText: '<i class="material-icons">close</i>',
+            pos: "bottom-center",
+            actionTextColor: '#fff'
+          });
         }
       }
     );

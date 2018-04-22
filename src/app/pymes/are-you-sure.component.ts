@@ -59,7 +59,7 @@ export class AreYouSureComponent {
               });
             }else{
               Snackbar.show({
-                text: "Error al eliminar el Pyme",
+                text: "Error al eliminar el Pyme, verifique su contraseña",
                 showAction: true,
                 actionText: '<i class="material-icons">close</i>',
                 pos: "bottom-center",

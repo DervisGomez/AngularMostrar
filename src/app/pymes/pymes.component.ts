@@ -22,8 +22,8 @@ export class PymesComponent implements OnInit {
   public user: any = {
     "user_id": JSON.parse(window.localStorage.getItem('user')).id,
     "type_profile": "pyme",
-    "title": "Titulo del pyme",
-    "name": "Nombre del pyme",
+    "title": "",
+    "name": "",
     "email": "",
     "banner": "",
     "photo": null,
@@ -47,10 +47,10 @@ export class PymesComponent implements OnInit {
     public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) private data: any,
    private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
-    this.myPymes=[];
   }
-
+  
   ngOnInit() {
+    this.myPymes=[];
     this.getMyPymes();
   }
   openCreatePyme() {
@@ -82,6 +82,7 @@ export class PymesComponent implements OnInit {
 
   }
   getMyPymes(){
+    this.myPymes=[]
     this.generalLoading=true;
     let object = this;
     let url = API_ROUTES.getMyPymes();
