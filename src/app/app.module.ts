@@ -19,7 +19,7 @@ import { PymesComponent } from './pymes/pymes.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CreatePymeComponent } from './pymes/create.component';
-import { AreYouSureComponent } from './utils/are-you-sure.component';
+import { AreYouSureComponent } from './pymes/are-you-sure.component';
 
 //import "../assets/ngx-toastr/toastr.css";
 //import "../assets/ngx-toastr/toastr-bs4-alert";

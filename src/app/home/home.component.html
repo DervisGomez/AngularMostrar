@@ -87,8 +87,10 @@
     </div>
     <mat-divider style="margin-top: 10px"></mat-divider>
     <div id="carousel-pymes" data-slick='{"slidesToShow": 5, "slidesToScroll": 1, "infinite": "false"}'>
-      <div class="col-lg-4">
+      <div class="col-lg-4" *ngFor="let pyme of pymes;let last = last;" >
+        <span *ngIf="last">{{renderCarouselPyme()}}</span>
         <div class="card">
+          <img src="{{pyme.attributes.photo}}" style="width: 100%; height: 100%; object-fit: contain; position: absolute;"/> 
           <div class="icon-like-content text-right">
             <button mat-mini-fab class="toolbar-icon" >
               <mat-icon aria-label="">thumb_up</mat-icon>
@@ -97,85 +99,6 @@
         </div>
       </div>
 
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -185,90 +108,12 @@
     </div>
     <mat-divider style="margin-top: 10px"></mat-divider>
     <div id="carousel-independents" data-slick='{"slidesToShow": 5, "slidesToScroll": 1, "infinite": "false"}'>
-      <div class="col-lg-4">
+      <div class="col-lg-4" *ngFor="let independent of independents;let last = last;" >
+        <span *ngIf="last">{{renderCarouselIndependent()}}</span>
         <div class="card">
+          <img src="{{independent.attributes.photo}}" style="width: 100%; height: 100%; object-fit: contain; position: absolute;"/>
           <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
+            <button mat-mini-fab class="toolbar-icon" >
               <mat-icon aria-label="">thumb_up</mat-icon>
             </button>
           </div>
@@ -283,90 +128,12 @@
     </div>
     <mat-divider style="margin-top: 10px"></mat-divider>
     <div id="carousel-sellers" data-slick='{"slidesToShow": 5, "slidesToScroll": 1, "infinite": "false"}'>
-      <div class="col-lg-4">
+      <div class="col-lg-4" *ngFor="let seller of sellers;let last = last;" >
+        <span *ngIf="last">{{renderCarouselSeller()}}</span>
         <div class="card">
+          <img src="{{seller.attributes.photo}}" style="width: 100%; height: 100%; object-fit: contain; position: absolute;"/>
           <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
-              <mat-icon aria-label="">thumb_up</mat-icon>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-lg-4">
-        <div class="card">
-          <div class="icon-like-content text-right">
-            <button mat-mini-fab class="toolbar-icon">
+            <button mat-mini-fab class="toolbar-icon" >
               <mat-icon aria-label="">thumb_up</mat-icon>
             </button>
           </div>

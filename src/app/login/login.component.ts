@@ -6,7 +6,7 @@ import { CONSTANTS } from '../app.constants';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {FormControl, Validators} from '@angular/forms';
 
-
+declare var Snackbar: any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

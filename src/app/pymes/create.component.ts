@@ -5,6 +5,7 @@ import { API_ROUTES } from '../app.constants';
 import { CONSTANTS } from '../app.constants';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
+declare var Snackbar: any;
 @Component({
   selector: 'app-create-pyme',
   templateUrl: './create.component.html',

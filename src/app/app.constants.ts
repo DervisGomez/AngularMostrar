@@ -24,10 +24,19 @@ export const API_ROUTES = {
     createPyme(){
         return `/pymes/create`;
     },
+    getPymes(){
+        return `/pymes`;
+    },
     getMyPymes(){
         return `/pymes/own`;
     },
     deletePyme(){
-        return `/pymes/:pyme_id/destroy`;
+        return `pymes/:pyme_id/destroy`;
+    },
+    getIndependents(){
+      return `/independents`;
+    },
+    getSellers(){
+      return `/sellers`;
     }
 }
