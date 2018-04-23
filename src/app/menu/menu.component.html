@@ -45,7 +45,7 @@
     <button mat-button [routerLink]="['/profile']" [queryParams]="{tab:'pymes'}" *ngIf="this.user.id" class="hidden-xs">CREA TU NEGOCIO ONLINE</button>
     <button mat-button *ngIf="!this.user.id" (click)="openLoginDialog()" class="hidden-xs">CREA TU NEGOCIO ONLINE</button>
 
-    <button mat-icon-button *ngIf="this.user.id" class="hidden-xs">
+    <button mat-icon-button *ngIf="this.user.id" class="hidden-xs" [routerLink]="['/profile']" [queryParams]="{tab:'favorites'}">
       <mat-icon aria-label="">favorite</mat-icon>
     </button>
 

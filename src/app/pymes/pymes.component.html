@@ -1,8 +1,8 @@
 <mat-nav-list>
   <h1 mat-subheader>Pymes</h1>
   <mat-divider></mat-divider>
-  <mat-spinner style="margin:150px auto;" mode="indeterminate"></mat-spinner>
-  <div *ngIf="!generalLoading">
+  <mat-spinner style="margin:150px auto;" mode="indeterminate" *ngIf="generalLoading"></mat-spinner>
+  <div>
     <div *ngFor="let pyme of myPymes">
       <mat-list-item>
         <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
