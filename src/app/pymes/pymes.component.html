@@ -1,7 +1,7 @@
 <mat-nav-list>
   <h1 mat-subheader>Pymes</h1>
   <mat-divider></mat-divider>
-  <mat-spinner *ngIf="generalLoading" style="margin:0 auto;" mode="indeterminate"></mat-spinner>
+  <mat-spinner style="margin:150px auto;" mode="indeterminate"></mat-spinner>
   <div *ngIf="!generalLoading">
     <div *ngFor="let pyme of myPymes">
       <mat-list-item>

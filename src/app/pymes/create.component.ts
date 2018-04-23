@@ -60,7 +60,7 @@ export class CreatePymeComponent implements OnInit {
           text: "Pyme Creado Exitosamente",
           showAction: true,
           actionText: '<i class="material-icons">close</i>',
-          pos: "top-center",
+          ppos: "top-right",
           actionTextColor: '#fff'
         });
 
@@ -83,7 +83,7 @@ export class CreatePymeComponent implements OnInit {
             text: "Error al crear la Pyme",
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
-            pos: "bottom-center",
+            pos: "top-right",
             actionTextColor: '#fff'
           });
         }

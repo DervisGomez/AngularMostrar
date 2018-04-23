@@ -139,10 +139,10 @@ export class PymesComponent implements OnInit {
             });
           }
           Snackbar.show({
-            text: "Error al obtener las Pymes",
+            text: "Revisa tu conexión a internet",
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
-            pos: "bottom-center",
+            pos: "top-right",
             actionTextColor: '#fff'
           });
         }

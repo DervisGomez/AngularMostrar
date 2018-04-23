@@ -4,7 +4,7 @@
       <span class="icon">Bigwave</span>
     </a>
     <!-- Categorías -->
-    <button mat-icon-button [matMenuTriggerFor]="menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="hidden-xs">
       <mat-icon aria-label="">view_module</mat-icon>
       CATEGORÍAS
     </button>
@@ -42,20 +42,20 @@
     <!-- Categorías -->
 
     <span class="spacer"></span>
-    <button mat-button [routerLink]="['/profile']" [queryParams]="{tab:'pymes'}" *ngIf="this.user.id">CREA TU NEGOCIO ONLINE</button>
-    <button mat-button *ngIf="!this.user.id" (click)="openLoginDialog()">CREA TU NEGOCIO ONLINE</button>
+    <button mat-button [routerLink]="['/profile']" [queryParams]="{tab:'pymes'}" *ngIf="this.user.id" class="hidden-xs">CREA TU NEGOCIO ONLINE</button>
+    <button mat-button *ngIf="!this.user.id" (click)="openLoginDialog()" class="hidden-xs">CREA TU NEGOCIO ONLINE</button>
 
-    <button mat-icon-button class="toolbar-icon" *ngIf="this.user.id">
+    <button mat-icon-button *ngIf="this.user.id" class="hidden-xs">
       <mat-icon aria-label="">favorite</mat-icon>
     </button>
 
-    <button mat-icon-button class="toolbar-icon">
+    <button mat-icon-button class="hidden-xs">
       <mat-icon aria-label="">shopping_cart</mat-icon>
     </button>
 
-    <div *ngIf="!this.user.id">
+    <div *ngIf="!this.user.id" class="hidden-xs">
       <div class="button-row">
-        <button mat-raised-button color="accent" (click)="openLoginDialog()" >INICIA SESIÓN</button>
+        <button mat-raised-button color="accent" (click)="openLoginDialog()" style="margin: 0 5px">INICIA SESIÓN</button>
         <button mat-raised-button color="primary" (click)="openRegisterDialog()">REGISTRATE</button>
       </div>
     </div>
@@ -74,8 +74,13 @@
       </mat-menu>
       <!-- Lista de notificaciones-->
 
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>more_vert</mat-icon>
+      <button mat-icon-button [matMenuTriggerFor]="menu" class="hidden-xs">
+        <img class="user-avatar" src="assets/imgs/profile.jpg" alt="...">
+        <!-- <mat-icon>more_vert</mat-icon> -->
+      </button>
+
+      <button mat-icon-button class="only-xs">
+        <mat-icon>menu</mat-icon>
       </button>
 
       <mat-menu #menu="matMenu">

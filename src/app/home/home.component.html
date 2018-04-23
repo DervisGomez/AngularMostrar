@@ -87,7 +87,7 @@
     </div>
     <mat-divider style="margin-top: 10px"></mat-divider>
     <mat-spinner *ngIf="loadingIndependents" style="margin:50px auto;" mode="indeterminate"></mat-spinner>
-    <div *ngIf="!loadingPymes" id="carousel-pymes" data-slick='{"slidesToShow": 5, "slidesToScroll": 1, "infinite": "false"}'>
+    <div *ngIf="!loadingPymes" id="carousel-pymes" data-slick='{"slidesToShow": 5, "slidesToScroll": 1, "infinite": "true", "autoplay": "true"}'>
       <div class="col-lg-4" *ngFor="let pyme of pymes;let last = last;" >
         <div class="card">
           <span class="flag-icon flag-icon-ve"></span>
@@ -112,7 +112,7 @@
     </div>
     <mat-divider style="margin-top: 10px"></mat-divider>
     <mat-spinner *ngIf="loadingIndependents" style="margin:50px auto;" mode="indeterminate"></mat-spinner>
-    <div *ngIf="!loadingIndependents" id="carousel-independents" data-slick='{"slidesToShow": 5, "slidesToScroll": 1, "infinite": "false"}'>
+    <div *ngIf="!loadingIndependents" id="carousel-independents" data-slick='{"slidesToShow": 5, "slidesToScroll": 1, "infinite": "true", "autoplay": "true"}'>
       <div class="col-lg-4" *ngFor="let independent of independents;let last = last;">
         <div class="card">
           <span class="flag-icon flag-icon-ve"></span>
@@ -136,7 +136,7 @@
     </div>
     <mat-divider style="margin-top: 10px"></mat-divider>
     <mat-spinner *ngIf="loadingIndependents" style="margin:50px auto;" mode="indeterminate"></mat-spinner>
-    <div *ngIf="!loadingSellers" id="carousel-sellers" data-slick='{"slidesToShow": 5, "slidesToScroll": 1, "infinite": "false"}'>
+    <div *ngIf="!loadingSellers" id="carousel-sellers" data-slick='{"slidesToShow": 5, "slidesToScroll": 1, "infinite": "true", "autoplay": "true"}'>
       <div class="col-lg-4" *ngFor="let seller of sellers;let last = last;">
         <div class="card">
           <span class="flag-icon flag-icon-ve"></span>

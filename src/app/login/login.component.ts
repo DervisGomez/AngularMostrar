@@ -4,7 +4,9 @@ import { Router } from '@angular/router';
 import { Angular2TokenService } from 'angular2-token';
 import { CONSTANTS } from '../app.constants';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import {FormControl, Validators} from '@angular/forms';
+import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
+
 
 declare var Snackbar: any;
 @Component({
@@ -75,11 +77,12 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/']);
 
         setTimeout(function() {
+
           Snackbar.show({
-            text: "Has iniciado sesión",
+            text: `Bienvenido ${JSON.parse(window.localStorage.getItem('user')).name}`,
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
-            pos: "top-center",
+            pos: "top-right",
             actionTextColor: '#fff'
           });
         }, 1000)

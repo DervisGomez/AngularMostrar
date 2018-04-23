@@ -98,10 +98,10 @@ export class HomeComponent implements OnInit {
             });
           }
           Snackbar.show({
-            text: "Error al obtener las Pymes",
+            text: "Revisa tu conexión a internet",
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
-            pos: "bottom-center",
+            pos: "top-right",
             actionTextColor: '#fff'
           });
         }
@@ -130,10 +130,10 @@ export class HomeComponent implements OnInit {
             });
           }
           Snackbar.show({
-            text: "Error al obtener Independents",
+            text: "Revisa tu conexión a internet",
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
-            pos: "bottom-center",
+            pos: "top-right",
             actionTextColor: '#fff'
           });
         }
@@ -161,10 +161,10 @@ export class HomeComponent implements OnInit {
             });
           }
           Snackbar.show({
-            text: "Error al obtener Sellers",
+            text: "Revisa tu conexión a internet",
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
-            pos: "bottom-center",
+            pos: "top-right",
             actionTextColor: '#fff'
           });
         }

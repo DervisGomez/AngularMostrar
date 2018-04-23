@@ -39,7 +39,7 @@ export class AreYouSureComponent {
             text: "Pyme Eliminada Exitosamente",
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
-            pos: "bottom-center",
+            ppos: "top-right",
             actionTextColor: '#fff'
           });
           this.dialogRef.close();
@@ -56,7 +56,7 @@ export class AreYouSureComponent {
                   text: element,
                   showAction: true,
                   actionText: '<i class="material-icons">close</i>',
-                  pos: "bottom-center",
+                  pos: "top-right",
                   actionTextColor: '#fff'
                 });
               });
@@ -65,7 +65,7 @@ export class AreYouSureComponent {
                 text: "Error al eliminar el Pyme, verifique su contraseña",
                 showAction: true,
                 actionText: '<i class="material-icons">close</i>',
-                pos: "bottom-center",
+                pos: "top-right",
                 actionTextColor: '#fff'
               });
             }
@@ -101,7 +101,7 @@ export class AreYouSureComponent {
             text: "Error al obtener las Pymes",
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
-            pos: "bottom-center",
+            pos: "top-right",
             actionTextColor: '#fff'
           });
         }

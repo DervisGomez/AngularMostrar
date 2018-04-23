@@ -28,7 +28,7 @@
 
         backgroundColor: '#323232',
 
-        pos: 'bottom-left',
+        pos: 'top-right',
 
         duration: 5000,
 
@@ -53,7 +53,9 @@
 
         Snackbar.snackbar = document.createElement('div');
         Snackbar.snackbar.className = 'snackbar-container ' + options.customClass;
+
         Snackbar.snackbar.style.width = options.width;
+
         var $p = document.createElement('p');
         $p.style.margin = 0;
         $p.style.padding = 0;

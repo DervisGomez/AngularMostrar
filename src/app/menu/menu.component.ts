@@ -94,7 +94,7 @@ export class MenuComponent implements OnInit {
       text: "Has cerrado sesión",
       showAction: true,
       actionText: '<i class="material-icons">close</i>',
-      pos: "top-center",
+      pos: "top-right",
       actionTextColor: '#fff'
     });
 

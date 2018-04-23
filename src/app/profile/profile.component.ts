@@ -21,6 +21,7 @@ declare var Snackbar: any;
 export class ProfileComponent implements OnInit {
   public option: string = 'dashboard';
   public loading: boolean = false;
+  public open: boolean = true;
   public user: any = {
     id: '',
     nickname: '',
@@ -116,7 +117,7 @@ export class ProfileComponent implements OnInit {
           text: "Perfil Actualizado Exitosamente",
           showAction: true,
           actionText: '<i class="material-icons">close</i>',
-          pos: "top-center",
+          pos: "top-right",
           actionTextColor: '#fff'
         });
         this.loading=false;
