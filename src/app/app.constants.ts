@@ -27,6 +27,9 @@ export const API_ROUTES = {
     createSeller(){
         return `sellers/create`;
     },
+    createIndependent(){
+        return `independent/create`;
+    },
     getPymes(){
         return `pymes`;
     },
@@ -36,8 +39,14 @@ export const API_ROUTES = {
     getMySellers(){
       return `sellers/own`;
     },
+    getMyIndependents(){
+      return `independents/own`;
+    },
     deletePyme(){
         return `pymes/:pyme_id/destroy`;
+    },
+    deleteIndependent(){
+        return `independents/:independent_id/destroy`;
     },
     getIndependents(){
       return `/independents`;

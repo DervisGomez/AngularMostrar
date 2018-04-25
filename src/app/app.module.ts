@@ -20,6 +20,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CreatePymeComponent } from './pymes/create.component';
 import { AreYouSureComponent } from './pymes/are-you-sure.component';
+import { CreateIndependentComponent } from './independents/create.component';
+import { IndependentsComponent } from './independents/independents.component';
+import { AreYouSureIndependentComponent } from './independents/are-you-sure.component';
 
 //import "../assets/ngx-toastr/toastr.css";
 //import "../assets/ngx-toastr/toastr-bs4-alert";
@@ -42,13 +45,17 @@ import 'hammerjs';
     ForgotPasswordComponent,
     ProfileComponent,
     PymesComponent,
+    IndependentsComponent,
     LoginComponent,
     RegisterComponent,
     CreatePymeComponent,
-    AreYouSureComponent
+    CreateIndependentComponent,
+    AreYouSureComponent,
+    AreYouSureIndependentComponent
   ],
   entryComponents: [
-    AreYouSureComponent
+    AreYouSureComponent,
+    AreYouSureIndependentComponent
   ],
   imports: [
     MatDialogModule,
@@ -72,7 +79,6 @@ import 'hammerjs';
     Angular2TokenService,
     MatDialog,
     { provide: MAT_DIALOG_DATA, useValue: [] },
-    {provide: MatDialogRef, useValue: {}},
   ],
   bootstrap: [AppComponent]
 })

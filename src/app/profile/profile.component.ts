@@ -6,9 +6,11 @@ import { API_ROUTES } from '../app.constants';
 import { Angular2TokenService } from 'angular2-token';
 import { CONSTANTS } from '../app.constants';
 import { ActivatedRoute } from '@angular/router';
-import {CreatePymeComponent} from '../pymes/create.component';
-import {PymesComponent} from '../pymes/pymes.component';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
+import { CreatePymeComponent } from '../pymes/create.component';
+import { PymesComponent } from '../pymes/pymes.component';
+import { CreateIndependentComponent } from '../independents/create.component';
+import { IndependentsComponent } from '../independents/independents.component';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 
 declare var Snackbar: any;
 

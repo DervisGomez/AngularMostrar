@@ -113,75 +113,20 @@
         </div>
       </div>
     </div>
+
     <div *ngIf="option=='pymes'">
       <app-pymes></app-pymes>
     </div>
+
     <div *ngIf="option == 'independents'">
-      <mat-nav-list>
-        <h1 mat-subheader>Independents</h1>
-        <mat-divider></mat-divider>
-        <mat-list-item>
-          <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
-          <a matLine href="...">Nombre</a>
-          <button mat-icon-button (click)="showInfo('asd')">
-             <mat-icon mat-list-icon>delete</mat-icon>
-          </button>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>
-          <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
-          <a matLine href="...">Nombre</a>
-          <button mat-icon-button (click)="showInfo('asd')">
-             <mat-icon mat-list-icon>delete</mat-icon>
-          </button>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>
-          <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
-          <a matLine href="...">Nombre</a>
-          <button mat-icon-button (click)="showInfo('asd')">
-             <mat-icon mat-list-icon>delete</mat-icon>
-          </button>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-      </mat-nav-list>
-      <button mat-fab color="primary" class="action-button">
-        <mat-icon>add</mat-icon>
-      </button>
+      <app-independents></app-independents>
     </div>
+
     <div *ngIf="option=='sellers'">
-      <mat-nav-list>
-        <h1 mat-subheader>Sellers</h1>
-        <mat-divider></mat-divider>
-        <mat-list-item>
-          <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
-          <a matLine href="...">Nombre</a>
-          <button mat-icon-button (click)="showInfo('asd')">
-             <mat-icon mat-list-icon>delete</mat-icon>
-          </button>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>
-          <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
-          <a matLine href="...">Nombre</a>
-          <button mat-icon-button (click)="showInfo('asd')">
-             <mat-icon mat-list-icon>delete</mat-icon>
-          </button>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>
-          <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
-          <a matLine href="...">Nombre</a>
-          <button mat-icon-button (click)="showInfo('asd')">
-             <mat-icon mat-list-icon>delete</mat-icon>
-          </button>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-      </mat-nav-list>
-      <button mat-fab color="primary" class="action-button">
-        <mat-icon>add</mat-icon>
-      </button>
+
     </div>
-    <div *ngIf="option=='favorites'"></div>
+
+    <div *ngIf="option=='favorites'">
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
