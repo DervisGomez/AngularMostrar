@@ -49,7 +49,10 @@
       <mat-icon aria-label="">favorite</mat-icon>
     </button>
 
-    <button mat-icon-button class="hidden-xs">
+    <button mat-icon-button class="hidden-xs" *ngIf="!this.user.id" (click)="openLoginDialog()">
+      <mat-icon aria-label="">shopping_cart</mat-icon>
+    </button>
+    <button mat-icon-button class="hidden-xs" *ngIf="this.user.id" (click)="openLoginDialog()">
       <mat-icon aria-label="">shopping_cart</mat-icon>
     </button>
 
@@ -78,8 +81,8 @@
         <img class="user-avatar" src="assets/imgs/profile.jpg" alt="...">
         <!-- <mat-icon>more_vert</mat-icon> -->
       </button>
-
-      <button mat-icon-button class="only-xs">
+<!-- class="only-xs" -->
+      <button mat-icon-button>
         <mat-icon>menu</mat-icon>
       </button>
 

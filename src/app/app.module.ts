@@ -20,9 +20,14 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CreatePymeComponent } from './pymes/create.component';
 import { AreYouSureComponent } from './pymes/are-you-sure.component';
-import { CreateIndependentComponent } from './independents/create.component';
+import { CreateIndependentsComponent } from './independents/create.component';
 import { IndependentsComponent } from './independents/independents.component';
 import { AreYouSureIndependentComponent } from './independents/are-you-sure.component';
+
+
+import { SellersComponent } from './sellers/sellers.component';
+import { CreateSellerComponent } from './sellers/create.component';
+import { AreYouSureSellerComponent } from './sellers/are-you-sure.component';
 
 //import "../assets/ngx-toastr/toastr.css";
 //import "../assets/ngx-toastr/toastr-bs4-alert";
@@ -49,13 +54,17 @@ import 'hammerjs';
     LoginComponent,
     RegisterComponent,
     CreatePymeComponent,
-    CreateIndependentComponent,
+    CreateIndependentsComponent,
     AreYouSureComponent,
-    AreYouSureIndependentComponent
+    AreYouSureIndependentComponent,
+    SellersComponent,
+    CreateSellerComponent,
+    AreYouSureSellerComponent
   ],
   entryComponents: [
     AreYouSureComponent,
-    AreYouSureIndependentComponent
+    AreYouSureIndependentComponent,
+    AreYouSureSellerComponent
   ],
   imports: [
     MatDialogModule,

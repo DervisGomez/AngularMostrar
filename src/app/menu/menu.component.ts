@@ -26,8 +26,8 @@ export class MenuComponent implements OnInit {
   public errors: any;
   public errorsRegister: any;
   public errorHttp: boolean = false;
-  public loading: boolean = false
-
+  public loading: boolean = false;
+  
   constructor(
     private userService: UserService, private router: Router,
     public dialog: MatDialog,@Inject(MAT_DIALOG_DATA) private data: any,

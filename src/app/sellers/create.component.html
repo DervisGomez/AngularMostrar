@@ -1,28 +1,28 @@
 <div class="card" style="padding: 20px">
   <form class="form container-fluid form-container" *ngIf="!loading" >
     <mat-form-field>
-      <input matInput type="text"  id="pyme_title"
-        placeholder="Nombre de la tienda"
+      <input matInput type="text"  id="seller_title"
+        placeholder="Nombre del seller"
         [ngModelOptions]="{standalone: true}"
         required [(ngModel)]="user.name"  />
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput type="text" id="pyme_description"
+      <input matInput type="text" id="seller_description"
         placeholder="Descripción"
         [ngModelOptions]="{standalone: true}"
         [(ngModel)]="user.description"  />
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput type="email"  id="pyme_email"
+        <input matInput type="email"  id="seller_email"
           placeholder="Contacto"
           [ngModelOptions]="{standalone: true}"
           required [(ngModel)]="user.email"  />
     </mat-form-field>
   </form>
 
-  <button mat-raised-button  (click)="createIndependent()" color="primary">
-      Crear Independent
+  <button mat-raised-button  (click)="createSeller()" color="primary">
+      Crear Seller
   </button>
 </div>

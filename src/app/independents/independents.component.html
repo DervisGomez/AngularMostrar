@@ -1,41 +1,29 @@
 <mat-nav-list>
-  <h1 mat-subheader>Independents</h1>
-  <mat-divider></mat-divider>
-  <mat-spinner style="margin:150px auto;" mode="indeterminate" *ngIf="generalLoading"></mat-spinner>
-  <div>
-    <div *ngFor="let independent of myIndependents">
-      <mat-list-item>
-        <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
-        <a matLine href="...">{{independent.attributes.name}}</a>
-        <button mat-icon-button (click)="deleteIndependent(independent)">
-          <mat-icon mat-list-icon>delete</mat-icon>
-        </button>
-      </mat-list-item>
-      <mat-divider></mat-divider>
+  <div *ngIf="this.toggleView">
+    <h1 mat-subheader>Independents</h1>
+    <mat-divider></mat-divider>
+    <mat-spinner style="margin:150px auto;" mode="indeterminate" *ngIf="generalLoading"></mat-spinner>
+    <div>
+      <div *ngFor="let independent of myIndependents">
+        <mat-list-item>
+          <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
+          <a matLine href="...">{{independent.attributes.name}}</a>
+          <button mat-icon-button (click)="deleteIndependent(independent)">
+            <mat-icon mat-list-icon>delete</mat-icon>
+          </button>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
     </div>
+  </div>
+
+  <div *ngIf="!this.toggleView">
+    <h1 mat-subheader>Crear Nuevo Independent</h1>
+    <app-create-independent></app-create-independent>
   </div>
 </mat-nav-list>
 
-<button mat-fab color="primary" class="action-button" (click)="openCreateIndependent()">
-  <mat-icon>add</mat-icon>
-</button>
 
-<div class="modal fade" id="modalEliminarIndependent" tabindex="-1" role="dialog" aria-labelledby="eliminarModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="eliminarModalLabel">Eliminar Independent</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ¿Seguro que desea eliminar el Independent <b>{{independentSelected.title}}</b>?
-      </div>
-      <div class="modal-footer">
-        <button mat-raised-button  data-dismiss="modal">Close</button>
-        <button mat-raised-button color="warn" (click)="deleteIndependent(independentSelected)" data-dismiss="modal">Si, Eliminar</button>
-      </div>
-    </div>
-  </div>
-</div>
+<button mat-fab color="primary" class="action-button" (click)="this.toggleView = !toggleView">
+  <mat-icon> {{ toggleView ? 'add' : 'close' }}</mat-icon>
+</button>

@@ -5,18 +5,19 @@ import { CONSTANTS } from '../app.constants';
 import { Router } from '@angular/router';
 
 declare var Snackbar: any;
+
 @Component({
-  selector: 'app-create-pyme',
+  selector: 'app-create-seller',
   templateUrl: './create.component.html',
-//   styleUrls: ['./pymes.component.scss']
 })
-export class CreatePymeComponent implements OnInit {
+
+export class CreateSellerComponent implements OnInit {
   public loading: boolean = false;
   public generalLoading: boolean = false;
   public errors: any=[];
   public user: any = {
     "user_id": JSON.parse(window.localStorage.getItem('user')).id,
-    "type_profile": "pyme",
+    "type_profile": "seller",
     "title": "",
     "name": "",
     "email": "",
@@ -33,15 +34,15 @@ export class CreatePymeComponent implements OnInit {
     "profile": null,
     "experience": null
   };
-  public myPymes: any;
+  public mySellers: any;
   public currentModal: string;
-  public pymeSelected: any={};
-  // @ViewChild('modalCreateClose') modalCreateClose: ElementRef;
+  public sellerSelected: any={};
+
   constructor(
     private router: Router,
     private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
-    this.myPymes=[]
+    this.mySellers=[]
     this.router.routeReuseStrategy.shouldReuseRoute = function() {
         return false;
     };
@@ -50,17 +51,17 @@ export class CreatePymeComponent implements OnInit {
   ngOnInit() {
   }
 
-  createPyme(){
+  createSeller(){
     this.loading=true;
     let object = this;
-    let url = API_ROUTES.createPyme();
+    let url = API_ROUTES.createSeller();
     let params= {"profile": this.user} //JSON.stringify(
     this._tokenService.post(url, params).subscribe(
       data =>      {
         data = JSON.parse(data['_body']);
         // window.localStorage.setItem('user', JSON.stringify(this.user));
         Snackbar.show({
-          text: "Pyme Creado Exitosamente",
+          text: "Seller Creado Exitosamente",
           showAction: true,
           actionText: '<i class="material-icons">close</i>',
           ppos: "top-right",
@@ -68,7 +69,7 @@ export class CreatePymeComponent implements OnInit {
         });
 
         this.loading=false;
-        this.router.navigate(['/profile'], { queryParams: {tab: "pymes"} });
+        this.router.navigate(['/profile'], { queryParams: {tab: "sellers"} });
       },
       error =>   {
         this.loading=false;
@@ -81,7 +82,7 @@ export class CreatePymeComponent implements OnInit {
             });
           }
           Snackbar.show({
-            text: "Error al crear la Pyme",
+            text: "Error al crear la Seller",
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
             pos: "top-right",
@@ -91,17 +92,17 @@ export class CreatePymeComponent implements OnInit {
       }
     );
   }
-  getMyPymes(){
+  getMySellers(){
     this.generalLoading=true;
     let object = this;
-    let url = API_ROUTES.getMyPymes();
+    let url = API_ROUTES.getMySellers();
     console.log(url);
     this._tokenService.get(url).subscribe(
       data =>      {
         data = JSON.parse(data['_body']);
         console.log(data);
         if (data['data'].length)
-        this.myPymes = data['data'];
+        this.mySellers = data['data'];
         this.generalLoading=false;
       },
       error =>  {
@@ -114,7 +115,7 @@ export class CreatePymeComponent implements OnInit {
               object.errors.push(element);
             });
           }
-          // this.toastr.error("Error al obtener las Pymes", 'Pyme Error');
+          // this.toastr.error("Error al obtener las Sellers", 'Seller Error');
         }
       }
     );

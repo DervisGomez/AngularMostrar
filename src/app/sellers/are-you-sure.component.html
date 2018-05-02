@@ -1,15 +1,14 @@
-<h2 mat-dialog-title>{{data.pyme.attributes.title}}</h2>
+<h2 mat-dialog-title>{{data.sellers.attributes.title}}</h2>
 <mat-dialog-content>
-  Ingrese su contraseña para eliminar el Pyme
+  Ingrese su contraseña para eliminar el Seller
 
   <mat-form-field *ngIf="data.passRequired">
-    <input matInput
-      placeholder="Enter your password"
-      [type]="hide ? 'text' : 'password'"
-      id="password"
-      placeholder="Password"
-      [ngModelOptions]="{standalone: true}"
-      required [(ngModel)]="password">
+    <input matInput placeholder="Enter your password"
+          [type]="hide ? 'text' : 'password'"
+          id="password"
+          placeholder="Password"
+          [ngModelOptions]="{standalone: true}"
+          required [(ngModel)]="password">
     <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
   </mat-form-field>
 </mat-dialog-content>

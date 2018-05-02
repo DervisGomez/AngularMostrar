@@ -3,7 +3,7 @@ import { Angular2TokenService } from 'angular2-token';
 import { API_ROUTES } from '../app.constants';
 import { CONSTANTS } from '../app.constants';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
-import { CreateIndependentComponent } from './create.component';
+import { CreateIndependentsComponent } from './create.component';
 import { LoginComponent } from '../login/login.component'
 import { AreYouSureIndependentComponent } from './are-you-sure.component';
 import { ChangeDetectionStrategy } from '@angular/core';
@@ -39,13 +39,13 @@ export class IndependentsComponent implements OnInit {
     "experience": null
   };
   public myIndependents: any;
-  public currentModal: string;
+  public toggleView: boolean = true;
   public independentSelected: any={};
   @ViewChild('modalCreateIndependentClose') modalCreateIndependentClose: ElementRef;
 
   constructor(
     public dialog: MatDialog, @Inject(MAT_DIALOG_DATA) private data: any,
-   private _tokenService: Angular2TokenService) {
+    private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
   }
 
@@ -54,7 +54,7 @@ export class IndependentsComponent implements OnInit {
     this.getMyIndependents();
   }
   openCreateIndependent() {
-    const dialogRef = this.dialog.open(CreateIndependentComponent, {
+    const dialogRef = this.dialog.open(CreateIndependentsComponent, {
       // height: '60%',
       width: '50%'
     });

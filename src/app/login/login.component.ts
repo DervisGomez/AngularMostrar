@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
     password: '',
     password_confirmation: ''
   };
+
   public errors: any;
   public errorsRegister: any;
   public errorHttp: boolean = false;
@@ -41,18 +42,12 @@ export class LoginComponent implements OnInit {
       this.user=JSON.parse(window.localStorage.getItem('user'));
     }
   }
-  //
-  // email = new FormControl('', [Validators.required, Validators.email]);
-  //
-  // getErrorMessage() {
-  //   return this.email.hasError('required') ? 'You must enter a value' :
-  //   this.email.hasError('email') ? 'Not a valid email' : '';
-  // }
-  //
+
   onNoClick(): void {
     this.data = this.user;
     this.dialogRef.close();
   }
+
   ngOnInit() {
   }
 
@@ -66,18 +61,16 @@ export class LoginComponent implements OnInit {
       password: this.user.password,
     }).subscribe(
       data => {
-        console.log("a", data)
-        this.loading=false;
+        this.loading = false;
         var token, uid, client;
         data = JSON.parse(data['_body']);
         this.user = data['data'];
         window.localStorage.setItem('user', JSON.stringify(this.user));
         this.router.navigated = false;
         this.onNoClick();
-        this.router.navigate(['/']);
+        // this.router.navigate(['/']);
 
         setTimeout(function() {
-
           Snackbar.show({
             text: `Bienvenido ${JSON.parse(window.localStorage.getItem('user')).name}`,
             showAction: true,
@@ -88,9 +81,9 @@ export class LoginComponent implements OnInit {
         }, 1000)
       },
       error =>    {
-        console.log("b")
         this.loading=false;
-        this.errorHttp = true; this.loading=false;
+        this.errorHttp = true;
+        this.loading=false;
         console.log(error);
         if (error && '_body' in error){
           try{
@@ -98,18 +91,46 @@ export class LoginComponent implements OnInit {
             error = JSON.parse(error._body);
             if (error && error.errors){
               error.errors.forEach(element => {
-                object.errors.push(element);
+                // object.errors.push(element);
+                Snackbar.show({
+                  text: `${element}`,
+                  showAction: true,
+                  actionText: '<i class="material-icons">close</i>',
+                  pos: "top-right",
+                  actionTextColor: '#fff'
+                });
               });
             }
             else{
-              object.errors.push("Verifique su usuario y contraseña");
+              // object.errors.push("Verifique su usuario y contraseña");
+              Snackbar.show({
+                text: "Verifique su usuario y contraseña",
+                showAction: true,
+                actionText: '<i class="material-icons">close</i>',
+                pos: "top-right",
+                actionTextColor: '#fff'
+              });
             }
           }catch(err){
             console.log(err)
-            object.errors.push("Verifique su usuario y contraseña");
+            // object.errors.push("Verifique su usuario y contraseña");
+            Snackbar.show({
+              text: "Verifique su usuario y contraseña",
+              showAction: true,
+              actionText: '<i class="material-icons">close</i>',
+              pos: "top-right",
+              actionTextColor: '#fff'
+            });
           }
         }else{
-          object.errors.push("Intente mas tarde");
+          // object.errors.push("Intente mas tarde");
+          Snackbar.show({
+            text: "Intente mas tarde",
+            showAction: true,
+            actionText: '<i class="material-icons">close</i>',
+            pos: "top-right",
+            actionTextColor: '#fff'
+          });
         }
       }
     );

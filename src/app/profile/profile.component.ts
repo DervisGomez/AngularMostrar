@@ -8,7 +8,9 @@ import { CONSTANTS } from '../app.constants';
 import { ActivatedRoute } from '@angular/router';
 import { CreatePymeComponent } from '../pymes/create.component';
 import { PymesComponent } from '../pymes/pymes.component';
-import { CreateIndependentComponent } from '../independents/create.component';
+import { SellersComponent } from '../sellers/sellers.component';
+import { CreateIndependentsComponent } from '../independents/create.component';
+import { CreateSellerComponent } from '../sellers/create.component';
 import { IndependentsComponent } from '../independents/independents.component';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material';
 

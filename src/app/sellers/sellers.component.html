@@ -1,14 +1,14 @@
 <mat-nav-list>
   <div *ngIf="this.toggleView">
-    <h1 mat-subheader>Pymes</h1>
+    <h1 mat-subheader>Sellers</h1>
     <mat-divider></mat-divider>
     <mat-spinner style="margin:150px auto;" mode="indeterminate" *ngIf="generalLoading"></mat-spinner>
     <div>
-      <div *ngFor="let pyme of myPymes">
+      <div *ngFor="let seller of mySellers">
         <mat-list-item>
           <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
-          <a matLine href="...">{{pyme.attributes.name}}</a>
-          <button mat-icon-button (click)="deletePyme(pyme)">
+          <a matLine href="...">{{seller.attributes.name}}</a>
+          <button mat-icon-button (click)="deleteSeller(seller)">
             <mat-icon mat-list-icon>delete</mat-icon>
           </button>
         </mat-list-item>
@@ -18,11 +18,11 @@
   </div>
 
   <div *ngIf="!this.toggleView">
-    <h1 mat-subheader>Crear Nuevo Pyme</h1>
-    <app-create-pyme></app-create-pyme>
+    <h1 mat-subheader>Crear Nuevo Seller</h1>
+    <mat-divider></mat-divider>
+    <app-create-seller></app-create-seller>
   </div>
 </mat-nav-list>
-
 
 <button mat-fab color="primary" class="action-button" (click)="this.toggleView = !toggleView">
   <mat-icon> {{ toggleView ? 'add' : 'close' }}</mat-icon>

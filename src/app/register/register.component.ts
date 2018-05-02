@@ -24,7 +24,8 @@ export class RegisterComponent implements OnInit {
   public errorsRegister: any;
   public errorHttp: boolean = false;
   public loading: boolean = false
-
+  public hidePassword: boolean = true;
+  public hidePasswordConfirmation: boolean = true;
   constructor(
     public dialogRef: MatDialogRef<RegisterComponent>,
     fb: FormBuilder, private userService: UserService, private router: Router,

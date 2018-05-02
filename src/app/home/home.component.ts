@@ -4,6 +4,7 @@ import { Angular2TokenService } from 'angular2-token';
 import { CONSTANTS } from '../app.constants';
 declare var $: any;
 declare var Snackbar: any;
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,12 +21,13 @@ export class HomeComponent implements OnInit {
   sellers: any = [];
   independents: any = [];
   errors: any = [];
+
   constructor(private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
     this.pymes = [];
     this.independents = [];
     this.sellers = [];
-   }
+  }
 
   ngOnInit() {
     this.getPymes();
@@ -33,7 +35,8 @@ export class HomeComponent implements OnInit {
     this.getIndependents();
     var object = this;
   }
-  ngDoCheck(){
+
+  ngDoCheck() {
     if (!this.loadingIndependents && !this.loadingIndependentsSlick){
       this.loadingIndependentsSlick=true;
       this.renderCarousel('carousel-independents');
@@ -46,10 +49,10 @@ export class HomeComponent implements OnInit {
       this.loadingSellersSlick = true;
       this.renderCarousel('carousel-sellers');
     }
-
   }
-  renderCarousel(id){
-    setTimeout(()=>{
+
+  renderCarousel(id) {
+    setTimeout(() => {
       $('#'+id).slick({
         responsive: [
           {
@@ -77,22 +80,22 @@ export class HomeComponent implements OnInit {
     },400);
   }
 
-  getPymes(){
-    this.loadingPymes=true;
+  getPymes() {
+    this.loadingPymes = true;
     let object = this;
     let url = API_ROUTES.getPymes();
     this._tokenService.get(url).subscribe(
-      data =>      {
+      data => {
         data = JSON.parse(data['_body']);
         if (data['data'].length)
           this.pymes = data['data'];
-        this.loadingPymes=false;
-      },
-      error =>  {
-        this.loadingPymes=false;
-        if("_body" in error){
+          this.loadingPymes=false;
+        },
+      error => {
+        this.loadingPymes = false;
+        if("_body" in error) {
           error = error._body;
-          if (error.errors && error.errors.full_messages){
+          if (error.errors && error.errors.full_messages) {
             error.errors.full_messages.forEach(element => {
               object.errors.push(element);
             });
@@ -108,23 +111,24 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-  getIndependents(){
-    this.loadingIndependents=true;
+
+  getIndependents() {
+    this.loadingIndependents = true;
     let object = this;
     let url = API_ROUTES.getIndependents();
     this._tokenService.get(url).subscribe(
-      data =>      {
+      data => {
         data = JSON.parse(data['_body']);
         console.log(data)
         if (data['data'].length)
           this.independents = data['data'];
-        this.loadingIndependents=false;
+          this.loadingIndependents = false;
       },
-      error =>  {
+      error => {
         this.loadingIndependents=false;
-        if("_body" in error){
+        if("_body" in error) {
           error = error._body;
-          if (error.errors && error.errors.full_messages){
+          if (error.errors && error.errors.full_messages) {
             error.errors.full_messages.forEach(element => {
               object.errors.push(element);
             });
@@ -140,22 +144,23 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-  getSellers(){
-    this.loadingSellers=true;
+
+  getSellers() {
+    this.loadingSellers = true;
     let object = this;
     let url = API_ROUTES.getSellers();
     this._tokenService.get(url).subscribe(
-      data =>      {
+      data => {
         data = JSON.parse(data['_body']);
         if (data['data'].length)
           this.sellers = data['data'];
-        this.loadingSellers=false;
+          this.loadingSellers=false;
       },
-      error =>  {
-        this.loadingSellers=false;
-        if("_body" in error){
+      error => {
+        this.loadingSellers = false;
+        if("_body" in error) {
           error = error._body;
-          if (error.errors && error.errors.full_messages){
+          if (error.errors && error.errors.full_messages) {
             error.errors.full_messages.forEach(element => {
               object.errors.push(element);
             });

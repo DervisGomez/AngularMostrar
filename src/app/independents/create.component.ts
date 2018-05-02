@@ -2,14 +2,15 @@ import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core'
 import { Angular2TokenService } from 'angular2-token';
 import { API_ROUTES } from '../app.constants';
 import { CONSTANTS } from '../app.constants';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { Router } from '@angular/router';
+
 declare var Snackbar: any;
 @Component({
   selector: 'app-create-independent',
   templateUrl: './create.component.html',
 //   styleUrls: ['./independents.component.scss']
 })
-export class CreateIndependentComponent implements OnInit {
+export class CreateIndependentsComponent implements OnInit {
   public loading: boolean = false;
   public generalLoading: boolean = false;
   public errors: any=[];
@@ -35,12 +36,14 @@ export class CreateIndependentComponent implements OnInit {
   public myIndependents: any;
   public currentModal: string;
   public independentSelected: any={};
-  @ViewChild('modalCreateClose') modalCreateClose: ElementRef;
+
   constructor(
-    public dialogRef: MatDialogRef<CreateIndependentComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    private router: Router,
     private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
+    this.router.routeReuseStrategy.shouldReuseRoute = function() {
+        return false;
+    };
     this.myIndependents=[]
   }
 
@@ -65,9 +68,9 @@ export class CreateIndependentComponent implements OnInit {
         });
 
         this.loading=false;
+        this.router.navigate(['/profile'], { queryParams: {tab: "independents"} });
         // this.modalCreateClose.nativeElement.click()
-        this.dialogRef.close();
-        this.getMyIndependents()
+
       },
       error =>   {
         this.loading=false;
