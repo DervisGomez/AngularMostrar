@@ -29,9 +29,6 @@ import { SellersComponent } from './sellers/sellers.component';
 import { CreateSellerComponent } from './sellers/create.component';
 import { AreYouSureSellerComponent } from './sellers/are-you-sure.component';
 
-//import "../assets/ngx-toastr/toastr.css";
-//import "../assets/ngx-toastr/toastr-bs4-alert";
-
 // imports material angular
 import { MaterialModule } from './material.module';
 import {FormBuilder, FormGroup} from '@angular/forms';
