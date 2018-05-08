@@ -28,14 +28,12 @@ export class AreYouSureSellerComponent {
     this.dialogRef.close();
   }
 
-  onDeleteSeller() {
-    console.log(this.password);
+  onDelete(){
     this.loading=true;
       let url = API_ROUTES.deleteSeller().replace(":seller_id", this.data.seller.id);
       let object = this;
       this._tokenService.put(url, {current_password: this.password}).subscribe(
-        data => {
-          alert('data');
+        data =>      {
           this.loading=false;
           Snackbar.show({
             text: "Seller Eliminada Exitosamente",
@@ -47,32 +45,58 @@ export class AreYouSureSellerComponent {
           this.dialogRef.close();
         },
         error =>   {
-          alert('error');
           this.loading=false;
           if("_body" in error){
             error = JSON.parse(error._body);
-            if (error.length) {
-              alert('erroorrr');
-              console.log(error);
-              Snackbar.show({
-                text: "Error al eliminar el Seller, verifique su contraseña",
-                showAction: true,
-                actionText: '<i class="material-icons">close</i>',
-                pos: "top-right",
-                actionTextColor: '#fff'
+            if (error.lenght){
+              error.error.forEach(element => {
+                object.errors.push(element);
+                Snackbar.show({
+                  text: "Error al eliminar el Seller, verifique su contraseña",
+                  showAction: true,
+                  actionText: '<i class="material-icons">close</i>',
+                  pos: "top-right",
+                  actionTextColor: '#fff'
+                });
               });
-            }
-
-            // if (error.lenght){
-            //   error.error.forEach(element => {
-            //     object.errors.push(element);
-            //
-            //   });
             }
             // this.toastr.error("Error al eliminar la Seller", 'Seller Error');
           }
           this.dialogRef.close();
         }
       );
+  }
+
+  getMySellers(){
+    this.mySellers=[]
+    this.generalLoading=true;
+    let object = this;
+    let url = API_ROUTES.getMySellers();
+    this._tokenService.get(url).subscribe(
+      data =>      {
+        data = JSON.parse(data['_body']);
+        if (data['data'].length)
+        this.mySellers = data['data'];
+        this.generalLoading=false;
+      },
+      error =>  {
+        this.generalLoading=false;
+        if("_body" in error){
+          error = error._body;
+          if (error.errors && error.errors.full_messages){
+            error.errors.full_messages.forEach(element => {
+              object.errors.push(element);
+            });
+          }
+          Snackbar.show({
+            text: "Error al obtener las Sellers",
+            showAction: true,
+            actionText: '<i class="material-icons">close</i>',
+            pos: "top-right",
+            actionTextColor: '#fff'
+          });
+        }
+      }
+    );
   }
 }
