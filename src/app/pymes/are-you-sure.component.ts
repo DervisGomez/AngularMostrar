@@ -26,7 +26,6 @@ export class AreYouSureComponent {
 
   onNoClick(): void {
     this.dialogRef.close();
-
   }
   onDelete(){
     this.loading=true;

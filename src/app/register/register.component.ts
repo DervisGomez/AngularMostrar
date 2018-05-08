@@ -6,6 +6,8 @@ import { CONSTANTS } from '../app.constants';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
+declare var Snackbar: any;
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -77,7 +79,13 @@ export class RegisterComponent implements OnInit {
           error=JSON.parse(error._body);
           console.log(error);
           error.errors.full_messages.forEach(element => {
-            this.errorsRegister.push(element);
+            Snackbar.show({
+              text: `${element}`,
+              showAction: true,
+              actionText: '<i class="material-icons">close</i>',
+              ppos: "top-right",
+              actionTextColor: '#fff'
+            });
           });
         }
       }

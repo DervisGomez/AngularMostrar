@@ -2,7 +2,7 @@
   <form class="form container-fluid form-container" *ngIf="!loading" >
     <mat-form-field>
       <input matInput type="text"  id="pyme_title"
-        placeholder="Nombre de la tienda"
+        placeholder="Nombre del independiente"
         [ngModelOptions]="{standalone: true}"
         required [(ngModel)]="user.name"  />
     </mat-form-field>
@@ -18,11 +18,11 @@
         <input matInput type="email"  id="pyme_email"
           placeholder="Contacto"
           [ngModelOptions]="{standalone: true}"
-          required [(ngModel)]="user.email"  />
+          [(ngModel)]="user.email"  />
     </mat-form-field>
   </form>
 
   <button mat-raised-button  (click)="createIndependent()" color="primary">
-      Crear Independent
+      Crear Perfil Independiente
   </button>
 </div>

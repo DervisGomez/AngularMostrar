@@ -84,7 +84,13 @@ export class ProfileComponent implements OnInit {
           console.log("error: ",error);
           if (error.errors && error.errors.full_messages){
             error.errors.full_messages.forEach(element => {
-              object.errors.push(element);
+              Snackbar.show({
+                text: `${element}`,
+                showAction: true,
+                actionText: '<i class="material-icons">close</i>',
+                ppos: "top-right",
+                actionTextColor: '#fff'
+              });
             });
           }
         }
@@ -134,16 +140,26 @@ export class ProfileComponent implements OnInit {
           console.log(object);
           if (error.errors.full_messages){
             error.errors.full_messages.forEach(element => {
-              object.errors.push(element);
-              this.toastr.error(element, 'Error en Perfil');
+              Snackbar.show({
+                text: `${element}`,
+                showAction: true,
+                actionText: '<i class="material-icons">close</i>',
+                ppos: "top-right",
+                actionTextColor: '#fff'
+              });
             });
           }else {
             error.errors.forEach(element => {
-              object.errors.push(element);
+              Snackbar.show({
+                text: `${element}`,
+                showAction: true,
+                actionText: '<i class="material-icons">close</i>',
+                ppos: "top-right",
+                actionTextColor: '#fff'
+              });
             });
           }
         }
-        this.toastr.error('Perfil No Actualizado!', 'Error en Perfil');
       });
   }
 //

@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { Angular2TokenService } from 'angular2-token';
+import { ToastrService } from 'ngx-toastr';
 import { API_ROUTES } from '../app.constants';
 import { CONSTANTS } from '../app.constants';
-import { LoginComponent } from '../login/login.component';
+import {LoginComponent} from '../login/login.component'
 declare var Snackbar: any;
 
 @Component({
@@ -17,8 +18,7 @@ export class AreYouSureIndependentComponent {
   public myIndependents: any;
   public loading: boolean = false;
   public generalLoading: boolean = false;
-  constructor(
-    public dialogRef: MatDialogRef<AreYouSureIndependentComponent>,
+  constructor(public dialogRef: MatDialogRef<AreYouSureIndependentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _tokenService: Angular2TokenService) {
       this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
@@ -32,8 +32,8 @@ export class AreYouSureIndependentComponent {
       let url = API_ROUTES.deleteIndependent().replace(":independent_id", this.data.independent.id);
       let object = this;
       this._tokenService.put(url, {current_password: this.password}).subscribe(
-        data =>      {
-          this.loading=false;
+        data => {
+          this.loading = false;
           Snackbar.show({
             text: "Independent Eliminada Exitosamente",
             showAction: true,
@@ -41,7 +41,7 @@ export class AreYouSureIndependentComponent {
             ppos: "top-right",
             actionTextColor: '#fff'
           });
-          // window.location.reload();
+          this.dialogRef.close();
         },
         error =>   {
           this.loading=false;
@@ -59,53 +59,18 @@ export class AreYouSureIndependentComponent {
                 });
               });
             }else{
-              this.loading=false;
               Snackbar.show({
-                text: "Independent Eliminada Exitosamente",
+                text: "Error al eliminar el Independent, verifique su contraseña",
                 showAction: true,
                 actionText: '<i class="material-icons">close</i>',
-                ppos: "top-right",
+                pos: "top-right",
                 actionTextColor: '#fff'
               });
-              window.location.reload();
-              this.getMyIndependents();
             }
             // this.toastr.error("Error al eliminar la Independent", 'Independent Error');
           }
+          this.dialogRef.close();
         }
       );
-  }
-
-  getMyIndependents(){
-    this.myIndependents=[]
-    this.generalLoading=true;
-    let object = this;
-    let url = API_ROUTES.getMyIndependents();
-    this._tokenService.get(url).subscribe(
-      data =>      {
-        data = JSON.parse(data['_body']);
-        if (data['data'].length)
-        this.myIndependents = data['data'];
-        this.generalLoading=false;
-      },
-      error =>  {
-        this.generalLoading=false;
-        if("_body" in error){
-          error = error._body;
-          if (error.errors && error.errors.full_messages){
-            error.errors.full_messages.forEach(element => {
-              object.errors.push(element);
-            });
-          }
-          Snackbar.show({
-            text: "Error al obtener las Independents",
-            showAction: true,
-            actionText: '<i class="material-icons">close</i>',
-            pos: "top-right",
-            actionTextColor: '#fff'
-          });
-        }
-      }
-    );
   }
 }

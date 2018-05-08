@@ -24,6 +24,10 @@
   </div>
 </mat-nav-list>
 
-<button mat-fab color="primary" class="action-button" (click)="this.toggleView = !toggleView">
-  <mat-icon> {{ toggleView ? 'add' : 'close' }}</mat-icon>
+<button mat-fab color="primary" class="action-button" (click)="this.toggleView = !toggleView" *ngIf="this.mySellers.length == 0">
+  <mat-icon> {{ toggleView ? 'add' : 'close' }} </mat-icon>
+</button>
+
+<button disabled="disabled" mat-fab color="primary" class="action-button" (click)="this.toggleView = !toggleView" *ngIf="this.mySellers.length != 0">
+  <mat-icon> {{ toggleView ? 'add' : 'close' }} </mat-icon>
 </button>

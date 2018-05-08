@@ -3,12 +3,12 @@
   <mat-spinner *ngIf="loading" style="margin:0 auto;" mode="indeterminate"></mat-spinner>
   <form *ngIf="!loading" class="form container-fluid">
     <div class="example-container">
-      <div *ngFor="let error of errorsRegister" class="alert alert-danger" role="alert">
+      <!-- <div *ngFor="let error of errorsRegister" class="alert alert-danger" role="alert">
         - {{error}}
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
+      </div> -->
       <mat-form-field>
         <input type="text" matInput id="fullname"
           placeholder="Ingrese el nombre" [ngModelOptions]="{standalone: true}"
