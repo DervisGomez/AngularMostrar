@@ -18,8 +18,9 @@ export class ForgotPasswordComponent implements OnInit {
   forgotPassStepOne(){
     this.loading=true;
     this.errorsRegister = [];
-    
+    alert(1)
     this.userService.forgotPasswordStepOne(this.user).subscribe(data => {
+
       var token, uid, client;
       this.loading=false;
       if("_body" in data){

@@ -27,7 +27,7 @@ export class MenuComponent implements OnInit {
   public errorsRegister: any;
   public errorHttp: boolean = false;
   public loading: boolean = false;
-  
+
   constructor(
     private userService: UserService, private router: Router,
     public dialog: MatDialog,@Inject(MAT_DIALOG_DATA) private data: any,
@@ -98,6 +98,7 @@ export class MenuComponent implements OnInit {
       actionTextColor: '#fff'
     });
 
+    this.router.navigate(['/']);
     // this.router.navigate(['/']);
     // window.localStorage.removeItem('access-token');
     // window.localStorage.removeItem('client');

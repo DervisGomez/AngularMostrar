@@ -30,6 +30,21 @@ export const API_ROUTES = {
   deletePyme() {
     return `pymes/:pyme_id/destroy`;
   },
+  updatePyme() {
+    return `pymes/:pyme_id/update`;
+  },
+  getAPyme() {
+    return `pymes/:profile_id`;
+  },
+  getPymeProducts() {
+    return `pyme/:profile_id/products`;
+  },
+  createProductsPyme() {
+    return `:type_profile/:id_profile/products`;
+  },
+  deletePymesProducts() {
+    return `pyme/:profile_id/products/:product_id`;
+  },
   createSeller() {
     return `sellers/create`;
   },

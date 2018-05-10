@@ -7,7 +7,7 @@
       <div *ngFor="let pyme of myPymes">
         <mat-list-item>
           <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
-          <a matLine href="...">{{pyme.attributes.name}}</a>
+          <a matLine [routerLink]="['/admin/pyme', pyme.id]">{{pyme.attributes.name}}</a>
           <button mat-icon-button (click)="deletePyme(pyme)">
             <mat-icon mat-list-icon>delete</mat-icon>
           </button>
@@ -18,7 +18,7 @@
   </div>
 
   <div *ngIf="!this.toggleView">
-    <h1 mat-subheader>Crear Nuevo Pyme</h1>
+    <h1 mat-subheader>Crear Nueva Tienda</h1>
     <app-create-pyme></app-create-pyme>
   </div>
 </mat-nav-list>

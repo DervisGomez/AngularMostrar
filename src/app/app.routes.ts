@@ -6,6 +6,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {CreatePymeComponent} from './pymes/create.component';
+import { AdminPymesComponent } from './pymes/admin/admin.component';
+
 export const appRoutes: Routes = [
   {
     path: '',
@@ -37,8 +39,8 @@ export const appRoutes: Routes = [
     // ]
   },
   {
-    path: 'profile',
-    component: CreatePymeComponent,
+    path: 'admin/pyme/:pyme_id',
+    component: AdminPymesComponent,
     data: { preload: false }
   },
   {

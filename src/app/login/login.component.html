@@ -1,10 +1,5 @@
 <h2 mat-dialog-title>LogIn</h2>
 <mat-dialog-content>
-  <!-- <div *ngFor="let error of errors" class="alert alert-danger" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div> -->
   <mat-spinner *ngIf="loading" style="margin:0 auto;" mode="indeterminate"></mat-spinner>
   <form *ngIf="!loading" class="form container-fluid">
     <div class="form-container">
@@ -23,16 +18,8 @@
           [ngModelOptions]="{standalone: true}"
           required>
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-          <!-- <input type="password" id="passLogin" placeholder="Password" matInput
-              [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" /> -->
       </mat-form-field>
-      <!-- <mat-form-field> -->
-          <!-- <input type="checkbox" class="form-check-input" id="checkMeOut"> -->
-          <!-- <label class="form-check-label" for="checkMeOut">Check me out</label> -->
-      <!-- </mat-form-field> -->
-
-      <!-- <button type="submit" (click)='loginUser()' class="btn btn-primary">Loguear</button> -->
-      <br />
+      <br/>
       <a href="/forgot-password">Olvide mi contraseña</a>
       </div>
   </form>

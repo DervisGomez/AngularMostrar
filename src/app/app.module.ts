@@ -23,7 +23,10 @@ import { AreYouSureComponent } from './pymes/are-you-sure.component';
 import { CreateIndependentsComponent } from './independents/create.component';
 import { IndependentsComponent } from './independents/independents.component';
 import { AreYouSureIndependentComponent } from './independents/are-you-sure.component';
-
+import { AdminPymesComponent } from './pymes/admin/admin.component';
+import { ProductsPymeComponent } from './pymes/admin/products/products.component';
+import { CreatePymeProductsComponent } from './pymes/admin/products/create.component';
+import { AreYouSurePymeProductsComponent } from './pymes/admin/products/are-you-sure.component';
 
 import { SellersComponent } from './sellers/sellers.component';
 import { CreateSellerComponent } from './sellers/create.component';
@@ -56,12 +59,17 @@ import 'hammerjs';
     AreYouSureIndependentComponent,
     SellersComponent,
     CreateSellerComponent,
-    AreYouSureSellerComponent
+    AreYouSureSellerComponent,
+    AdminPymesComponent,
+    ProductsPymeComponent,
+    CreatePymeProductsComponent,
+    AreYouSurePymeProductsComponent
   ],
   entryComponents: [
     AreYouSureComponent,
     AreYouSureIndependentComponent,
-    AreYouSureSellerComponent
+    AreYouSureSellerComponent,
+    AreYouSurePymeProductsComponent
   ],
   imports: [
     MatDialogModule,

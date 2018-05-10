@@ -22,10 +22,12 @@ declare var Snackbar: any;
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
+
 export class ProfileComponent implements OnInit {
   public option: string = 'dashboard';
   public loading: boolean = false;
   public open: boolean = true;
+  public fileToUpload: File = null;
   public user: any = {
     id: '',
     nickname: '',
@@ -56,6 +58,17 @@ export class ProfileComponent implements OnInit {
       });
    }
 
+  // handleFileInput(files: FileList) {
+  //   this.fileToUpload = files.item(0);
+  // }
+  //
+  // uploadFileToActivity() {
+  //   this.fileUploadService.postFile(this.fileToUpload).subscribe(data => {
+  //     // do something, if upload success
+  //     }, error => {
+  //       console.log(error);
+  //     });
+  // }
   // selectTab(val){
   //   this.tabActive=val;
   // }
