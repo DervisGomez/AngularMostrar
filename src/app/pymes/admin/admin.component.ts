@@ -18,26 +18,22 @@ export class AdminPymesComponent implements OnInit {
   public errors: any=[];
   public option: string = 'information';
   public pymeId: string;
-  public pyme: any = {};
+  public pyme: any = {
+    name: "",
+    email: "",
+    description: "",
+    vission: "",
+    mission: "",
+  };
 
   constructor(
     private _route: ActivatedRoute,
    private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
     this.pymeId = this._route.snapshot.paramMap.get('pyme_id');
-
-    this._route.queryParams.subscribe(params => {
-      if ('tab' in params)
-        this.option=params['tab'];
-      else
-        this.option='information';
-
-      console.log(params)
-    });
   }
 
   ngOnInit() {
-    this.pyme={};
     this.getPyme();
   }
 
@@ -77,23 +73,18 @@ export class AdminPymesComponent implements OnInit {
   }
 
   updatePyme(){
-    this.pyme={};
     var object = this;
     object.errors=[];
     this.loading=true;
     // this.userService.user = this.user;
     let url = API_ROUTES.updatePyme().replace(":pyme_id", this.pymeId);
-    console.log(url)
-    console.log(this.pyme)
-    let params = {"pyme": this.pyme }
+    let params = {"pyme": this.pyme.attributes}
     this._tokenService.put(url, params).subscribe(
-      data => {
+      data =>      {
         data = JSON.parse(data['_body']);
         console.log("data:: ", data);
-        console.log(this.pyme);
-        this.pyme = Object.assign({}, this.pyme, data['data']);
         this.pyme = data['data'];
-        console.log(this.pyme);
+        // Object.assign({}, this.pyme, data['data']);
         Snackbar.show({
           text: "Perfil Actualizado Exitosamente",
           showAction: true,
@@ -109,7 +100,6 @@ export class AdminPymesComponent implements OnInit {
           error=JSON.parse(error._body);
           console.log(error);
           console.log(object);
-          alert('error');
           if (error.errors.full_messages){
             error.errors.full_messages.forEach(element => {
               Snackbar.show({

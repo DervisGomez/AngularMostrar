@@ -38,7 +38,6 @@ export class ProductsPymeComponent implements OnInit {
       if ('tab' in params)
         if (params['tab'] == 'products') {
           this.toggleView = true;
-          alert('asdasdsad')
         }
 
       console.log(params)
@@ -53,7 +52,6 @@ export class ProductsPymeComponent implements OnInit {
       if ('tab' in params)
         if (params['tab'] == 'products') {
           this.toggleView = true;
-          alert('asdasdsad')
         }
 
       console.log(params)
