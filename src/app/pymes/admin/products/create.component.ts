@@ -3,7 +3,7 @@ import { Angular2TokenService } from 'angular2-token';
 import { API_ROUTES } from '../../../app.constants';
 import { CONSTANTS } from '../../../app.constants';
 import { Router } from '@angular/router';
-
+import { ActivatedRoute } from '@angular/router';
 declare var Snackbar: any;
 @Component({
   selector: 'admin-create-pyme-products',
@@ -28,12 +28,17 @@ export class CreatePymeProductsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private _tokenService: Angular2TokenService) {
+    private _tokenService: Angular2TokenService,
+    private activatedRoute: ActivatedRoute) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
-    // this.myPymes=[]
-    this.router.routeReuseStrategy.shouldReuseRoute = function() {
-        return false;
-    };
+    this.activatedRoute.queryParams.subscribe(params => {
+      if ('tab' in params)
+        this.option=params['tab'];
+      else
+        this.option='dashboard';
+
+      console.log(params)
+    });
   }
 
   ngOnInit() {
@@ -57,7 +62,7 @@ export class CreatePymeProductsComponent implements OnInit {
         });
 
         this.loading=false;
-        // this.router.navigate(['/admin/pyme/'], { queryParams: "58" });
+        this.router.navigate([`/admin/pyme/${this.pymeId}`], { queryParams: {tab: "products"} });
       },
       error =>   {
         this.loading=false;

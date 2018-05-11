@@ -25,6 +25,15 @@ export class AdminPymesComponent implements OnInit {
    private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
     this.pymeId = this._route.snapshot.paramMap.get('pyme_id');
+
+    this._route.queryParams.subscribe(params => {
+      if ('tab' in params)
+        this.option=params['tab'];
+      else
+        this.option='information';
+
+      console.log(params)
+    });
   }
 
   ngOnInit() {

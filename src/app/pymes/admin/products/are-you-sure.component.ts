@@ -38,7 +38,7 @@ export class AreYouSurePymeProductsComponent {
 
   onDelete(){
     this.loading=true;
-      let url = API_ROUTES.deletePymesProducts().replace(":profile_id", "58").replace(":product_id", this.data.product.id);
+      let url = API_ROUTES.deletePymesProducts().replace(":profile_id", this.data.pymeId).replace(":product_id", this.data.product.id);
       let object = this;
       this._tokenService.put(url, {current_password: this.password}).subscribe(
         data =>      {
@@ -88,7 +88,7 @@ export class AreYouSurePymeProductsComponent {
     this.myProducts=[]
     this.generalLoading=true;
     let object = this;
-    let url = API_ROUTES.getPymeProducts().replace(":profile_id", "58");
+    let url = API_ROUTES.getPymeProducts().replace(":profile_id", this.data.pymeId);
     this._tokenService.get(url).subscribe(
       data =>      {
         data = JSON.parse(data['_body']);

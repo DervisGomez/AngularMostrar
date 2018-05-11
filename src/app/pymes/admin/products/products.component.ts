@@ -3,7 +3,9 @@ import { Angular2TokenService } from 'angular2-token';
 import { API_ROUTES } from '../../../app.constants';
 import { CONSTANTS } from '../../../app.constants';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material';
-import { CreatePymeProductsComponent } from './create.component'
+import { CreatePymeProductsComponent } from './create.component';
+import { ActivatedRoute } from '@angular/router';
+
 // import {LoginComponent} from '../login/login.component'
 import {AreYouSurePymeProductsComponent} from './are-you-sure.component';
 // import { ChangeDetectionStrategy } from '@angular/core';
@@ -29,24 +31,44 @@ export class ProductsPymeComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
+    private _route: ActivatedRoute,
    private _tokenService: Angular2TokenService) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
+    this._route.queryParams.subscribe(params => {
+      if ('tab' in params)
+        if (params['tab'] == 'products') {
+          this.toggleView = true;
+          alert('asdasdsad')
+        }
+
+      console.log(params)
+    });
   }
 
   ngOnInit() {
-    console.log('re',this.dialog);
     this.myProducts=[];
     this.getMyProducts();
 
+    this._route.queryParams.subscribe(params => {
+      if ('tab' in params)
+        if (params['tab'] == 'products') {
+          this.toggleView = true;
+          alert('asdasdsad')
+        }
+
+      console.log(params)
+    });
   }
   selectProduct(product){
     this.productSelected = product;
   }
-  deleteProduct(product){
+
+  deleteProduct(product, pymeId){
     let dialogRef = this.dialog.open(AreYouSurePymeProductsComponent, {
       width: '300px',
       data: {
         product: product,
+        pymeId: pymeId,
         passRequired: true,
       }
     });
