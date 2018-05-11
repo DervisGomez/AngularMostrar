@@ -29,7 +29,7 @@ export class AreYouSurePymeProductsComponent {
   }
 
   ngOnInit() {
-    this.pymeId = this._route.snapshot.paramMap.get('pyme_id');
+    console.log('dataaaaaa',this.data)
   }
 
   onNoClick(): void {
@@ -37,9 +37,11 @@ export class AreYouSurePymeProductsComponent {
   }
 
   onDelete(){
+    alert(this.pymeId)
     this.loading=true;
-      let url = API_ROUTES.deletePymesProducts().replace(":profile_id", "62").replace(":product_id", this.data.product.id);
+      let url = API_ROUTES.deletePymesProducts().replace(":profile_id", "58").replace(":product_id", this.data.product.id);
       let object = this;
+      alert(url)
       this._tokenService.put(url, {current_password: this.password}).subscribe(
         data =>      {
           this.loading=false;

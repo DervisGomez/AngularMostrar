@@ -43,7 +43,7 @@ export const API_ROUTES = {
     return `:type_profile/:id_profile/products`;
   },
   deletePymesProducts() {
-    return `pyme/:profile_id/products/:product_id`;
+    return `pymes/:profile_id/products/:product_id/destroy`;
   },
   createSeller() {
     return `sellers/create`;

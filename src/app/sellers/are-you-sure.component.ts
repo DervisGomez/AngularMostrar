@@ -43,6 +43,7 @@ export class AreYouSureSellerComponent {
             actionTextColor: '#fff'
           });
           this.dialogRef.close();
+          this.getMySellers();
         },
         error =>   {
           this.loading=false;
@@ -52,12 +53,20 @@ export class AreYouSureSellerComponent {
               error.error.forEach(element => {
                 object.errors.push(element);
                 Snackbar.show({
-                  text: "Error al eliminar el Seller, verifique su contraseña",
+                  text: element,
                   showAction: true,
                   actionText: '<i class="material-icons">close</i>',
                   pos: "top-right",
                   actionTextColor: '#fff'
                 });
+              });
+            }else{
+              Snackbar.show({
+                text: "Error al eliminar el Seller, verifique su contraseña",
+                showAction: true,
+                actionText: '<i class="material-icons">close</i>',
+                pos: "top-right",
+                actionTextColor: '#fff'
               });
             }
             // this.toastr.error("Error al eliminar la Seller", 'Seller Error');
