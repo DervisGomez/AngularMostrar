@@ -26,8 +26,9 @@
   <!-- Sidebar options -->
 
   <mat-sidenav-content>
-    <mat-spinner *ngIf="loading" style="margin:0 auto;" mode="indeterminate"></mat-spinner>
+
     <div *ngIf="this.option == 'information'">
+      <mat-spinner *ngIf="loading" style="margin:0 auto;" mode="indeterminate"></mat-spinner>
       <div *ngIf="!loading">
         <div class="container-fluid">
           <div class="row">

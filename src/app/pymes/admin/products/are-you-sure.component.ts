@@ -37,16 +37,14 @@ export class AreYouSurePymeProductsComponent {
   }
 
   onDelete(){
-    alert(this.pymeId)
     this.loading=true;
       let url = API_ROUTES.deletePymesProducts().replace(":profile_id", "58").replace(":product_id", this.data.product.id);
       let object = this;
-      alert(url)
       this._tokenService.put(url, {current_password: this.password}).subscribe(
         data =>      {
           this.loading=false;
           Snackbar.show({
-            text: "Pyme Eliminada Exitosamente",
+            text: "Producto Eliminado Exitosamente",
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
             ppos: "top-right",
@@ -72,7 +70,7 @@ export class AreYouSurePymeProductsComponent {
               });
             }else{
               Snackbar.show({
-                text: "Error al eliminar el Pyme, verifique su contraseña",
+                text: "Error al eliminar el Producto, verifique su contraseña",
                 showAction: true,
                 actionText: '<i class="material-icons">close</i>',
                 pos: "top-right",
