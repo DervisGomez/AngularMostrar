@@ -31,14 +31,6 @@ export class CreatePymeProductsComponent implements OnInit {
     private _tokenService: Angular2TokenService,
     private activatedRoute: ActivatedRoute) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
-    this.activatedRoute.queryParams.subscribe(params => {
-      if ('tab' in params)
-        this.option=params['tab'];
-      else
-        this.option='dashboard';
-
-      console.log(params)
-    });
   }
 
   ngOnInit() {
