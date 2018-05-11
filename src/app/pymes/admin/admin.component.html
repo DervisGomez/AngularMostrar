@@ -1,6 +1,11 @@
 <mat-sidenav-container class="sidenav-container">
   <!-- Sidebar options -->
   <mat-sidenav #sidenav mode="side" [opened]="true" class="mat-sidenav hidden-xs">
+    <div class="text-center" style="padding-top: 20px">
+      <img class="user-profile-avatar" src="assets/imgs/profile.jpg" alt="">
+      <p>{{ pyme.attributes.name | slice:0:15 }}</p>
+      <mat-divider style="margin-top: 10px"></mat-divider>
+    </div>
     <mat-list>
       <mat-list-item (click)="option = 'information'">
         <button mat-button>
