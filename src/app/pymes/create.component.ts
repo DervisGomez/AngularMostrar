@@ -60,7 +60,7 @@ export class CreatePymeComponent implements OnInit {
         data = JSON.parse(data['_body']);
         // window.localStorage.setItem('user', JSON.stringify(this.user));
         Snackbar.show({
-          text: "Pyme Creado Exitosamente",
+          text: "Tienda Creada Exitosamente",
           showAction: true,
           actionText: '<i class="material-icons">close</i>',
           ppos: "top-right",

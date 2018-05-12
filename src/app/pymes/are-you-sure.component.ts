@@ -35,7 +35,7 @@ export class AreYouSureComponent {
         data =>      {
           this.loading=false;
           Snackbar.show({
-            text: "Pyme Eliminada Exitosamente",
+            text: "Tienda Eliminada Exitosamente",
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
             ppos: "top-right",
@@ -61,7 +61,7 @@ export class AreYouSureComponent {
               });
             }else{
               Snackbar.show({
-                text: "Error al eliminar el Pyme, verifique su contraseña",
+                text: "Error al eliminar la Tienda, verifique su contraseña",
                 showAction: true,
                 actionText: '<i class="material-icons">close</i>',
                 pos: "top-right",
@@ -97,7 +97,7 @@ export class AreYouSureComponent {
             });
           }
           Snackbar.show({
-            text: "Error al obtener las Pymes",
+            text: "Error al obtener las Tiendas",
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
             pos: "top-right",

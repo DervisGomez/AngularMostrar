@@ -67,7 +67,7 @@ export class CreatePymeProductsComponent implements OnInit {
             });
           }
           Snackbar.show({
-            text: "Error al crear la Pyme",
+            text: "Error al crear la Tienda",
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
             pos: "top-right",
