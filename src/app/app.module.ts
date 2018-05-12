@@ -97,9 +97,7 @@ import 'hammerjs';
   ],
   imports: [
     MatDialogModule,
-    RouterModule.forRoot(
-      appRoutes, {preloadingStrategy: PreloadAllModules}
-    ),
+    RouterModule.forRoot(appRoutes, { useHash: true })
     BrowserModule,
     FormsModule,
     HttpClientModule,
