@@ -5,8 +5,10 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import {CreatePymeComponent} from './pymes/create.component';
+// import {CreatePymeComponent} from './pymes/create.component';
 import { AdminPymesComponent } from './pymes/admin/admin.component';
+import { AdminIndependentsComponent } from './independents/admin/admin.component';
+import { AdminSellersComponent } from './sellers/admin/admin.component';
 
 export const appRoutes: Routes = [
   {
@@ -41,6 +43,16 @@ export const appRoutes: Routes = [
   {
     path: 'admin/pyme/:pyme_id',
     component: AdminPymesComponent,
+    data: { preload: false }
+  },
+  {
+    path: 'admin/independent/:independent_id',
+    component: AdminIndependentsComponent,
+    data: { preload: false }
+  },
+  {
+    path: 'admin/seller/:seller_id',
+    component: AdminSellersComponent,
     data: { preload: false }
   },
   {

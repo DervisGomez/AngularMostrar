@@ -23,10 +23,24 @@ import { AreYouSureComponent } from './pymes/are-you-sure.component';
 import { CreateIndependentsComponent } from './independents/create.component';
 import { IndependentsComponent } from './independents/independents.component';
 import { AreYouSureIndependentComponent } from './independents/are-you-sure.component';
+
+// admin pymes
 import { AdminPymesComponent } from './pymes/admin/admin.component';
 import { ProductsPymeComponent } from './pymes/admin/products/products.component';
 import { CreatePymeProductsComponent } from './pymes/admin/products/create.component';
 import { AreYouSurePymeProductsComponent } from './pymes/admin/products/are-you-sure.component';
+
+// admin sellers
+import { AdminSellersComponent } from './sellers/admin/admin.component';
+import { ProductsSellerComponent } from './sellers/admin/products/products.component';
+import { CreateSellerProductsComponent } from './sellers/admin/products/create.component';
+import { AreYouSureSellerProductsComponent } from './sellers/admin/products/are-you-sure.component';
+
+// admin independents
+import { AdminIndependentsComponent } from './independents/admin/admin.component';
+import { ProductsIndependentComponent } from './independents/admin/products/products.component';
+import { CreateIndependentProductsComponent } from './independents/admin/products/create.component';
+import { AreYouSureIndependentProductsComponent } from './independents/admin/products/are-you-sure.component';
 
 import { SellersComponent } from './sellers/sellers.component';
 import { CreateSellerComponent } from './sellers/create.component';
@@ -63,18 +77,28 @@ import 'hammerjs';
     AdminPymesComponent,
     ProductsPymeComponent,
     CreatePymeProductsComponent,
-    AreYouSurePymeProductsComponent
+    AreYouSurePymeProductsComponent,
+    AdminSellersComponent,
+    ProductsSellerComponent,
+    CreateSellerProductsComponent,
+    AreYouSureSellerProductsComponent,
+    AdminIndependentsComponent,
+    ProductsIndependentComponent,
+    CreateIndependentProductsComponent,
+    AreYouSureIndependentProductsComponent
   ],
   entryComponents: [
     AreYouSureComponent,
     AreYouSureIndependentComponent,
     AreYouSureSellerComponent,
-    AreYouSurePymeProductsComponent
+    AreYouSurePymeProductsComponent,
+    AreYouSureSellerProductsComponent,
+    AreYouSureIndependentProductsComponent
   ],
   imports: [
     MatDialogModule,
     RouterModule.forRoot(
-      appRoutes, {onSameUrlNavigation: 'reload', preloadingStrategy: PreloadAllModules}
+      appRoutes, {preloadingStrategy: PreloadAllModules}
     ),
     BrowserModule,
     FormsModule,

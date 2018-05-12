@@ -57,6 +57,21 @@ export const API_ROUTES = {
   deleteSeller() {
     return `sellers/:seller_id/destroy`;
   },
+  updateSeller() {
+    return `sellers/:seller_id/update`;
+  },
+  getASeller() {
+    return `sellers/own`;
+  },
+  getSellerProducts() {
+    return `seller/:profile_id/products`;
+  },
+  createProductsSeller() {
+    return `:type_profile/:id_profile/products`;
+  },
+  deleteSellersProducts() {
+    return `sellers/:profile_id/products/:product_id/destroy`;
+  },
   createIndependent() {
     return `independent/create`;
   },
@@ -68,5 +83,20 @@ export const API_ROUTES = {
   },
   deleteIndependent() {
     return `independents/:independent_id/destroy`;
+  },
+  updateIndependent() {
+    return `independents/:independent_id/update`;
+  },
+  getAIndependent() {
+    return `independents/:profile_id`;
+  },
+  getIndependentProducts() {
+    return `independent/:profile_id/products`;
+  },
+  createProductsIndependent() {
+    return `:type_profile/:id_profile/products`;
+  },
+  deleteIndependentsProducts() {
+    return `independents/:profile_id/products/:product_id/destroy`;
   }
 };

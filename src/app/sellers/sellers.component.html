@@ -7,7 +7,7 @@
       <div *ngFor="let seller of mySellers">
         <mat-list-item>
           <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
-          <a matLine href="...">{{seller.attributes.name}}</a>
+          <a matLine [routerLink]="['/admin/seller', seller.id]">{{seller.attributes.name}}</a>
           <button mat-icon-button (click)="deleteSeller(seller)">
             <mat-icon mat-list-icon>delete</mat-icon>
           </button>

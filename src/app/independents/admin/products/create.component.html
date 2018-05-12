@@ -1,0 +1,28 @@
+<div class="card" style="padding: 20px">
+  <form class="form container-fluid form-container" *ngIf="!loading" >
+    <mat-form-field>
+      <input matInput type="text"  id="product_title"
+        placeholder="Nombre del producto"
+        [ngModelOptions]="{standalone: true}"
+        required [(ngModel)]="product.name"  />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="text" id="product_description"
+        placeholder="Descripción"
+        [ngModelOptions]="{standalone: true}"
+        [(ngModel)]="product.description"  />
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="number"  id="product_email"
+          placeholder="Precio"
+          [ngModelOptions]="{standalone: true}"
+          [(ngModel)]="product.price"  />
+    </mat-form-field>
+  </form>
+
+  <button mat-raised-button  (click)="createProduct()" color="primary">
+    Crear Producto
+  </button>
+</div>

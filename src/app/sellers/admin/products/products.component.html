@@ -1,14 +1,14 @@
 <mat-nav-list>
   <div *ngIf="this.toggleView">
-    <h1 mat-subheader>Independents</h1>
+    <h1 mat-subheader>Productos</h1>
     <mat-divider></mat-divider>
     <mat-spinner style="margin:150px auto;" mode="indeterminate" *ngIf="generalLoading"></mat-spinner>
     <div>
-      <div *ngFor="let independent of myIndependents">
+      <div *ngFor="let product of myProducts">
         <mat-list-item>
           <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
-          <a matLine [routerLink]="['/admin/independent', independent.id]">{{independent.attributes.name}}</a>
-          <button mat-icon-button (click)="deleteIndependent(independent)">
+          <a matLine href="admin/seller">{{product.attributes.name}}</a>
+          <button mat-icon-button (click)="deleteProduct(product, this.sellerId)">
             <mat-icon mat-list-icon>delete</mat-icon>
           </button>
         </mat-list-item>
@@ -18,8 +18,8 @@
   </div>
 
   <div *ngIf="!this.toggleView">
-    <h1 mat-subheader>Crear Nuevo Independiente</h1>
-    <app-create-independent></app-create-independent>
+    <h1 mat-subheader>Crear Nuevo Producto</h1>
+    <admin-create-seller-products [sellerId]="this.sellerId"></admin-create-seller-products>
   </div>
 </mat-nav-list>
 
