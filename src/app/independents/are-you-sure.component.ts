@@ -35,7 +35,7 @@ export class AreYouSureIndependentComponent {
         data => {
           this.loading = false;
           Snackbar.show({
-            text: "Independent Eliminada Exitosamente",
+            text: "Independiente Eliminada Exitosamente",
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
             ppos: "top-right",
@@ -60,7 +60,7 @@ export class AreYouSureIndependentComponent {
               });
             }else{
               Snackbar.show({
-                text: "Error al eliminar el Independent, verifique su contraseña",
+                text: "Error al eliminar el Independiente, verifique su contraseña",
                 showAction: true,
                 actionText: '<i class="material-icons">close</i>',
                 pos: "top-right",

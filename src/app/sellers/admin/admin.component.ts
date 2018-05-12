@@ -37,19 +37,17 @@ export class AdminSellersComponent implements OnInit {
     this.getSeller();
   }
 
-  getSeller() {
-    this.seller={};
-    this.loading = true;
+  getSeller(){
+    this.seller=[]
     this.generalLoading=true;
     let object = this;
     let url = API_ROUTES.getASeller();
     this._tokenService.get(url).subscribe(
-      data => {
+      data =>      {
         data = JSON.parse(data['_body']);
+        if (data['data'].length)
         this.seller = data['data'];
-        this.generalLoading = false;
-        console.log(this.seller);
-        this.loading = false;
+        this.generalLoading=false;
       },
       error =>  {
         this.generalLoading=false;

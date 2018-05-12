@@ -46,7 +46,7 @@
                     <mat-form-field>
                       <input type="text" matInput id="fullname"
                         placeholder="Nombre" [ngModelOptions]="{standalone: true}"
-                        required [(ngModel)]="seller.attributes.name">
+                        [(ngModel)]="seller.attributes.name">
                     </mat-form-field>
                   </div>
 
@@ -54,7 +54,7 @@
                     <mat-form-field>
                       <input type="text" matInput id="email"
                         placeholder="Correo" [ngModelOptions]="{standalone: true}"
-                        required [(ngModel)]="seller.attributes.email">
+                        [(ngModel)]="seller.attributes.email">
                     </mat-form-field>
                   </div>
 
@@ -64,7 +64,7 @@
                               placeholder="Descripción"
                               id="description"
                               [ngModelOptions]="{standalone: true}"
-                              required [(ngModel)]="seller.attributes.description">
+                              [(ngModel)]="seller.attributes.description">
 
                     </textarea>
                   </mat-form-field>
@@ -76,7 +76,7 @@
                               placeholder="Misión"
                               id="description"
                               [ngModelOptions]="{standalone: true}"
-                              required [(ngModel)]="seller.attributes.mission">
+                              [(ngModel)]="seller.attributes.mission">
 
                     </textarea>
                   </mat-form-field>
@@ -88,7 +88,7 @@
                               placeholder="Visión"
                               id="description"
                               [ngModelOptions]="{standalone: true}"
-                              required [(ngModel)]="seller.attributes.vision">
+                              [(ngModel)]="seller.attributes.vision">
 
                     </textarea>
                   </mat-form-field>

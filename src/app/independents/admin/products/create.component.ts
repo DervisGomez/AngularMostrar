@@ -67,7 +67,7 @@ export class CreateIndependentProductsComponent implements OnInit {
             });
           }
           Snackbar.show({
-            text: "Error al crear la Independent",
+            text: "Error al crear el Producto",
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
             pos: "top-right",

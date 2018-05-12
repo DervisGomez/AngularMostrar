@@ -36,7 +36,7 @@ export class AreYouSureSellerComponent {
         data =>      {
           this.loading=false;
           Snackbar.show({
-            text: "Seller Eliminada Exitosamente",
+            text: "Vendedor Eliminado Exitosamente",
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
             ppos: "top-right",
@@ -62,7 +62,7 @@ export class AreYouSureSellerComponent {
               });
             }else{
               Snackbar.show({
-                text: "Error al eliminar el Seller, verifique su contraseña",
+                text: "Error al eliminar el Vendedor, verifique su contraseña",
                 showAction: true,
                 actionText: '<i class="material-icons">close</i>',
                 pos: "top-right",

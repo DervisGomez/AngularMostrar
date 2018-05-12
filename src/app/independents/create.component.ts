@@ -60,7 +60,7 @@ export class CreateIndependentsComponent implements OnInit {
         data = JSON.parse(data['_body']);
         // window.localStorage.setItem('user', JSON.stringify(this.user));
         Snackbar.show({
-          text: "Independent Creado Exitosamente",
+          text: "Independiente Creado Exitosamente",
           showAction: true,
           actionText: '<i class="material-icons">close</i>',
           ppos: "top-right",
@@ -83,7 +83,7 @@ export class CreateIndependentsComponent implements OnInit {
             });
           }
           Snackbar.show({
-            text: "Error al crear la Independent",
+            text: "Error al crear el Independiente",
             showAction: true,
             actionText: '<i class="material-icons">close</i>',
             pos: "top-right",
