@@ -4,6 +4,8 @@ import { API_ROUTES } from '../../../app.constants';
 import { CONSTANTS } from '../../../app.constants';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { ProductsIndependentComponent } from '../products/products.component';
+
 declare var Snackbar: any;
 @Component({
   selector: 'admin-create-independent-products',
@@ -28,6 +30,7 @@ export class CreateIndependentProductsComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private parent: ProductsIndependentComponent,
     private _tokenService: Angular2TokenService,
     private activatedRoute: ActivatedRoute) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
@@ -54,7 +57,9 @@ export class CreateIndependentProductsComponent implements OnInit {
         });
 
         this.loading=false;
-        this.router.navigate([`/admin/independent/${this.independentId}`], { queryParams: {tab: "products"} });
+        this.parent.toggleView = true;
+        this.parent.getMyProducts();
+        // this.router.navigate([`/admin/independent/${this.independentId}`], { queryParams: {tab: "products"} });
       },
       error =>   {
         this.loading=false;

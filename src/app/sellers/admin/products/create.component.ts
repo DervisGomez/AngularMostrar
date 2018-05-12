@@ -4,6 +4,8 @@ import { API_ROUTES } from '../../../app.constants';
 import { CONSTANTS } from '../../../app.constants';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { ProductsSellerComponent } from '../products/products.component';
+
 declare var Snackbar: any;
 @Component({
   selector: 'admin-create-seller-products',
@@ -28,6 +30,7 @@ export class CreateSellerProductsComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private parent: ProductsSellerComponent,
     private _tokenService: Angular2TokenService,
     private activatedRoute: ActivatedRoute) {
     this._tokenService.init({apiBase: CONSTANTS.BACK_URL});
@@ -54,7 +57,9 @@ export class CreateSellerProductsComponent implements OnInit {
         });
 
         this.loading=false;
-        this.router.navigate([`/admin/seller/${this.sellerId}`], { queryParams: {tab: "products"} });
+        this.parent.toggleView = true;
+        this.parent.getMyProducts();
+        // this.router.navigate([`/admin/seller/${this.sellerId}`], { queryParams: {tab: "products"} });
       },
       error =>   {
         this.loading=false;
