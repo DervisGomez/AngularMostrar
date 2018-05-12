@@ -38,7 +38,7 @@ export class AdminSellersComponent implements OnInit {
   }
 
   getSeller(){
-    this.seller=[]
+    this.seller={};
     this.generalLoading=true;
     let object = this;
     let url = API_ROUTES.getASeller();
