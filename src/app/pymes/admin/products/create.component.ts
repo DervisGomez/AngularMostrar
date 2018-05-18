@@ -5,23 +5,34 @@ import { CONSTANTS } from '../../../app.constants';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ProductsPymeComponent } from '../products/products.component';
+import {ENTER, COMMA} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material';
 
 declare var Snackbar: any;
 @Component({
   selector: 'admin-create-pyme-products',
   templateUrl: './create.component.html',
-//   styleUrls: ['./pymes.component.scss']
+  styleUrls: ['./create.component.scss']
 })
 
 export class CreatePymeProductsComponent implements OnInit {
   public loading: boolean = false;
   public generalLoading: boolean = false;
   public errors: any=[];
+  public visible: boolean = true;
+  public selectable: boolean = true;
+  public removable: boolean = true;
+  public addOnBlur: boolean = true;
+  public typeMoney : string = 'USD';
+
+  separatorKeysCodes = [ENTER, COMMA];
+
   @Input() pymeId : string = "";
   public product: any = {
     "name": "",
     "description": "",
-    "price": ""
+    "price": "",
+    "tags": []
   };
 
   public myProducts: any;
@@ -37,6 +48,44 @@ export class CreatePymeProductsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  moneyType = [
+    {value: 'USD', viewValue: 'Dólares'},
+    {value: 'BS', viewValue: 'Bolívares'}
+  ];
+
+  categories = [
+    {value: 'Electrónica' },
+    {value: 'Doméstico' },
+    {value: 'Computación' },
+    {value: 'Telefonía' },
+    {value: 'Audio' },
+    {value: 'Video' },
+    {value: 'Cocina' }
+  ];
+
+  add(event: MatChipInputEvent): void {
+   let input = event.input;
+   let value = event.value;
+
+   // Add our fruit
+   if ((value || '').trim()) {
+     this.product.tags.push({ name: value.trim() });
+   }
+
+   // Reset the input value
+   if (input) {
+     input.value = '';
+   }
+ }
+
+ remove(tag: any): void {
+   let index = this.product.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.product.tags.splice(index, 1);
+    }
   }
 
   createProduct() {

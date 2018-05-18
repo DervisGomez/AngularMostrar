@@ -3,7 +3,7 @@
   <mat-sidenav #sidenav mode="side" [opened]="true" class="mat-sidenav hidden-xs">
     <div class="text-center" style="padding-top: 20px">
       <img class="user-profile-avatar" src="assets/imgs/profile.jpg" alt="">
-      <!-- <p>{{ seller.attributes.name | slice:0:15 }}</p> -->
+      <p>{{ seller.attributes.name | slice:0:15 }}</p>
       <mat-divider style="margin-top: 10px"></mat-divider>
     </div>
     <mat-list>
@@ -34,7 +34,7 @@
     <div *ngIf="this.option == 'information'">
       <mat-spinner *ngIf="loading" style="margin:0 auto;" mode="indeterminate"></mat-spinner>
       <div *ngIf="!loading">
-        <!-- <div class="container-fluid">
+        <div class="container-fluid">
           <div class="row">
             <div class="col-lg-12">
               <mat-spinner *ngIf="loading" style="margin:0 auto;" mode="indeterminate"></mat-spinner>
@@ -104,7 +104,7 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
 

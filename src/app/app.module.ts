@@ -46,6 +46,11 @@ import { SellersComponent } from './sellers/sellers.component';
 import { CreateSellerComponent } from './sellers/create.component';
 import { AreYouSureSellerComponent } from './sellers/are-you-sure.component';
 
+
+//show products
+
+import { ShowPymesProductsComponent } from './pymes/admin/products/show.component';
+
 // imports material angular
 import { MaterialModule } from './material.module';
 import {FormBuilder, FormGroup} from '@angular/forms';
@@ -85,7 +90,8 @@ import 'hammerjs';
     AdminIndependentsComponent,
     ProductsIndependentComponent,
     CreateIndependentProductsComponent,
-    AreYouSureIndependentProductsComponent
+    AreYouSureIndependentProductsComponent,
+    ShowPymesProductsComponent
   ],
   entryComponents: [
     AreYouSureComponent,

@@ -15,10 +15,20 @@
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput type="number"  id="product_email"
+       <input matInput placeholder="Precio"
+           type="number"
+           class="example-right-align"
+           id="product_price"
+           [ngModelOptions]="{standalone: true}"
+           [(ngModel)]="product.price"/>
+        <span matPrefix>$&nbsp;</span>
+        <span matSuffix>.00</span>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="number"
           placeholder="Precio"
-          [ngModelOptions]="{standalone: true}"
-          [(ngModel)]="product.price"  />
+
     </mat-form-field>
   </form>
 

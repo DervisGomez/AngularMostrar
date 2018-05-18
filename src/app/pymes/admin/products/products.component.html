@@ -7,7 +7,7 @@
       <div *ngFor="let product of myProducts">
         <mat-list-item>
           <img matListAvatar src="assets/imgs/profile.jpg" alt="...">
-          <a matLine href="admin/pyme">{{product.attributes.name}}</a>
+          <a matLine [routerLink]="['/pymes/show/product/', product.id]">{{product.attributes.name}}</a>
           <button mat-icon-button (click)="deleteProduct(product, this.pymeId)">
             <mat-icon mat-list-icon>delete</mat-icon>
           </button>

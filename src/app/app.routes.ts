@@ -10,6 +10,9 @@ import { AdminPymesComponent } from './pymes/admin/admin.component';
 import { AdminIndependentsComponent } from './independents/admin/admin.component';
 import { AdminSellersComponent } from './sellers/admin/admin.component';
 
+import { ShowPymesProductsComponent } from './pymes/admin/products/show.component';
+
+
 export const appRoutes: Routes = [
   {
     path: '',
@@ -36,9 +39,6 @@ export const appRoutes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     data: { preload: false }
-    // children: [
-    //   { path: '/profile', redirectTo: 'tracks' },
-    // ]
   },
   {
     path: 'admin/pyme/:pyme_id',
@@ -53,6 +53,11 @@ export const appRoutes: Routes = [
   {
     path: 'admin/seller/:seller_id',
     component: AdminSellersComponent,
+    data: { preload: false }
+  },
+  {
+    path: 'pymes/show/product/:product_id',
+    component: ShowPymesProductsComponent,
     data: { preload: false }
   },
   {

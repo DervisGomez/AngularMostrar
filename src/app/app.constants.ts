@@ -61,7 +61,7 @@ export const API_ROUTES = {
     return `sellers/:seller_id/update`;
   },
   getASeller() {
-    return `sellers/own`;
+    return `sellers/:profile_id`;
   },
   getSellerProducts() {
     return `seller/:profile_id/products`;

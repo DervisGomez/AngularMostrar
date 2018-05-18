@@ -1,5 +1,8 @@
 <div class="card" style="padding: 20px">
   <form class="form container-fluid form-container" *ngIf="!loading" >
+    <h1 mat-subheader style="font-weight: bold">Información General</h1>
+    <mat-divider style="margin-bottom: 10px"></mat-divider>
+
     <mat-form-field>
       <input matInput type="text"  id="product_title"
         placeholder="Nombre del producto"
@@ -8,18 +11,142 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput type="text" id="product_description"
+      <textarea matInput type="text" id="product_description"
         placeholder="Descripción"
         [ngModelOptions]="{standalone: true}"
-        [(ngModel)]="product.description"  />
+        [(ngModel)]="product.description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field style="width: 100%">
+       <input matInput placeholder="Cantidad"
+           type="number"
+           class="example-right-align"
+           id="product_stock"
+           [ngModelOptions]="{standalone: true}"
+           [(ngModel)]="product.stock"/>
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput type="number"  id="product_email"
-          placeholder="Precio"
-          [ngModelOptions]="{standalone: true}"
-          [(ngModel)]="product.price"  />
+      <mat-select placeholder="Estado">
+        <mat-option value="active">
+          Activo
+        </mat-option>
+        <mat-option value="unable">
+          Inactivo
+        </mat-option>
+      </mat-select>
     </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="text"  id="product_title"
+        placeholder="Número de referencia"
+        [ngModelOptions]="{standalone: true}"
+        [(ngModel)]="product.reference"  />
+    </mat-form-field>
+
+    <mat-form-field style="width: 100%">
+       <input matInput placeholder="Código de barra"
+           type="number"
+           class="example-right-align"
+           id="product_stock"
+           [ngModelOptions]="{standalone: true}"
+           [(ngModel)]="product.bar_code"/>
+    </mat-form-field>
+
+    <h1 mat-subheader style="font-weight: bold">Precio</h1>
+    <mat-divider style="margin-bottom: 10px"></mat-divider>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <mat-form-field style="width: 100%">
+          <mat-select placeholder="Moneda">
+            <mat-option *ngFor="let money of moneyType" [value]="money.value" (click)="typeMoney = money.value">
+              {{ money.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-lg-6">
+        <mat-form-field style="width: 100%">
+           <input matInput placeholder="Precio"
+               type="number"
+               class="example-right-align"
+               id="product_price"
+               [ngModelOptions]="{standalone: true}"
+               [(ngModel)]="product.price"/>
+            <span matPrefix *ngIf="typeMoney == 'USD'">$&nbsp;</span>
+            <span matPrefix *ngIf="typeMoney == 'BS'">Bs.&nbsp;</span>
+            <span matSuffix>.00</span>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <h1 mat-subheader style="font-weight: bold">Categorías</h1>
+    <mat-divider style="margin-bottom: 10px"></mat-divider>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <mat-form-field style="width: 100%">
+          <mat-select placeholder="Categoría">
+            <mat-option *ngFor="let category of categories" [value]="category.name">
+              {{ category.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <h1 mat-subheader style="font-weight: bold">Marcas</h1>
+    <mat-divider style="margin-bottom: 10px"></mat-divider>
+
+    <mat-form-field>
+      <input matInput type="text"  id="product_title"
+        placeholder="Marca"
+        [ngModelOptions]="{standalone: true}"
+        [(ngModel)]="product.name"  />
+    </mat-form-field>
+
+    <h1 mat-subheader style="font-weight: bold">Tags</h1>
+    <mat-divider style="margin-bottom: 10px"></mat-divider>
+
+    <mat-form-field class="demo-chip-list">
+      <mat-chip-list #chipList>
+        <mat-chip color="primary" *ngFor="let tag of product.tags" [selectable]="selectable"
+                 [removable]="removable" (removed)="remove(tag)">
+          {{tag.name}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="Nuevo Tag"
+               [matChipInputFor]="chipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (matChipInputTokenEnd)="add($event)" />
+      </mat-chip-list>
+    </mat-form-field>
+
+    <h1 mat-subheader style="font-weight: bold">Tipo</h1>
+    <mat-divider style="margin-bottom: 10px"></mat-divider>
+
+    <div class="row" style="margin-bottom: 20px">
+      <mat-radio-group class="example-radio-group" [(ngModel)]="favoriteSeason">
+        <div class="col-lg-4 text-center">
+          <mat-radio-button class="example-radio-button" value="product">
+            Producto
+          </mat-radio-button>
+        </div>
+        <div class="col-lg-4 text-center">
+          <mat-radio-button class="example-radio-button" value="service">
+            Servicio
+          </mat-radio-button>
+        </div>
+        <div class="col-lg-4 text-center">
+          <mat-radio-button class="example-radio-button" value="service-product">
+            Producto/Servicio
+          </mat-radio-button>
+        </div>
+      </mat-radio-group>
+    </div>
   </form>
 
   <button mat-raised-button  (click)="createProduct()" color="primary">
